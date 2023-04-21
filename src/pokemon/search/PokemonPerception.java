@@ -10,7 +10,6 @@ import frsf.cidisi.faia.environment.Environment;
 public class PokemonPerception extends Perception{
 
 	
-	private List<Nodo> nodosAdyacentes; // percepcion de nodos adyacentes
 	private Boolean hayPokemonNodoActual; //percepcion si hay o no pokemon en el nodo actual
 	private Boolean hayPokebolaNodoActual; //percepcion si hay o no pokebola en el nodo actual
 	private Double energiaPokemonNodoActual; //energia del pokemon en el nodo actual
@@ -21,22 +20,24 @@ public class PokemonPerception extends Perception{
 	
 	
 	@Override
-	public void initPerception(Agent agent, Environment environment) {
-		/*
-		 * TODO Definir la logica de como se obtienen las percepciones q se definieron
-		 */
-		
+ public void initPerception(Agent agentIn, Environment environmentIn) {
+    	
+        Agente agent = (Agente) agentIn;
+        AmbientePokemon environment = (AmbientePokemon) environmentIn;
+        EstadoAmbiente environmentState = (EstadoAmbiente) environment.getEnvironmentState();
+       //ver por que castea
+
+        
+        Nodo actual = environmentState.getUbicacion();
+ 
+        hayPokemonNodoActual = actual.getTienePokemon();
+        hayPokebolaNodoActual = actual.getTienePokebola();
+        energiaPokemonNodoActual = actual.getPokemon().getEnergia();
+        energiaPokebolaNodoActual = actual.getPokebola().getPuntos();
+        pokemonVencido = !(actual.getPokemon().getVivo());
 	}
+   
 
-
-	public List<Nodo> getNodosAdyacentes() {
-		return nodosAdyacentes;
-	}
-
-
-	public void setNodosAdyacentes(List<Nodo> nodosAdyacentes) {
-		this.nodosAdyacentes = nodosAdyacentes;
-	}
 
 
 	public Boolean getHayPokemonNodoActual() {

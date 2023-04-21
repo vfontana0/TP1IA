@@ -14,4 +14,5 @@ public class AmbientePokemon extends Environment{
 			// TODO Auto-generated method stub
 			return null;
 		}
+		
 }

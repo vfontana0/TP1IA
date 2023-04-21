@@ -1,7 +1,11 @@
 package pokemon.search;
 
+import java.util.ArrayList;
+
 import datastructures.Graph;
 import domain.Nodo;
+import domain.Pokebola;
+import domain.Pokemon;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class EstadoAmbiente extends EnvironmentState{
@@ -24,9 +28,8 @@ public class EstadoAmbiente extends EnvironmentState{
 		ArrayList<Nodo> nodos = new ArrayList<>();
 		 
 		for(int i=1; i<29; i++) {
-		Nodo actual = new Nodo();
-		nodos.add(actual);
-		 
+			Nodo actual = new Nodo();
+			nodos.add(actual);
 		}
 		grafo.addEdge(nodos.get(1), nodos.get(2));
 		grafo.addEdge(nodos.get(2), nodos.get(3));
@@ -67,6 +70,57 @@ public class EstadoAmbiente extends EnvironmentState{
 		grafo.addEdge(nodos.get(26), nodos.get(27));
 		grafo.addEdge(nodos.get(27), nodos.get(28));
 		grafo.addEdge(nodos.get(28), nodos.get(29));
+
+		grafo.addEdge(nodos.get(1), nodos.get(2));
+		Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1);
+		
+		ubicacion = inicial; //nodo en el q aparece el agente
+		
+		//Aparicion inicial de pokebolas
+		ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
+		Integer cont = 0;
+		while(cont < 5) {
+			Integer nroNodo = Integer.valueOf((int) Math.random()) % 29 + 1;
+			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+				Nodo random = nodos.get(nroNodo);
+				Pokebola pk = new Pokebola();
+				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
+				pk.setPuntos(Math.random()%6+5); //cant de puntos entre 5 y 10
+				random.setPokebola(pk);
+				random.setTienePokebola(true);
+				nroNodoPokebolas.add(nroNodo);
+				cont++;
+			}
+		}
+	
+		//Aparicion inicial de pokemones
+		ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
+		Integer cont2 = 0;
+		while(cont2 < 11) {
+			Integer nroNodo = Integer.valueOf((int) Math.random()) % 29 + 1;
+			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+				Nodo random = nodos.get(nroNodo);
+				Pokemon pk = new Pokemon();
+				pk.setActual(random);
+				pk.setEnergia(5.0);
+				pk.setVivo(true);
+				pk.setEsMaestro(false);
+				random.setTienePokemon(true);
+				random.setPokemon(pk);
+				nroNodoPokemones.add(nroNodo);
+				cont2++;
+			}	
+		}
+		
+		Pokemon maestro = new Pokemon();
+		maestro.setEnergia(10.0);
+		maestro.setVivo(true);
+		maestro.setActual(nodos.get(11));
+		maestro.setEsMaestro(true);
+		
+	
+	
+	
 	}
 
 	@Override

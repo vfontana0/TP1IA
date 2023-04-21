@@ -27,9 +27,8 @@ public class PokemonPerception extends Perception{
         EstadoAmbiente environmentState = (EstadoAmbiente) environment.getEnvironmentState();
        //ver por que castea
 
-        
+      
         Nodo actual = environmentState.getUbicacion();
- 
         hayPokemonNodoActual = actual.getTienePokemon();
         hayPokebolaNodoActual = actual.getTienePokebola();
         energiaPokemonNodoActual = actual.getPokemon().getEnergia();

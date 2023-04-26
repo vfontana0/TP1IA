@@ -3,7 +3,9 @@ package pokemon.search;
 import java.util.ArrayList;
 
 import datastructures.Graph;
+import domain.Nivel;
 import domain.Nodo;
+import domain.Poder;
 import domain.Pokebola;
 import domain.Pokemon;
 import frsf.cidisi.faia.state.EnvironmentState;
@@ -12,11 +14,14 @@ public class EstadoAmbiente extends EnvironmentState{
  
 	 private Graph grafo;
 	 private Nodo ubicacion;
-	
+	 private ArrayList<Poder> poderes;
+
+	 
 	public EstadoAmbiente(){
 		grafo = new Graph();
 		Nodo inicial = new Nodo();
 		this.initState();
+	
 	}
 	
 	@Override
@@ -25,12 +30,23 @@ public class EstadoAmbiente extends EnvironmentState{
 		 * Crear grafo de mapa agregando nodos y vertices
 		 * Inicializar nodo inicial del agente, seria un random entre los nodos q se crearon
 		 * */
+		
+		
 		ArrayList<Nodo> nodos = new ArrayList<>();
-		 
 		for(int i=1; i<29; i++) {
 			Nodo actual = new Nodo();
 			nodos.add(actual);
 		}
+		
+	poderes.add(new Poder("Rayo Aurora", 3, false));
+	poderes.add(new Poder("Rayo Meteorico", 3, false));
+	poderes.add(new Poder("Rayo Solar", 3, false));
+	poderes.add(new Poder("Satelite", 10, false));
+	
+	
+	
+		//Crear grafos del ambiente
+		
 		grafo.addEdge(nodos.get(1), nodos.get(2));
 		grafo.addEdge(nodos.get(2), nodos.get(3));
 		grafo.addEdge(nodos.get(2), nodos.get(9));
@@ -70,8 +86,9 @@ public class EstadoAmbiente extends EnvironmentState{
 		grafo.addEdge(nodos.get(26), nodos.get(27));
 		grafo.addEdge(nodos.get(27), nodos.get(28));
 		grafo.addEdge(nodos.get(28), nodos.get(29));
-
-		grafo.addEdge(nodos.get(1), nodos.get(2));
+		grafo.addEdge(nodos.get(1), nodos.get(2)); //pq esta dos veces?
+		
+		
 		Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1);
 		
 		ubicacion = inicial; //nodo en el q aparece el agente
@@ -112,6 +129,8 @@ public class EstadoAmbiente extends EnvironmentState{
 			}	
 		}
 		
+		
+	
 		Pokemon maestro = new Pokemon();
 		maestro.setEnergia(10.0);
 		maestro.setVivo(true);

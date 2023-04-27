@@ -3,7 +3,7 @@ package pokemon.search;
 import frsf.cidisi.faia.agent.search.GoalTest;
 import frsf.cidisi.faia.state.AgentState;
 
-public class ObjetivoPokemon extends GoalTest {
+public class ObjetivoJugador extends GoalTest {
 
 	@Override
 	public boolean isGoalState(AgentState agentState) {

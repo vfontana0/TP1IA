@@ -8,6 +8,7 @@ import domain.Nodo;
 import domain.Poder;
 import domain.Pokebola;
 import domain.Pokemon;
+import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class EstadoAmbiente extends EnvironmentState{
@@ -15,13 +16,13 @@ public class EstadoAmbiente extends EnvironmentState{
 	 private Graph grafo;
 	 private Nodo ubicacion;
 	 private ArrayList<Poder> poderes;
-
+	 private Boolean falla;
 	 
 	public EstadoAmbiente(){
 		grafo = new Graph();
 		Nodo inicial = new Nodo();
 		this.initState();
-	
+		
 	}
 	
 	@Override
@@ -43,7 +44,8 @@ public class EstadoAmbiente extends EnvironmentState{
 	poderes.add(new Poder("Rayo Solar", 3, false));
 	poderes.add(new Poder("Satelite", 10, false));
 	
-	
+	/*En el clone (ver si es asi) verificar la cantidad del ciclos, si es 0 mandar mapa al agente o 
+	mover al pokemon, esas cosas y disminuir en uno*/
 	
 		//Crear grafos del ambiente
 		
@@ -120,6 +122,7 @@ public class EstadoAmbiente extends EnvironmentState{
 				Pokemon pk = new Pokemon();
 				pk.setActual(random);
 				pk.setEnergia(5.0);
+				pk.setCiclosParaMoverse((int) (Math.random() % 3 +1));
 				pk.setVivo(true);
 				pk.setEsMaestro(false);
 				random.setTienePokemon(true);
@@ -141,6 +144,14 @@ public class EstadoAmbiente extends EnvironmentState{
 	
 	
 	}
+	
+    public boolean agentFailed(Action actionReturned) {
+    	boolean failed = false;
+
+ 
+
+        return failed;
+    }
 
 	@Override
 	public String toString() {

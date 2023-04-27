@@ -25,4 +25,6 @@ public class AmbientePokemon extends Environment{
 		
 		
 		
+		
+		
 }

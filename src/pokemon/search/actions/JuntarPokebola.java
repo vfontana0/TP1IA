@@ -9,24 +9,28 @@ import frsf.cidisi.faia.state.EnvironmentState;
 import pokemon.search.EstadoJugador;
 import pokemon.search.EstadoAmbiente;
 
-public class IrANodoN extends SearchAction {
+public class JuntarPokebola extends SearchAction {
 	Nodo nodo;
 	
-	public IrANodoN(Nodo nodo) {
+	public JuntarPokebola(Nodo nodo) {
 		this.nodo = nodo;
 	}
 	
 	@Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
-        EstadoJugador agState = (EstadoJugador) s;
-        
-        Nodo nodoActual = agState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-    		return agState;
-        }
-        
-        return null;
+		// TODO Auto-generated method stub
+				EstadoJugador agState = (EstadoJugador) s;
+				
+				Nodo nodoActual = agState.getUbicacion();
+		        if (nodoActual.getTienePokebola()) {
+		        	double energiaGanada = nodoActual.getPokebola().getPuntos();
+		        	agState.setEnergiaGanada(agState.getEnergiaGanada() + energiaGanada);
+		        	nodoActual.setPokebola(null);
+		        	nodoActual.setTienePokebola(null);
+		        	return agState;
+		        }
+				
+				return null;
 	}
 
 	@Override
@@ -36,10 +40,11 @@ public class IrANodoN extends SearchAction {
 		EstadoJugador agState = (EstadoJugador) ast;
 		
 		Nodo nodoActual = environmentState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-        	
-        	environmentState.setUbicacion(nodo);
+        if (nodoActual.getTienePokebola()) {
+        	double energiaGanada = nodoActual.getPokebola().getPuntos();
+        	agState.setEnergiaGanada(agState.getEnergiaGanada() + energiaGanada);
+        	nodoActual.setPokebola(null);
+        	nodoActual.setTienePokebola(null);
         	return environmentState;
         }
 		

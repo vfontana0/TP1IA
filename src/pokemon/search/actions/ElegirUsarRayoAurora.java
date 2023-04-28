@@ -9,24 +9,28 @@ import frsf.cidisi.faia.state.EnvironmentState;
 import pokemon.search.EstadoJugador;
 import pokemon.search.EstadoAmbiente;
 
-public class IrANodoN extends SearchAction {
+public class ElegirUsarRayoAurora extends SearchAction {
 	Nodo nodo;
 	
-	public IrANodoN(Nodo nodo) {
+	public ElegirUsarRayoAurora(Nodo nodo) {
 		this.nodo = nodo;
 	}
 	
 	@Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
-        EstadoJugador agState = (EstadoJugador) s;
-        
-        Nodo nodoActual = agState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-    		return agState;
-        }
-        
-        return null;
+		// TODO Auto-generated method stub
+				EstadoJugador agState = (EstadoJugador) s;
+				
+		        if (agState.getPoderes().get(1).getPuedoUsar()) {
+		        	agState.getPoderes().get(1).setCantCiclos(3);
+		        	agState.getPoderes().get(1).setPuedoUsar(false);
+		        	agState.setEnergiaGanada(agState.getEnergia()*0.2);
+		        	agState.setEnergia(agState.getEnergia()*1.2);
+		        	
+		        	return agState;
+		        }
+				
+				return null;
 	}
 
 	@Override
@@ -35,11 +39,12 @@ public class IrANodoN extends SearchAction {
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		Nodo nodoActual = environmentState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
+        if (environmentState.getPoderes().get(1).getPuedoUsar()) {
+        	environmentState.getPoderes().get(1).setCantCiclos(3);
+        	environmentState.getPoderes().get(1).setPuedoUsar(false);
+        	agState.setEnergiaGanada(agState.getEnergia()*0.2);
+        	agState.setEnergia(agState.getEnergia()*1.2);
         	
-        	environmentState.setUbicacion(nodo);
         	return environmentState;
         }
 		

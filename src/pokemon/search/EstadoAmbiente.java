@@ -180,5 +180,13 @@ public class EstadoAmbiente extends EnvironmentState{
 		this.ubicacion = ubicacion;
 	}
 
+	public ArrayList<Poder> getPoderes() {
+		return poderes;
+	}
+
+	public void setPoderes(ArrayList<Poder> poderes) {
+		this.poderes = poderes;
+	}
+
 	
 }

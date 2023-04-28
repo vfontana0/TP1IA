@@ -27,5 +27,16 @@ public class Graph {
     public Set<Nodo> getAllVertices() {
         return adjVertices.keySet();
     }
+    
+    public Nodo getVertex(int numero) {
+        for (Nodo vertex : adjVertices.keySet()) {
+            if (vertex.getNumero() == numero) {
+                return vertex;
+            }
+        }
+        return null;
+    }
+    
+    
 }
 

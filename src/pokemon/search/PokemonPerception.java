@@ -22,11 +22,9 @@ public class PokemonPerception extends Perception{
 	@Override
  public void initPerception(Agent agentIn, Environment environmentIn) {
     	
-        Agente agent = (Agente) agentIn;
+        Jugador agent = (Jugador) agentIn;
         AmbientePokemon environment = (AmbientePokemon) environmentIn;
         EstadoAmbiente environmentState = (EstadoAmbiente) environment.getEnvironmentState();
-       //ver por que castea
-
         Nodo actual = environmentState.getUbicacion();
         hayPokemonNodoActual = actual.getTienePokemon();
         hayPokebolaNodoActual = actual.getTienePokebola();

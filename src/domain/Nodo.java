@@ -5,11 +5,11 @@ import java.util.List;
 public class Nodo {
 
 	Boolean tienePokemon; //true si hay un pokemon en el nodo
+	Integer numero;
 	Pokemon pokemon; //objeto pokemon (null si tienePokemon es falso)
 	Boolean tienePokebola; //true si hay una pokebola en el nodo
 	Pokebola pokebola; //objeto pokebola (null si tienePokebola es falso)
 	List<Nodo> nodosAdyacentes; //lista de nodos vecinos al actual.
-	
 	
 	
 	
@@ -43,6 +43,13 @@ public class Nodo {
 	public void setNodosAdyacentes(List<Nodo> nodosAdyacentes) {
 		this.nodosAdyacentes = nodosAdyacentes;
 	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	
 	
 	
 	

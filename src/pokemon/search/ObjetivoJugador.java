@@ -7,8 +7,9 @@ public class ObjetivoJugador extends GoalTest {
 
 	@Override
 	public boolean isGoalState(AgentState agentState) {
-		//condicion de ganar, sería que el nodo sea el 11 y haya vencido el maestroS
-		return false;
+		EstadoJugador estado = (EstadoJugador) agentState;
+		// condicion de ganar: que este en el nodo 11 y que el pokemon maestro no este vivo.
+		return estado.getUbicacion().getNumero()==11 && !estado.getUbicacion().getPokemon().getVivo();
 	}
 
 

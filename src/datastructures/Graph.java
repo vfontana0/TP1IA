@@ -10,6 +10,10 @@ public class Graph {
     public Graph() {
         adjVertices = new HashMap<>();
     }
+    
+    public Graph(Map<Nodo, List<Nodo>> adjVertices) {
+        this.adjVertices = adjVertices;
+    }
 
     public void addVertex(Nodo vertex) {
         adjVertices.put(vertex, new LinkedList<>());
@@ -28,6 +32,8 @@ public class Graph {
         return adjVertices.keySet();
     }
     
+    
+    
     public Nodo getVertex(int numero) {
         for (Nodo vertex : adjVertices.keySet()) {
             if (vertex.getNumero() == numero) {
@@ -37,6 +43,28 @@ public class Graph {
         return null;
     }
     
-    
+    public Graph clone() {
+        Map<Nodo, List<Nodo>> newAdjVertices = new HashMap<>();
+        
+        for (Map.Entry<Nodo, List<Nodo>> entry : adjVertices.entrySet()) {
+            Nodo vertice = entry.getKey(); //la clave es el nodo
+            List<Nodo> vecinos = entry.getValue(); //vecinos del nodo
+            
+            // clonar vertice
+            Nodo newVertex = vertice.clone();
+            
+            // Crear copias de los vecinos
+            List<Nodo> nuevosVecinos = new ArrayList<>();
+            for (Nodo vecino : vecinos) {
+                Nodo nuevoVecino = vecino.clone();
+                nuevosVecinos.add(nuevoVecino);
+            }
+            
+            newAdjVertices.put(newVertex, nuevosVecinos);
+        }
+        
+        return new Graph(newAdjVertices);
+    }
 }
+    
 

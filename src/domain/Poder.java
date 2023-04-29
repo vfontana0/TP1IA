@@ -30,5 +30,8 @@ public Poder(String nombre2, int cantCiclos2, boolean puedoUsar2) {
 	this.puedoUsar = puedoUsar;// TODO Auto-generated constructor stub
 }
 
+public Poder clone() {
+	return new Poder(this.getNombre(), this.getCantCiclos(), this.getPuedoUsar());
+}
 
 }

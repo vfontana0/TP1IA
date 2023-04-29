@@ -38,6 +38,17 @@ public class Pokemon {
 		this.ciclosParaMoverse = ciclosParaMoverse;
 	}
 	
+	public Pokemon clone() {
+		Pokemon retorno = new Pokemon();
+		retorno.setCiclosParaMoverse(this.getCiclosParaMoverse());
+		retorno.setVivo(this.getVivo());
+		retorno.setEnergia(this.getEnergia());
+		retorno.setEsMaestro(this.esMaestro);
+		retorno.setActual(this.getActual().clone());
+		return retorno;
+	}
+	
+	
 	
 	
 

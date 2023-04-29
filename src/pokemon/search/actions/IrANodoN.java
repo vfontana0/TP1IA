@@ -10,10 +10,10 @@ import pokemon.search.EstadoJugador;
 import pokemon.search.EstadoAmbiente;
 
 public class IrANodoN extends SearchAction {
-	Nodo nodo;
+	Integer nodoNro;
 	
-	public IrANodoN(Nodo nodo) {
-		this.nodo = nodo;
+	public IrANodoN(Integer i) {
+		this.nodoNro = i;
 	}
 	
 	@Override
@@ -21,9 +21,10 @@ public class IrANodoN extends SearchAction {
         EstadoJugador agState = (EstadoJugador) s;
         
         Nodo nodoActual = agState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-        	//Falta el visitado en el grafo?
+        Nodo destino = agState.getMapa().getVertex(nodoNro);
+        if(agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
+        	agState.setUbicacion(destino);
+        	agState.setHuyoUltimoNodo(false);
     		return agState;
         }
         
@@ -37,11 +38,11 @@ public class IrANodoN extends SearchAction {
 		EstadoJugador agState = (EstadoJugador) ast;
 		
 		Nodo nodoActual = agState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-        	//Falta el visitado en el grafo?
-        	
-        	environmentState.setUbicacion(nodo);
+		 Nodo destino = agState.getMapa().getVertex(nodoNro);
+	     if(agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
+        	agState.setUbicacion(destino);
+        	agState.setHuyoUltimoNodo(false);
+        	environmentState.setUbicacion(destino);
         	return environmentState;
         }
 		
@@ -57,6 +58,6 @@ public class IrANodoN extends SearchAction {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "IrANodo " + nodo.getNumero();
+		return "IrANodo " + nodoNro;
 	}
 }

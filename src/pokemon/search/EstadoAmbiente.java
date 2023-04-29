@@ -29,7 +29,7 @@ public class EstadoAmbiente extends EnvironmentState{
 	public void initState() {
 
 		ArrayList<Nodo> nodos = new ArrayList<>();
-		for(int i=1; i<29; i++) {
+		for(int i=1; i<=29; i++) {
 			Nodo actual = new Nodo();
 			actual.setNumero(i);
 			actual.setTienePokebola(false);
@@ -46,7 +46,6 @@ public class EstadoAmbiente extends EnvironmentState{
 	poderes.add(new Poder("Rayo Meteorico", 3, false));
 	poderes.add(new Poder("Rayo Solar", 3, false));
 	poderes.add(new Poder("Satelite", 10, false));
-	
 	/*En el clone (ver si es asi) verificar la cantidad del ciclos, si es 0 mandar mapa al agente o 
 	mover al pokemon, esas cosas y disminuir en uno*/
 	

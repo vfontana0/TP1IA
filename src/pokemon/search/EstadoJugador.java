@@ -16,7 +16,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private int nivel;
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
-	
+	private Boolean huyoUltimoNodo;
 	
 	public EstadoJugador() {
 		
@@ -44,7 +44,30 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    
 	    return nuevoEstado;
 	 }
+	 
+		@Override
+		public boolean equals(Object obj) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 
+		@Override
+		public void updateState(Perception p) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	 
+	 
+	 
+	 
+	 
 	 @Override
 		public void initState() {
 			/* TODO 
@@ -153,23 +176,27 @@ public class EstadoJugador extends SearchBasedAgentState {
 		this.energiaGanada = energiaGanada;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+
+
+	public ArrayList<Poder> getPoderes() {
+		return poderes;
 	}
 
-	@Override
-	public void updateState(Perception p) {
-		// TODO Auto-generated method stub
-		
+	public void setPoderes(ArrayList<Poder> poderes) {
+		this.poderes = poderes;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getHuyoUltimoNodo() {
+		return huyoUltimoNodo;
 	}
+
+	public void setHuyoUltimoNodo(Boolean huyoUltimoNodo) {
+		this.huyoUltimoNodo = huyoUltimoNodo;
+	}
+	
+	
+	
+	
 	 
 	 
 }

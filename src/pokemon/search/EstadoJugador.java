@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import datastructures.Graph;
 import domain.Nodo;
 import domain.Poder;
+import domain.Pokebola;
+import domain.Pokemon;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -19,20 +21,17 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Boolean huyoUltimoNodo;
 	
 	public EstadoJugador() {
-		
-		EstadoAmbiente estado = new EstadoAmbiente();
-		
-		this.grafo = estado.getGrafo();
-		this.ubicacion = estado.getUbicacion();
 		this.energiaInicial = ((int) Math.random()) % 10 + 10;
 		this.energia = energiaInicial;
 		this.nivel = 1;
 		this.energiaGanada = 0;
+		grafo = new Graph();
 		poderes = new ArrayList<>();
 		poderes.add(new Poder("Rayo Aurora", 3, false));
 		poderes.add(new Poder("Rayo Meteorico", 3, false));
 		poderes.add(new Poder("Rayo Solar", 3, false));
 		poderes.add(new Poder("Satelite", 10, false));
+		this.initState();
 	}
 	
 	 @Override
@@ -44,8 +43,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial());
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
 	    nuevoEstado.setNivel(this.getNivel());
-	    //ubicacion
-	    nuevoEstado.setUbicacion(this.getUbicacion().clone());
 	    //poderes
 	    ArrayList<Poder> poderesNuevo = new ArrayList<>();
 	    for(Poder p: this.getPoderes()) {
@@ -56,53 +53,62 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    
 	    //grafo
 	    nuevoEstado.setMapa(this.getMapa().clone());
-	    
+	    //ubicacion
+	    nuevoEstado.setUbicacion(nuevoEstado.getMapa().getVertex(this.getUbicacion().getNumero()));
 	    
 	    return nuevoEstado;
 	 }
 	 
 		@Override
 		public boolean equals(Object obj) {
-			// TODO Auto-generated method stub
-			return false;
+			EstadoJugador est = (EstadoJugador) obj;
+			return this.ubicacion.equals(est.getUbicacion()) 
+					&& this.getEnergia() == est.getEnergia() 
+					&& this.getEnergiaGanada() == est.getEnergiaGanada(); 
+
+//se esta en el mismo estado si esta dos veces en la misma ubicacion, con la misma energia y misma energia ganada.
 		}
 
 		@Override
 		public void updateState(Perception p) {
-			// TODO Auto-generated method stub
-			
+			//actualizar estado en base a las percepciones
+			PokemonPerception per = (PokemonPerception) p;
+			this.getUbicacion().setTienePokemon(per.getHayPokemonNodoActual());
+			this.getUbicacion().setTienePokebola(per.getHayPokebolaNodoActual());
+			if(per.getHayPokemonNodoActual()) {
+				Pokemon pokemon = new Pokemon();
+				pokemon.setEnergia(per.getEnergiaPokemonNodoActual());
+				this.getUbicacion().setPokemon(pokemon); //creo un pokemon solo con la info d la percepcion
+			}
+			if(per.getHayPokebolaNodoActual()) {
+				Pokebola pokebola = new Pokebola();
+				pokebola.setPuntos(per.getEnergiaPokebolaNodoActual()); //creo una pokebola con la info d la percepcion
+			}
+			// TODO: Tener una percepcion q diga si el pokemon es maestro o no
 		}
 
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
-			return null;
+			return "Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia();
 		}
 
 	 
-	 
-	 
-	 
-	 
 	 @Override
 		public void initState() {
-			/* TODO 
-			 * Crear grafo de mapa agregando nodos y vertices
-			 * Inicializar nodo inicial del agente, seria un random entre los nodos q se crearon
-			 * */
-			ArrayList<Nodo> nodos = new ArrayList<>();			 
-			for(int i=1; i<29; i++) {
+			ArrayList<Nodo> nodos = new ArrayList<>();		
+			nodos.add(0, null);
+			for(int i=1; i<=29; i++) {
 				Nodo actual = new Nodo();
 				actual.setNumero(i);
 				actual.setTienePokebola(false);
 				actual.setPokebola(null);
 				actual.setTienePokemon(false);
 				actual.setPokemon(null);
-				nodos.add(actual);
+				nodos.add(i, actual);
 				grafo.addVertex(actual);
 			}
 			this.agregarConexiones(nodos);
-
+			this.ubicacion = nodos.get(3);
 			//Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1); como hacemos eso?
 		}
 	 

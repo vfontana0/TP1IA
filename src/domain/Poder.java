@@ -25,9 +25,9 @@ public void setPuedoUsar(Boolean puedoUsar) {
 }
 
 public Poder(String nombre2, int cantCiclos2, boolean puedoUsar2) {
-	this.nombre = nombre;
-	this.cantCiclos = cantCiclos;
-	this.puedoUsar = puedoUsar;// TODO Auto-generated constructor stub
+	this.nombre = nombre2;
+	this.cantCiclos = cantCiclos2;
+	this.puedoUsar = puedoUsar2;// TODO Auto-generated constructor stub
 }
 
 public Poder clone() {

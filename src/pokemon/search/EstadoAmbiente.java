@@ -1,6 +1,7 @@
 package pokemon.search;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import datastructures.Graph;
 import domain.Nivel;
@@ -29,6 +30,7 @@ public class EstadoAmbiente extends EnvironmentState{
 	public void initState() {
 
 		ArrayList<Nodo> nodos = new ArrayList<>();
+		nodos.add(0, null);
 		for(int i=1; i<=29; i++) {
 			Nodo actual = new Nodo();
 			actual.setNumero(i);
@@ -36,12 +38,13 @@ public class EstadoAmbiente extends EnvironmentState{
 			actual.setPokebola(null);
 			actual.setTienePokemon(false);
 			actual.setPokemon(null);
-			nodos.add(actual);
+			nodos.add(i, actual);
 			grafo.addVertex(actual);
 		}
-		
+		System.out.println("Crea los nodos del estado del ambiente");
 		this.agregarConexionesGrafo(nodos);
-		
+		System.out.println("Agrega las conexiones");
+	poderes = new ArrayList<>();
 	poderes.add(new Poder("Rayo Aurora", 3, false));
 	poderes.add(new Poder("Rayo Meteorico", 3, false));
 	poderes.add(new Poder("Rayo Solar", 3, false));
@@ -50,16 +53,19 @@ public class EstadoAmbiente extends EnvironmentState{
 	mover al pokemon, esas cosas y disminuir en uno*/
 	
 		//Crear grafos del ambiente
-		
-		Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1);
-		
+		Random rand = new Random();
+	
+		//Nodo inicial = nodos.get(rand.nextInt(29)+1);
+		Nodo inicial = nodos.get(3);
 		ubicacion = inicial; //nodo en el q aparece el agente
 		
-		//Aparicion inicial de pokebolas
+		System.out.println("Hasta antes de generar pokebolas llega");
+		
 		ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
 		Integer cont = 0;
 		while(cont < 5) {
-			Integer nroNodo = Integer.valueOf((int) Math.random()) % 29 + 1;
+			 Integer nroNodo = rand.nextInt(29) + 1;
+			System.out.println("Numero de nodo elegido al azar:" + nroNodo);
 			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
 				Nodo random = nodos.get(nroNodo);
 				Pokebola pk = new Pokebola();
@@ -71,12 +77,12 @@ public class EstadoAmbiente extends EnvironmentState{
 				cont++;
 			}
 		}
-	
+		System.out.println("Genera la aparicion de las pokebolas");
 		//Aparicion inicial de pokemones
 		ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 		Integer cont2 = 0;
 		while(cont2 < 11) {
-			Integer nroNodo = Integer.valueOf((int) Math.random()) % 29 + 1;
+			 Integer nroNodo = rand.nextInt(29) + 1;
 			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
 				Nodo random = nodos.get(nroNodo);
 				Pokemon pk = new Pokemon();
@@ -99,7 +105,6 @@ public class EstadoAmbiente extends EnvironmentState{
 		maestro.setActual(nodos.get(11));
 		maestro.setEsMaestro(true);
 		
-	
 	
 	
 	}
@@ -159,8 +164,7 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Ubicacion: " + this.getUbicacion().toString(); 
 	}
 
 	public Graph getGrafo() {
@@ -179,5 +183,5 @@ public class EstadoAmbiente extends EnvironmentState{
 		this.ubicacion = ubicacion;
 	}
 
-	
+
 }

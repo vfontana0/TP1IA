@@ -16,10 +16,20 @@ public class AmbientePokemon extends Environment{
 	        Nodo actual = ((EstadoAmbiente) environmentState).getUbicacion();
 	        perception.setHayPokemonNodoActual(actual.getTienePokemon());
 	        perception.setHayPokebolaNodoActual(actual.getTienePokebola());
-	        perception.setEnergiaPokebolaNodoActual(actual.getPokebola().getPuntos());
-	        perception.setEnergiaPokemonNodoActual(actual.getPokemon().getEnergia());
-	        perception.setPokemonVencido(!actual.getPokemon().getVivo());
+	        System.out.println("Primeras dos percepciones: ok");
+	        if(actual.getTienePokebola())
+	        	perception.setEnergiaPokebolaNodoActual(actual.getPokebola().getPuntos());
+	        if(actual.getTienePokemon()) {
+	        	perception.setEnergiaPokemonNodoActual(actual.getPokemon().getEnergia());
+	        	perception.setPokemonVencido(!actual.getPokemon().getVivo());
+	        }
+	        System.out.println("Retorna la percepcion");
 			return perception;
+		}
+		
+		@Override
+		public String toString() {
+			return this.getEnvironmentState().toString();
 		}
 		
 		

@@ -46,14 +46,28 @@ public class Nodo {
 	public Nodo clone() {
 		Nodo retorno = new Nodo();
 		retorno.setNumero(this.getNumero());
-		retorno.setPokebola(this.getPokebola().clone());
-		retorno.setPokemon(this.getPokemon().clone());
 		retorno.setTienePokebola(this.getTienePokebola());
 		retorno.setTienePokemon(this.getTienePokemon());
+		if(this.getTienePokebola())
+			retorno.setPokebola(this.getPokebola().clone());
+		if(this.getTienePokemon())
+			retorno.setPokemon(this.getPokemon().clone());
+
 		return retorno;
 	}
 	
-	
+
+    @Override
+	public boolean equals(Object obj) {
+    	Nodo aComparar = (Nodo) obj;
+		return this.numero == aComparar.getNumero();
+
+	}
+    
+    @Override
+    public String toString() {
+    	return "Nodo " + this.getNumero();
+    }
 	
 	
 }

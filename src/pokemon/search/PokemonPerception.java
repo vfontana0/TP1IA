@@ -28,8 +28,11 @@ public class PokemonPerception extends Perception{
         Nodo actual = environmentState.getUbicacion();
         hayPokemonNodoActual = actual.getTienePokemon();
         hayPokebolaNodoActual = actual.getTienePokebola();
-        energiaPokemonNodoActual = actual.getPokemon().getEnergia();
-        energiaPokebolaNodoActual = actual.getPokebola().getPuntos();
+       if(hayPokemonNodoActual)
+    	   energiaPokemonNodoActual = actual.getPokemon().getEnergia();
+       if(hayPokebolaNodoActual)
+    	   energiaPokebolaNodoActual = actual.getPokebola().getPuntos();
+       if(hayPokemonNodoActual)
         pokemonVencido = !(actual.getPokemon().getVivo());
 	}
    
@@ -81,6 +84,11 @@ public class PokemonPerception extends Perception{
 
 	public void setPokemonVencido(Boolean pokemonVencido) {
 		this.pokemonVencido = pokemonVencido;
+	}
+	
+	@Override
+	public String toString() {
+		return "Hay pokemon nodo actual? --> " + this.getHayPokemonNodoActual() + " Hay pokebola nodo actual? --> " + this.getHayPokebolaNodoActual();
 	}
 	
 

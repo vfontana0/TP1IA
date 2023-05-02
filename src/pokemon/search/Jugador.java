@@ -10,18 +10,19 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
+import pokemon.search.actions.ElegirHuir;
 import pokemon.search.actions.ElegirPelear;
+import pokemon.search.actions.ElegirUsarRayoAurora;
+import pokemon.search.actions.ElegirUsarRayoMeteorico;
+import pokemon.search.actions.ElegirUsarRayoSolar;
 import pokemon.search.actions.IrANodoN;
 import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
 
 	public Jugador(Graph grafo) {
-	System.out.println("Entra al constructor");
 	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-	System.out.println("Crea el objetivo");
 	EstadoJugador jugadorState = new EstadoJugador(grafo);
-	System.out.println("Crea el estado del jugador");
 	this.setAgentState(jugadorState);
 	Vector<SearchAction> operators = new Vector<SearchAction>();
 	for(int i=1; i<=29; i++) {
@@ -29,6 +30,10 @@ public class Jugador extends SearchBasedAgent {
 	}
 	operators.add(new JuntarPokebola());
 	operators.add(new ElegirPelear());
+	operators.add(new ElegirHuir());
+	operators.add(new ElegirUsarRayoSolar());
+	operators.add(new ElegirUsarRayoMeteorico());
+	operators.add(new ElegirUsarRayoAurora());
 	
 	System.out.println("Operadores: " + operators.toString());
 	Problem problem = new Problem(jugadorGoal, jugadorState, operators);

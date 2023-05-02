@@ -14,6 +14,8 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		 EstadoJugador agState = (EstadoJugador) s;
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.50);
+			 agState.getPoderes().get(2).setCantCiclos(3);
+			 agState.getPoderes().get(2).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
@@ -32,6 +34,8 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.50);
+			 agState.getPoderes().get(2).setCantCiclos(3);
+			 agState.getPoderes().get(2).setPuedoUsar(false);
         	return environmentState;
         }
 		

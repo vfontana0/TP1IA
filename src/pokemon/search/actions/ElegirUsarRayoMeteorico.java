@@ -14,6 +14,8 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 		 EstadoJugador agState = (EstadoJugador) s;
 		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.30);
+			 agState.getPoderes().get(1).setCantCiclos(3);
+			 agState.getPoderes().get(1).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
@@ -32,6 +34,8 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 		
 		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.30);
+			 agState.getPoderes().get(1).setCantCiclos(3);
+			 agState.getPoderes().get(1).setPuedoUsar(false);
         	return environmentState;
         }
 		

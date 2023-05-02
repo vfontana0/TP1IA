@@ -15,6 +15,8 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		 EstadoJugador agState = (EstadoJugador) s;
 		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.20);
+			 agState.getPoderes().get(0).setCantCiclos(3);
+			 agState.getPoderes().get(0).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
@@ -33,6 +35,8 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		
 		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.20);
+			 agState.getPoderes().get(0).setCantCiclos(3);
+			 agState.getPoderes().get(0).setPuedoUsar(false);
         	return environmentState;
         }
 		

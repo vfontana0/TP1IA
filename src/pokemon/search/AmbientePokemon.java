@@ -10,7 +10,6 @@ import frsf.cidisi.faia.environment.Environment;
 
 public class AmbientePokemon extends Environment{
 	    public AmbientePokemon(Graph grafo) {
-	        // Create the environment state
 	        this.environmentState = new EstadoAmbiente(grafo);
 	    }
 

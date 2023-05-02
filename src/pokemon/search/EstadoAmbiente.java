@@ -40,8 +40,8 @@ public class EstadoAmbiente extends EnvironmentState{
 		ubicacion = grafo.getVertex(3); //posicion inicial del agente --> deberia ser aleatoria
 
 		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
-		this.generarPokemones(); //genera pokemones en nodos aleatorios
 		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
+		this.generarPokemones(); //genera pokemones en nodos aleatorios
 		
 	}
 	
@@ -94,7 +94,7 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(10.0);
+		maestro.setEnergia(9.0);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);

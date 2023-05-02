@@ -70,6 +70,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 		@Override
 		public void updateState(Perception p) {
+	    
 			//actualizar estado en base a las percepciones
 			PokemonPerception per = (PokemonPerception) p;
 			HashMap<Integer, PercepcionNodo> percepciones = per.getPercepcionesAdyacentes(); // obtengo percepciones
@@ -77,9 +78,22 @@ public class EstadoJugador extends SearchBasedAgentState {
 			for(Integer nroNodo : percepciones.keySet()) { //para cada numero de nodo
 				this.grafo.getVertex(nroNodo).actualizar(percepciones.get(nroNodo)); //actualizo cada nodo vecino con info de la percepcion
 			}
+		    this.actualizarCiclos();
 			
 		}
 			 
+		private void actualizarCiclos() {
+			//Se ejecuta una vez por ciclo percepcion-accion
+			for(Poder p: this.getPoderes()) { //para cada poder
+				if(p.getCantCiclos() > 0) //si faltan ciclos para poder usar
+					p.setCantCiclos(p.getCantCiclos()-1); //si es mayor a 0 reduzco en uno los ciclos
+				else {
+					p.setPuedoUsar(true);
+					System.out.println("Ahora puedo usar habilidad " + p.getNombre());
+				}
+			}
+		}
+
 		@Override
 		public String toString() {
 			return "Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia();
@@ -89,7 +103,8 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 		public void initState() {
 			this.ubicacion = grafo.getVertex(3); //TODO la ubicacion deberia ser la misma para ambos, generar en main
-		}
+			this.huyoUltimoNodo = false;
+	 }
 	 
 
 	public Nodo getUbicacion() {
@@ -157,7 +172,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	public void setHuyoUltimoNodo(Boolean huyoUltimoNodo) {
 		this.huyoUltimoNodo = huyoUltimoNodo;
 	}
-
 
 	
 	

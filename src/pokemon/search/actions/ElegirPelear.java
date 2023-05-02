@@ -43,7 +43,7 @@ public class ElegirPelear extends SearchAction{
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();
 
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actualAgente.getTienePokemon()  && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
+		if(actualAgente.getTienePokemon() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();

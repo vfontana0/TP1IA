@@ -68,6 +68,17 @@ public class Nodo {
     public String toString() {
     	return "Nodo " + this.getNumero();
     }
+    
+    
+	public void actualizar(PercepcionNodo percepcionNodo) {
+		this.tienePokemon = percepcionNodo.getTienePokemon();
+		this.tienePokebola = percepcionNodo.getTienePokebola();
+		if(percepcionNodo.getTienePokemon())
+			this.pokemon = percepcionNodo.getPokemon();
+		if(percepcionNodo.getTienePokebola())
+			this.pokebola = percepcionNodo.getPokebola();
+		
+	}
 	
 	
 }

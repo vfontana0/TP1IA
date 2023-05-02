@@ -43,7 +43,7 @@ public class Pokemon {
 		retorno.setCiclosParaMoverse(this.getCiclosParaMoverse());
 		retorno.setVivo(this.getVivo());
 		retorno.setEnergia(this.getEnergia());
-		retorno.setEsMaestro(this.esMaestro);
+		retorno.setEsMaestro(this.getEsMaestro());
 		//si anda agregar posicion
 		return retorno;
 	}

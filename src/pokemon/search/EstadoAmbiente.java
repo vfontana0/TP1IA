@@ -18,7 +18,6 @@ public class EstadoAmbiente extends EnvironmentState{
 	 private Nodo ubicacion;
 	 private ArrayList<Poder> poderes;
 	 private Boolean falla;
-	 private Boolean maestroMuerto;
 	 ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
 	 ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 
@@ -40,17 +39,16 @@ public class EstadoAmbiente extends EnvironmentState{
 
 		ubicacion = grafo.getVertex(3); //posicion inicial del agente --> deberia ser aleatoria
 
-		
+		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
 		this.generarPokemones(); //genera pokemones en nodos aleatorios
 		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
-		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
 		
 	}
 	
 	
 	
 
-	private void generarPokebolas() {
+	private void generarPokemones() {
 		Random rand = new Random();
 		Integer cont2 = 0;
 		while(cont2 < 11) {
@@ -73,7 +71,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		
 	}
 
-	private void generarPokemones() {
+	private void generarPokebolas() {
 		Random rand = new Random();
 		Integer cont = 0;
 		while(cont < 5) {
@@ -103,7 +101,6 @@ public class EstadoAmbiente extends EnvironmentState{
 		maestro.setEsMaestro(true);
 		grafo.getVertex(11).setTienePokemon(true);
 		grafo.getVertex(11).setPokemon(maestro);
-		System.out.println("Nodo 11 tiene pokemon? " + grafo.getVertex(11).getTienePokemon());
 		
 	}
 
@@ -135,14 +132,7 @@ public class EstadoAmbiente extends EnvironmentState{
 	public void setUbicacion(Nodo ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	
-	public Boolean getMaestroMuerto() {
-		return maestroMuerto;
-	}
 
-	public void setMaestroMuerto(Boolean maestroMuerto) {
-		this.maestroMuerto = maestroMuerto;
-	}
 
 
 }

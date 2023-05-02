@@ -10,10 +10,12 @@ import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 public class PokemonMain {
     public static void main(String[] args) throws PrologConnectorException {
     	//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
-    	Graph grafo = new Graph();
-    	initGrafo(grafo);
-        AmbientePokemon environment = new AmbientePokemon(grafo); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
-        Jugador agent = new Jugador(grafo); //jugador --> crea PASAR GRAFO NOMAS
+    	Graph grafoAmbiente = new Graph();
+    	Graph grafoAgente = new Graph();
+    	initGrafo(grafoAmbiente);
+    	initGrafo(grafoAgente);
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente); //jugador --> crea PASAR GRAFO NOMAS
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
         

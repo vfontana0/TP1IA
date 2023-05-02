@@ -1,9 +1,11 @@
 package pokemon.search;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import datastructures.Graph;
 import domain.Nodo;
+import domain.PercepcionNodo;
 import domain.Poder;
 import domain.Pokebola;
 import domain.Pokemon;
@@ -19,7 +21,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
-	private Boolean maestroMuerto;
 	
 	public EstadoJugador(Graph grafo) {
 		this.energiaInicial = ((int) Math.random()) % 10 + 10;
@@ -43,7 +44,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
-	    nuevoEstado.setMaestroMuerto(this.getMaestroMuerto());
 	    nuevoEstado.setNivel(this.getNivel());
 	    //poderes
 	    ArrayList<Poder> poderesNuevo = new ArrayList<>();
@@ -72,28 +72,14 @@ public class EstadoJugador extends SearchBasedAgentState {
 		public void updateState(Perception p) {
 			//actualizar estado en base a las percepciones
 			PokemonPerception per = (PokemonPerception) p;
-			this.getUbicacion().setTienePokemon(per.getHayPokemonNodoActual());
-			this.getUbicacion().setTienePokebola(per.getHayPokebolaNodoActual());
-			System.out.println("Estoy percibiendo el nodo" + this.getUbicacion().toString());
-			if(per.getHayPokemonNodoActual()) {
-				System.out.println("Estoy percibiendo " + this.getUbicacion().toString() + " y hay pokemon");
-				Pokemon pokemon = new Pokemon();
-				pokemon.setEnergia(per.getEnergiaPokemonNodoActual());
-				pokemon.setEsMaestro(per.getPokemonEsMaestro());
-				this.getUbicacion().setPokemon(pokemon); //creo un pokemon solo con la info d la percepcion
-				this.getMapa().getVertex(this.getUbicacion().getNumero()).setPokemon(pokemon);
-				this.getMapa().getVertex(this.getUbicacion().getNumero()).setTienePokemon(true);
+			HashMap<Integer, PercepcionNodo> percepciones = per.getPercepcionesAdyacentes(); // obtengo percepciones
+			
+			for(Integer nroNodo : percepciones.keySet()) { //para cada numero de nodo
+				this.grafo.getVertex(nroNodo).actualizar(percepciones.get(nroNodo)); //actualizo cada nodo vecino con info de la percepcion
 			}
-			if(per.getHayPokebolaNodoActual()) {
-				Pokebola pokebola = new Pokebola();
-				pokebola.setPuntos(per.getEnergiaPokebolaNodoActual()); //creo una pokebola con la info d la percepcion
-				this.getUbicacion().setPokebola(pokebola);
-				this.getMapa().getVertex(this.getUbicacion().getNumero()).setPokebola(pokebola);
-				this.getMapa().getVertex(this.getUbicacion().getNumero()).setTienePokebola(true);
-				//this.setEnergia(this.getEnergia()+pokebola.getPuntos()); //incremento automaticamente si hay pokeboal
-			}
+			
 		}
-
+			 
 		@Override
 		public String toString() {
 			return "Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia();
@@ -102,7 +88,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 
 	 @Override
 		public void initState() {
-			this.maestroMuerto=false;
 			this.ubicacion = grafo.getVertex(3); //TODO la ubicacion deberia ser la misma para ambos, generar en main
 		}
 	 
@@ -173,13 +158,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 		this.huyoUltimoNodo = huyoUltimoNodo;
 	}
 
-	public Boolean getMaestroMuerto() {
-		return maestroMuerto;
-	}
 
-	public void setMaestroMuerto(Boolean maestroMuerto) {
-		this.maestroMuerto = maestroMuerto;
-	}
 	
 	
 	

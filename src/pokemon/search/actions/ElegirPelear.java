@@ -19,9 +19,7 @@ public class ElegirPelear extends SearchAction{
 			Double energiaPokemon = actual.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
-			if(actual.getPokemon().getEsMaestro()) {
-				estadoJugador.setMaestroMuerto(true);
-			}
+			
 			actual.setTienePokemon(false);
 			actual.getPokemon().setVivo(false);
 			actual.setPokemon(null);
@@ -43,17 +41,14 @@ public class ElegirPelear extends SearchAction{
 		EstadoAmbiente estadoAmbiente = (EstadoAmbiente) est;
 		Nodo actualAgente = estadoJugador.getUbicacion();
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();
+
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actualAgente.getTienePokemon() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
+		if(actualAgente.getTienePokemon()  && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();
 			
 			//si es el maestro, actualizo que lo mate
-			if(actualAgente.getPokemon().getEsMaestro()) {
-				estadoJugador.setMaestroMuerto(true);
-				estadoAmbiente.setMaestroMuerto(true);
-			}
 			//actualizar energia del agente
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
@@ -63,6 +58,10 @@ public class ElegirPelear extends SearchAction{
 			actualAmbiente.getPokemon().setVivo(false); 
 			actualAmbiente.setPokemon(null);
 			actualAmbiente.setTienePokemon(false);
+			
+			actualAgente.getPokemon().setVivo(false); 
+			actualAgente.setPokemon(null);
+			actualAgente.setTienePokemon(false);
 			
 
 			return estadoAmbiente;

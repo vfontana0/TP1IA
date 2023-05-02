@@ -1,7 +1,10 @@
 package pokemon.search;
 
+import java.util.List;
+
 import datastructures.Graph;
 import domain.Nodo;
+import domain.PercepcionNodo;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
@@ -15,17 +18,11 @@ public class AmbientePokemon extends Environment{
 		public Perception getPercept() {
 			PokemonPerception perception = new PokemonPerception();
 	        Nodo actual = ((EstadoAmbiente) environmentState).getUbicacion();
-	        perception.setHayPokemonNodoActual(actual.getTienePokemon());
-	        perception.setHayPokebolaNodoActual(actual.getTienePokebola());
-	        System.out.println("Primeras dos percepciones: ok");
-	        if(actual.getTienePokebola())
-	        	perception.setEnergiaPokebolaNodoActual(actual.getPokebola().getPuntos());
-	        if(actual.getTienePokemon()) {
-	        	perception.setEnergiaPokemonNodoActual(actual.getPokemon().getEnergia());
-	        	perception.setPokemonVencido(!actual.getPokemon().getVivo());
-	        	perception.setPokemonEsMaestro(actual.getPokemon().getEsMaestro());
+	        List<Nodo> vecinos =((EstadoAmbiente) environmentState).getGrafo().getNeighbors(actual);
+	        for(Nodo vecino : vecinos) {
+	        	perception.getPercepcionesAdyacentes().put(vecino.getNumero(), new PercepcionNodo(vecino));
 	        }
-			return perception;
+	        return perception;
 		}
 		
 		@Override

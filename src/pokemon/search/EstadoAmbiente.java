@@ -19,7 +19,8 @@ public class EstadoAmbiente extends EnvironmentState{
 	 private ArrayList<Poder> poderes;
 	 private Boolean falla;
 	 private Boolean maestroMuerto;
-	 
+	 ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
+	 ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 
 
 	public EstadoAmbiente(Graph grafo){
@@ -30,46 +31,27 @@ public class EstadoAmbiente extends EnvironmentState{
 	@Override
 	public void initState() {
 
+		//Crea arreglo de habilidades especiales
+		poderes = new ArrayList<>();
+		poderes.add(new Poder("Rayo Aurora", 3, false));
+		poderes.add(new Poder("Rayo Meteorico", 3, false));
+		poderes.add(new Poder("Rayo Solar", 3, false));
+		poderes.add(new Poder("Satelite", 10, false));
+
+		ubicacion = grafo.getVertex(3); //posicion inicial del agente --> deberia ser aleatoria
+
 		
-	poderes = new ArrayList<>();
-	poderes.add(new Poder("Rayo Aurora", 3, false));
-	poderes.add(new Poder("Rayo Meteorico", 3, false));
-	poderes.add(new Poder("Rayo Solar", 3, false));
-	poderes.add(new Poder("Satelite", 10, false));
-	/*En el clone (ver si es asi) verificar la cantidad del ciclos, si es 0 mandar mapa al agente o 
-	mover al pokemon, esas cosas y disminuir en uno*/
+		this.generarPokemones(); //genera pokemones en nodos aleatorios
+		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
+		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
+		
+	}
 	
-		//Crear grafos del ambiente
+	
+	
+
+	private void generarPokebolas() {
 		Random rand = new Random();
-	
-		//Nodo inicial = nodos.get(rand.nextInt(29)+1);
-		Nodo inicial = grafo.getVertex(3);
-		ubicacion = inicial; //nodo en el q aparece el agente
-		
-		System.out.println("Hasta antes de generar pokebolas llega");
-		
-		ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
-		Integer cont = 0;
-		while(cont < 5) {
-			 Integer nroNodo = rand.nextInt(29) + 1;
-			//System.out.println("Numero de nodo elegido al azar:" + nroNodo);
-			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
-				Nodo random = grafo.getVertex(nroNodo);
-				Pokebola pk = new Pokebola();
-				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
-				pk.setPuntos(Math.random()%6+5); //cant de puntos entre 5 y 10
-				random.setPokebola(pk);
-				random.setTienePokebola(true);
-				nroNodoPokebolas.add(nroNodo);
-				cont++;
-			}
-			
-			
-		}
-		//posiblemente no necuentra ninguna accion pq con ninguna allega al objetivo
-		System.out.println("Genera la aparicion de las pokebolas");
-		//Aparicion inicial de pokemones
-		ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 		Integer cont2 = 0;
 		while(cont2 < 11) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
@@ -89,9 +71,32 @@ public class EstadoAmbiente extends EnvironmentState{
 			}	
 		}
 		
+	}
+
+	private void generarPokemones() {
+		Random rand = new Random();
+		Integer cont = 0;
+		while(cont < 5) {
+			 Integer nroNodo = rand.nextInt(29) + 1;
+			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+				Nodo random = grafo.getVertex(nroNodo);
+				Pokebola pk = new Pokebola();
+				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
+				pk.setPuntos(Math.random()%6+5); //cant de puntos entre 5 y 10
+				random.setPokebola(pk);
+				random.setTienePokebola(true);
+				nroNodoPokebolas.add(nroNodo);
+				cont++;
+			}
+			
+			
+		}
 		
+	}
+
+	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(1.0);
+		maestro.setEnergia(10.0);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);
@@ -100,10 +105,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		grafo.getVertex(11).setPokemon(maestro);
 		System.out.println("Nodo 11 tiene pokemon? " + grafo.getVertex(11).getTienePokemon());
 		
-		
 	}
-	
-
 
 	public boolean agentFailed(Action actionReturned) {
     	boolean failed = false;

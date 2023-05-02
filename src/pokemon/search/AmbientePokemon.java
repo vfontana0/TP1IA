@@ -25,7 +25,6 @@ public class AmbientePokemon extends Environment{
 	        	perception.setPokemonVencido(!actual.getPokemon().getVivo());
 	        	perception.setPokemonEsMaestro(actual.getPokemon().getEsMaestro());
 	        }
-	        System.out.println("Retorna la percepcion");
 			return perception;
 		}
 		

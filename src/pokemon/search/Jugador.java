@@ -1,10 +1,7 @@
 package pokemon.search;
 
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.util.Vector;
-
 import datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
@@ -12,7 +9,6 @@ import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
-import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 import pokemon.search.actions.ElegirPelear;
 import pokemon.search.actions.IrANodoN;
@@ -45,9 +41,9 @@ public class Jugador extends SearchBasedAgent {
 		this.getAgentState().updateState(p);
 	}
 
+	
 	@Override
 	public Action selectAction() {
-		System.out.println("Decide?");
 		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
 		//DepthFirstSearch estrategiaBusqueda = new DepthFirstSearch();
 		Search busqueda = new Search(estrategiaBusqueda);
@@ -59,9 +55,7 @@ public class Jugador extends SearchBasedAgent {
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }
-return accionSeleccionada;
-
-		
+	        return accionSeleccionada;
 		
 	}
 

@@ -103,8 +103,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 		public void initState() {
 			this.maestroMuerto=false;
-			this.ubicacion = grafo.getVertex(3);
-			//Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1); como hacemos eso?
+			this.ubicacion = grafo.getVertex(3); //TODO la ubicacion deberia ser la misma para ambos, generar en main
 		}
 	 
 

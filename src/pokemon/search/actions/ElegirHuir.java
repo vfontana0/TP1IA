@@ -18,8 +18,7 @@ public class ElegirHuir extends SearchAction {
 		if(actual.getTienePokemon() 
 				&& actual.getPokemon().getVivo()
 				&& !estado.getHuyoUltimoNodo() 
-				&& (energiaJugador - actual.getPokemon().getEnergia()/4.0) > 0 ) {
-					
+				&& (energiaJugador - actual.getPokemon().getEnergia()/4.0) > 0 ) {		
 			estado.setEnergia(energiaJugador - actual.getPokemon().getEnergia()/4.0);
 			estado.setHuyoUltimoNodo(true);
 		return estado;

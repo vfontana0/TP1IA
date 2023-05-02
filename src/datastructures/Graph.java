@@ -49,7 +49,7 @@ public class Graph {
         nodos.add(0, null);
         //clono todos los nodos
         for(int i=1; i<=29; i++) {
-        	Nodo clonado = this.getVertex(i);
+        	Nodo clonado = this.getVertex(i).clone();
         	nodos.add(i, clonado);
         	grafoNuevo.addVertex(clonado);
         } 

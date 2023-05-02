@@ -15,13 +15,17 @@ public class ElegirPelear extends SearchAction{
 		EstadoJugador estadoJugador = (EstadoJugador) s;
 		Nodo actual = estadoJugador.getUbicacion();
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actual.getTienePokemon() && actual.getPokemon().getVivo() && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
+		if(actual.getTienePokemon()  && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
 			Double energiaPokemon = actual.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
+			if(actual.getPokemon().getEsMaestro()) {
+				estadoJugador.setMaestroMuerto(true);
+			}
+			actual.setTienePokemon(false);
 			actual.getPokemon().setVivo(false);
 			actual.setPokemon(null);
-			actual.setTienePokemon(false);
+			
 			return estadoJugador;
 		}
 		return null;
@@ -40,34 +44,36 @@ public class ElegirPelear extends SearchAction{
 		Nodo actualAgente = estadoJugador.getUbicacion();
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actualAgente.getTienePokemon() && actualAgente.getPokemon().getVivo() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
+		if(actualAgente.getTienePokemon() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();
 			
+			//si es el maestro, actualizo que lo mate
+			if(actualAgente.getPokemon().getEsMaestro()) {
+				estadoJugador.setMaestroMuerto(true);
+				estadoAmbiente.setMaestroMuerto(true);
+			}
 			//actualizar energia del agente
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
 			
-			//actualizar nodo del estado del agente
-			actualAgente.getPokemon().setVivo(false); 
-			actualAgente.setPokemon(null);
-			actualAgente.setTienePokemon(false);
-		
-			// actualizar nodo del estado del ambiente
+			// actualizar nodo del estado del ambiente --> actualizo solo el ambiente pq es el mismo nodo en los dos grafos
+			// estoy actualizando el estado del agente al hacer esto
 			actualAmbiente.getPokemon().setVivo(false); 
 			actualAmbiente.setPokemon(null);
 			actualAmbiente.setTienePokemon(false);
 			
+
 			return estadoAmbiente;
 		}
+		System.out.println("Null pq no chequea precond"); //pasa execute de arriba pero no este
 		return null;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Elegir pelear";
 	}
 	
 

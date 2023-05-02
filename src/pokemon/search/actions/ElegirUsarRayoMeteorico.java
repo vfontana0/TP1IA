@@ -17,7 +17,7 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 			 return agState;
 		 } 
 		 return null;
-	}
+	} //EN EL METODO UPDATE STATE SE DECREMENTAN ESTOS VALORES --> Ciclo percepcion/accion
 
 	@Override
 	public Double getCost() {

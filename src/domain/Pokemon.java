@@ -44,7 +44,7 @@ public class Pokemon {
 		retorno.setVivo(this.getVivo());
 		retorno.setEnergia(this.getEnergia());
 		retorno.setEsMaestro(this.esMaestro);
-		retorno.setActual(this.getActual().clone());
+		//si anda agregar posicion
 		return retorno;
 	}
 	

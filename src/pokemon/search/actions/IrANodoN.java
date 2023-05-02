@@ -22,7 +22,7 @@ public class IrANodoN extends SearchAction {
         
         Nodo nodoActual = agState.getUbicacion();
         Nodo destino = agState.getMapa().getVertex(nodoNro);
-        if(agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
+        if(agState.getMapa().getNeighbors(destino).contains(nodoActual) && !nodoActual.getTienePokemon()) {
         	agState.setUbicacion(destino);
         	agState.setHuyoUltimoNodo(false);
     		return agState;
@@ -38,8 +38,9 @@ public class IrANodoN extends SearchAction {
 		EstadoJugador agState = (EstadoJugador) ast;
 		
 		Nodo nodoActual = agState.getUbicacion();
-		 Nodo destino = agState.getMapa().getVertex(nodoNro);
-	     if(agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
+		 Nodo destino = agState.getMapa().getVertex(nodoNro); //debe ser el de destino 
+		 System.out.println("nodo actual que es : " + nodoActual.toString() + " tiene pokemon? " + nodoActual.getTienePokemon());
+	     if(agState.getMapa().getNeighbors(destino).contains(nodoActual) && !nodoActual.getTienePokemon()) {
         	agState.setUbicacion(destino);
         	agState.setHuyoUltimoNodo(false);
         	environmentState.setUbicacion(destino);

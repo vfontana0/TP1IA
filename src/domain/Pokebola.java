@@ -20,7 +20,7 @@ public class Pokebola {
 	public Pokebola clone() {
 		Pokebola retorno = new Pokebola();
 		retorno.setPuntos(this.getPuntos());
-		retorno.setPosicion(this.getPosicion().clone());
+		//si anda agregar posicion
 		return retorno;
 	}
 

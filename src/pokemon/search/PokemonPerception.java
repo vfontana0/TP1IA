@@ -15,10 +15,10 @@ public class PokemonPerception extends Perception{
 	private Double energiaPokemonNodoActual; //energia del pokemon en el nodo actual
 	private Double energiaPokebolaNodoActual; //energia pokebola nodo actual
 	private Boolean pokemonVencido; //true si se vencio al pokemon, false sino
+	private Boolean pokemonEsMaestro;
 	
 	
-	
-	
+
 	@Override
  public void initPerception(Agent agentIn, Environment environmentIn) {
     	
@@ -34,6 +34,8 @@ public class PokemonPerception extends Perception{
     	   energiaPokebolaNodoActual = actual.getPokebola().getPuntos();
        if(hayPokemonNodoActual)
         pokemonVencido = !(actual.getPokemon().getVivo());
+       if(hayPokemonNodoActual)
+    	   pokemonEsMaestro = actual.getPokemon().getEsMaestro();
 	}
    
 
@@ -88,8 +90,24 @@ public class PokemonPerception extends Perception{
 	
 	@Override
 	public String toString() {
-		return "Hay pokemon nodo actual? --> " + this.getHayPokemonNodoActual() + " Hay pokebola nodo actual? --> " + this.getHayPokebolaNodoActual();
+		return "Hay pokemon en nodo actual? --> " + this.getHayPokemonNodoActual() + " Hay pokebola nodo actual? --> " + this.getHayPokebolaNodoActual();
 	}
+
+
+
+
+	public Boolean getPokemonEsMaestro() {
+		return pokemonEsMaestro;
+	}
+
+
+
+
+	public void setPokemonEsMaestro(Boolean pokemonEsMaestro) {
+		this.pokemonEsMaestro = pokemonEsMaestro;
+	}
+	
+	
 	
 
 }

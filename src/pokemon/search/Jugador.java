@@ -5,6 +5,7 @@ import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.util.Vector;
 
+import datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
@@ -13,26 +14,31 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
+import pokemon.search.actions.ElegirPelear;
 import pokemon.search.actions.IrANodoN;
+import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
 
-	public Jugador() {
+	public Jugador(Graph grafo) {
 	System.out.println("Entra al constructor");
 	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
 	System.out.println("Crea el objetivo");
-	EstadoJugador jugadorState = new EstadoJugador();
+	EstadoJugador jugadorState = new EstadoJugador(grafo);
 	System.out.println("Crea el estado del jugador");
 	this.setAgentState(jugadorState);
 	Vector<SearchAction> operators = new Vector<SearchAction>();
 	for(int i=1; i<=29; i++) {
 		operators.add(new IrANodoN(i));
 	}
+	operators.add(new JuntarPokebola());
+	operators.add(new ElegirPelear());
 	
 	System.out.println("Operadores: " + operators.toString());
 	Problem problem = new Problem(jugadorGoal, jugadorState, operators);
 	 this.setProblem(problem);
 	}
+
 
 	@Override
 	public void see(Perception p) {

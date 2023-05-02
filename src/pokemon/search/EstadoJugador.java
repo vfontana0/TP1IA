@@ -19,13 +19,14 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
+	private Boolean maestroMuerto;
 	
-	public EstadoJugador() {
+	public EstadoJugador(Graph grafo) {
 		this.energiaInicial = ((int) Math.random()) % 10 + 10;
 		this.energia = energiaInicial;
 		this.nivel = 1;
 		this.energiaGanada = 0;
-		grafo = new Graph();
+		this.grafo = grafo;
 		poderes = new ArrayList<>();
 		poderes.add(new Poder("Rayo Aurora", 3, false));
 		poderes.add(new Poder("Rayo Meteorico", 3, false));
@@ -37,11 +38,12 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador();
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone());
 	    nuevoEstado.setEnergia(this.getEnergia());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
-	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial());
+	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
+	    nuevoEstado.setMaestroMuerto(this.getMaestroMuerto());
 	    nuevoEstado.setNivel(this.getNivel());
 	    //poderes
 	    ArrayList<Poder> poderesNuevo = new ArrayList<>();
@@ -49,14 +51,11 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    	poderesNuevo.add(p.clone());
 	    }
 	    nuevoEstado.setPoderes(poderesNuevo);
-	  
-	    
-	    //grafo
-	    nuevoEstado.setMapa(this.getMapa().clone());
 	    //ubicacion
 	    nuevoEstado.setUbicacion(nuevoEstado.getMapa().getVertex(this.getUbicacion().getNumero()));
 	    
 	    return nuevoEstado;
+	    
 	 }
 	 
 		@Override
@@ -75,16 +74,24 @@ public class EstadoJugador extends SearchBasedAgentState {
 			PokemonPerception per = (PokemonPerception) p;
 			this.getUbicacion().setTienePokemon(per.getHayPokemonNodoActual());
 			this.getUbicacion().setTienePokebola(per.getHayPokebolaNodoActual());
+			System.out.println("Estoy percibiendo el nodo" + this.getUbicacion().toString());
 			if(per.getHayPokemonNodoActual()) {
+				System.out.println("Estoy percibiendo " + this.getUbicacion().toString() + " y hay pokemon");
 				Pokemon pokemon = new Pokemon();
 				pokemon.setEnergia(per.getEnergiaPokemonNodoActual());
+				pokemon.setEsMaestro(per.getPokemonEsMaestro());
 				this.getUbicacion().setPokemon(pokemon); //creo un pokemon solo con la info d la percepcion
+				this.getMapa().getVertex(this.getUbicacion().getNumero()).setPokemon(pokemon);
+				this.getMapa().getVertex(this.getUbicacion().getNumero()).setTienePokemon(true);
 			}
 			if(per.getHayPokebolaNodoActual()) {
 				Pokebola pokebola = new Pokebola();
 				pokebola.setPuntos(per.getEnergiaPokebolaNodoActual()); //creo una pokebola con la info d la percepcion
+				this.getUbicacion().setPokebola(pokebola);
+				this.getMapa().getVertex(this.getUbicacion().getNumero()).setPokebola(pokebola);
+				this.getMapa().getVertex(this.getUbicacion().getNumero()).setTienePokebola(true);
+				//this.setEnergia(this.getEnergia()+pokebola.getPuntos()); //incremento automaticamente si hay pokeboal
 			}
-			// TODO: Tener una percepcion q diga si el pokemon es maestro o no
 		}
 
 		@Override
@@ -95,66 +102,11 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 
 	 @Override
 		public void initState() {
-			ArrayList<Nodo> nodos = new ArrayList<>();		
-			nodos.add(0, null);
-			for(int i=1; i<=29; i++) {
-				Nodo actual = new Nodo();
-				actual.setNumero(i);
-				actual.setTienePokebola(false);
-				actual.setPokebola(null);
-				actual.setTienePokemon(false);
-				actual.setPokemon(null);
-				nodos.add(i, actual);
-				grafo.addVertex(actual);
-			}
-			this.agregarConexiones(nodos);
-			this.ubicacion = nodos.get(3);
+			this.maestroMuerto=false;
+			this.ubicacion = grafo.getVertex(3);
 			//Nodo inicial = nodos.get(Integer.valueOf((int) Math.random()) % 29 + 1); como hacemos eso?
 		}
 	 
-	private void agregarConexiones(ArrayList<Nodo> nodos) {
-		grafo.addEdge(nodos.get(1), nodos.get(2));
-		grafo.addEdge(nodos.get(2), nodos.get(3));
-		grafo.addEdge(nodos.get(2), nodos.get(9));
-		grafo.addEdge(nodos.get(3), nodos.get(8));
-		grafo.addEdge(nodos.get(3), nodos.get(4));
-		grafo.addEdge(nodos.get(4), nodos.get(12));
-		grafo.addEdge(nodos.get(4), nodos.get(5));
-		grafo.addEdge(nodos.get(4), nodos.get(7));
-		grafo.addEdge(nodos.get(5), nodos.get(6));
-		grafo.addEdge(nodos.get(6), nodos.get(7));
-		grafo.addEdge(nodos.get(8), nodos.get(12));
-		grafo.addEdge(nodos.get(9), nodos.get(10));
-		grafo.addEdge(nodos.get(9), nodos.get(11));
-		grafo.addEdge(nodos.get(9), nodos.get(12));
-		grafo.addEdge(nodos.get(10), nodos.get(11));
-		grafo.addEdge(nodos.get(10), nodos.get(14));
-		grafo.addEdge(nodos.get(11), nodos.get(15));
-		grafo.addEdge(nodos.get(12), nodos.get(13));
-		grafo.addEdge(nodos.get(13), nodos.get(16));
-		grafo.addEdge(nodos.get(14), nodos.get(20));
-		grafo.addEdge(nodos.get(15), nodos.get(16));
-		grafo.addEdge(nodos.get(15), nodos.get(20));
-		grafo.addEdge(nodos.get(16), nodos.get(17));
-		grafo.addEdge(nodos.get(16), nodos.get(20));
-		grafo.addEdge(nodos.get(17), nodos.get(18));
-		grafo.addEdge(nodos.get(18), nodos.get(19));
-		grafo.addEdge(nodos.get(18), nodos.get(28));
-		grafo.addEdge(nodos.get(19), nodos.get(21));
-		grafo.addEdge(nodos.get(20), nodos.get(21));
-		grafo.addEdge(nodos.get(20), nodos.get(22));
-		grafo.addEdge(nodos.get(21), nodos.get(25));
-		grafo.addEdge(nodos.get(21), nodos.get(29));
-		grafo.addEdge(nodos.get(22), nodos.get(23));
-		grafo.addEdge(nodos.get(22), nodos.get(24));
-		grafo.addEdge(nodos.get(24), nodos.get(25));
-		grafo.addEdge(nodos.get(25), nodos.get(26));
-		grafo.addEdge(nodos.get(26), nodos.get(27));
-		grafo.addEdge(nodos.get(27), nodos.get(28));
-		grafo.addEdge(nodos.get(28), nodos.get(29));
-
-		
-	}
 
 	public Nodo getUbicacion() {
 		return ubicacion;
@@ -221,6 +173,16 @@ public class EstadoJugador extends SearchBasedAgentState {
 	public void setHuyoUltimoNodo(Boolean huyoUltimoNodo) {
 		this.huyoUltimoNodo = huyoUltimoNodo;
 	}
+
+	public Boolean getMaestroMuerto() {
+		return maestroMuerto;
+	}
+
+	public void setMaestroMuerto(Boolean maestroMuerto) {
+		this.maestroMuerto = maestroMuerto;
+	}
+	
+	
 	
 	
 	

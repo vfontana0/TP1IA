@@ -13,7 +13,7 @@ public class ElegirUsarSatelite extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
+		 if(agState.getPoderes().get(3).getCantCiclos() == (11 - agState.getNivel()) && agState.getPoderes().get(3).getPuedoUsar()) {
 			 agState.getPoderes().get(3).setCantCiclos(10);
 			 agState.getPoderes().get(3).setPuedoUsar(false);
 			 return agState;
@@ -31,7 +31,7 @@ public class ElegirUsarSatelite extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
+		 if(agState.getPoderes().get(3).getCantCiclos() == (11 - agState.getNivel()) && agState.getPoderes().get(3).getPuedoUsar()) {
 				for(Nodo n : environmentState.getGrafo().getAllVertices()) { //para cada numero de nodo
 					agState.getMapa().getVertex(n.getNumero()).actualizar(n);
 				}

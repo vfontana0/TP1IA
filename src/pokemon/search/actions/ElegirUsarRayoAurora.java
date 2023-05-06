@@ -1,6 +1,5 @@
 package pokemon.search.actions;
 
-import domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
@@ -13,7 +12,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
+		 if(agState.getPoderes().get(0).getCantCiclos() == 3 && agState.getPoderes().get(0).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.20);
 			 agState.getPoderes().get(0).setCantCiclos(3);
 			 agState.getPoderes().get(0).setPuedoUsar(false);
@@ -32,7 +31,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
+		 if(agState.getPoderes().get(0).getCantCiclos() == 3 && agState.getPoderes().get(0).getPuedoUsar()) {
 			 agState.setEnergia(agState.getEnergia()*1.20);
 			 agState.getPoderes().get(0).setCantCiclos(3);
 			 agState.getPoderes().get(0).setPuedoUsar(false);

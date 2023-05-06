@@ -24,8 +24,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		// TODO Auto-generated method stub
-		return 0.0; //no creo q tenga costo
+		return 3.0; //De los tres poderes, este es el mas costoso.
 	}
 
 	@Override

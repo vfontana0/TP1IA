@@ -23,8 +23,7 @@ public class ElegirUsarSatelite extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		// TODO Auto-generated method stub
-		return 0.0; //no creo q tenga costo
+		return 0.0; //No tiene costo, para que si lo tiene disponible lo use.
 	}
 
 	@Override

@@ -23,8 +23,8 @@ public class ElegirUsarRayoSolar extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		// TODO Auto-generated method stub
-		return 0.0; //no creo q tenga costo
+		return 1.0; //Es el menor costo seteado, para que al tenerlo disponible 
+					//lo use antes que cualquier otro, ya que es el más poderoso.
 	}
 
 	@Override

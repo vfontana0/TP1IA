@@ -22,7 +22,7 @@ public class JuntarPokebola extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 0.0;
+		return 0.0; //Siempre que llegue a una pokebola va a elegir absorber su energía.
 	}
 
 	@Override

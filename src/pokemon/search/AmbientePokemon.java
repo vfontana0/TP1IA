@@ -7,8 +7,10 @@ import java.util.Random;
 import datastructures.Graph;
 import domain.Nodo;
 import domain.PercepcionNodo;
+import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
+import frsf.cidisi.faia.state.AgentState;
 
 public class AmbientePokemon extends Environment{
 	Integer cantCiclos;
@@ -57,11 +59,10 @@ public class AmbientePokemon extends Environment{
 						}
 					}
 			}
-			
-			
 		
 		}
 		
+
 		private int moverPokemones(Nodo n) {
 			
 			/*

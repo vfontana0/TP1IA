@@ -9,6 +9,7 @@ import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 import pokemon.search.actions.ElegirHuir;
 import pokemon.search.actions.ElegirPelear;
@@ -50,13 +51,14 @@ public class Jugador extends SearchBasedAgent {
 	
 	@Override
 	public Action selectAction() {
+		//DepthFirstSearch estrategiaBusqueda = new DepthFirstSearch();
 		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
 		Search busqueda = new Search(estrategiaBusqueda);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
 	        try {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
-	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
+	            //System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }

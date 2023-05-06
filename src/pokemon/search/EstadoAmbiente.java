@@ -106,14 +106,8 @@ public class EstadoAmbiente extends EnvironmentState{
 		
 	}
 
-	public boolean agentFailed(Action actionReturned) {
-    	boolean failed = false;
 
- 
-
-        return failed;
-    }
-
+	
 	@Override
 	public String toString() {
 		return "Ubicacion: " + this.getUbicacion().toString(); 

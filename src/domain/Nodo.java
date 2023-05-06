@@ -60,8 +60,7 @@ public class Nodo {
     @Override
 	public boolean equals(Object obj) {
     	Nodo aComparar = (Nodo) obj;
-		return this.numero == aComparar.getNumero();
-
+		return this.numero == aComparar.getNumero(); //dos nodos son el mismo si tienen el mismo num
 	}
     
     @Override

@@ -100,6 +100,16 @@ public class Graph {
 
 		
 	}
+
+	public Map<Nodo, List<Nodo>> getAdjVertices() {
+		return adjVertices;
+	}
+
+	public void setAdjVertices(Map<Nodo, List<Nodo>> adjVertices) {
+		this.adjVertices = adjVertices;
+	}
+	
+	
 }
     
 

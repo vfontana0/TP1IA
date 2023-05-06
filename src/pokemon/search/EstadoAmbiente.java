@@ -22,11 +22,14 @@ public class EstadoAmbiente extends EnvironmentState{
 	 ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 
 
-	public EstadoAmbiente(Graph grafo){
+	public EstadoAmbiente(Graph grafo, Integer nodoInicio){
 		this.grafo = grafo;
+		this.ubicacion = this.grafo.getVertex(nodoInicio);
 		this.initState();
+		
 	}
 	
+
 	@Override
 	public void initState() {
 
@@ -36,8 +39,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		poderes.add(new Poder("Rayo Meteorico", 3, false));
 		poderes.add(new Poder("Rayo Solar", 3, false));
 		poderes.add(new Poder("Satelite", 10, false));
-
-		ubicacion = grafo.getVertex(3); //posicion inicial del agente --> deberia ser aleatoria
+		//posicion inicial del agente --> deberia ser aleatoria
 
 		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
 		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
@@ -59,7 +61,7 @@ public class EstadoAmbiente extends EnvironmentState{
 				Pokemon pk = new Pokemon();
 				pk.setActual(random);
 				pk.setEnergia(5.0);
-				pk.setCiclosParaMoverse((int) (Math.random() % 3 +1));
+				pk.setCiclosParaMoverse(rand.nextInt(3)+1);
 				pk.setVivo(true);
 				pk.setEsMaestro(false);
 				random.setTienePokemon(true);

@@ -22,12 +22,13 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
 	
-	public EstadoJugador(Graph grafo) {
+	public EstadoJugador(Graph grafo, Integer nodoInicio) {
 		this.energiaInicial = ((int) Math.random()) % 10 + 10;
 		this.energia = energiaInicial;
 		this.nivel = 1;
 		this.energiaGanada = 0;
 		this.grafo = grafo;
+		this.ubicacion = this.grafo.getVertex(nodoInicio);
 		poderes = new ArrayList<>();
 		poderes.add(new Poder("Rayo Aurora", 3, false));
 		poderes.add(new Poder("Rayo Meteorico", 3, false));
@@ -39,7 +40,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone());
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero());
 	    nuevoEstado.setEnergia(this.getEnergia());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
@@ -62,8 +63,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 		public boolean equals(Object obj) {
 			EstadoJugador est = (EstadoJugador) obj;
 			return this.ubicacion.equals(est.getUbicacion()) 
-					&& this.getEnergia() == est.getEnergia() 
-					&& this.getEnergiaGanada() == est.getEnergiaGanada(); 
+					&& this.getEnergia() == est.getEnergia(); 
 
 //se esta en el mismo estado si esta dos veces en la misma ubicacion, con la misma energia y misma energia ganada.
 		}
@@ -82,6 +82,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 			
 		}
 			 
+		
 		private void actualizarCiclos() {
 			//Se ejecuta una vez por ciclo percepcion-accion
 			for(Poder p: this.getPoderes()) { //para cada poder
@@ -93,6 +94,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 				}
 			}
 		}
+		
 
 		@Override
 		public String toString() {
@@ -101,8 +103,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 	 
 	 @Override
-		public void initState() {
-			this.ubicacion = grafo.getVertex(3); //TODO la ubicacion deberia ser la misma para ambos, generar en main
+		public void initState() { //TODO la ubicacion deberia ser la misma para ambos, generar en main
 			this.huyoUltimoNodo = false;
 	 }
 	 

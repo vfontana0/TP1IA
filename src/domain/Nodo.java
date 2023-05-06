@@ -79,6 +79,15 @@ public class Nodo {
 			this.pokebola = percepcionNodo.getPokebola();
 		
 	}
-	
+	public void actualizar(Nodo n) {
+		
+		this.tienePokemon = n.getTienePokemon();
+		this.tienePokebola = n.getTienePokebola();
+		if(n.getTienePokemon())
+			this.pokemon = n.getPokemon();
+		if(n.getTienePokebola())
+			this.pokebola = n.getPokebola();
+	}
+		
 	
 }

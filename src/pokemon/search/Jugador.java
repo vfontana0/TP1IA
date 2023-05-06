@@ -20,14 +20,15 @@ import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
 
-	public Jugador(Graph grafo) {
+	public Jugador(Graph grafo, Integer nodoInicio) {
 	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-	EstadoJugador jugadorState = new EstadoJugador(grafo);
+	EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
 	this.setAgentState(jugadorState);
 	Vector<SearchAction> operators = new Vector<SearchAction>();
 	for(int i=1; i<=29; i++) {
 		operators.add(new IrANodoN(i));
 	}
+	
 	operators.add(new JuntarPokebola());
 	operators.add(new ElegirPelear());
 	operators.add(new ElegirHuir());
@@ -37,7 +38,7 @@ public class Jugador extends SearchBasedAgent {
 	
 	System.out.println("Operadores: " + operators.toString());
 	Problem problem = new Problem(jugadorGoal, jugadorState, operators);
-	 this.setProblem(problem);
+	this.setProblem(problem);
 	}
 
 
@@ -50,7 +51,6 @@ public class Jugador extends SearchBasedAgent {
 	@Override
 	public Action selectAction() {
 		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
-		//DepthFirstSearch estrategiaBusqueda = new DepthFirstSearch();
 		Search busqueda = new Search(estrategiaBusqueda);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;

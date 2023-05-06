@@ -41,5 +41,11 @@ public class PercepcionNodo {
 		this.tienePokebola = tienePokebola;
 	}
 	
-	
+    @Override
+    public String toString() {
+        return "PercepcionNodo{" +
+                ", tienePokemon=" + tienePokemon +
+                ", tienePokebola=" + tienePokebola +
+                '}';
+    }
 }

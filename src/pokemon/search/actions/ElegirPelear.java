@@ -66,7 +66,6 @@ public class ElegirPelear extends SearchAction{
 
 			return estadoAmbiente;
 		}
-		System.out.println("Null pq no chequea precond"); //pasa execute de arriba pero no este
 		return null;
 	}
 

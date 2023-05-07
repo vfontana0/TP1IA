@@ -33,6 +33,7 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 		
 		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getEnergiaGanada() >= 0.50*agState.getEnergiaInicial()) {
 			 agState.setEnergia(agState.getEnergia()*1.30);
+			 environmentState.setEnergia(agState.getEnergia()*1.30);
 			 agState.getPoderes().get(1).setCantCiclos(3);
 			 agState.getPoderes().get(1).setPuedoUsar(false);
         	return environmentState;

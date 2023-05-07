@@ -22,11 +22,12 @@ public class PokemonMain {
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
     	Integer nodoInicio = 27;
+    	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
     	initGrafo(grafoAgente);
-        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
-        Jugador agent = new Jugador(grafoAgente, nodoInicio); //jugador --> crea PASAR GRAFO NOMAS
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio, energia); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente, nodoInicio, energia); //jugador --> crea PASAR GRAFO NOMAS
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
         
@@ -95,13 +96,15 @@ public class PokemonMain {
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
     	Integer nodoInicio = 27;
+    	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
     	initGrafo(grafoAgente);
-        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
-        Jugador agent = new Jugador(grafoAgente, nodoInicio); //jugador --> crea PASAR GRAFO NOMAS
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio, energia); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente, nodoInicio, energia); //jugador --> crea PASAR GRAFO NOMAS
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
+        
         simulator.start();
 	}
 

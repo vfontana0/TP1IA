@@ -55,8 +55,7 @@ public class ElegirPelear extends SearchAction{
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
 			
-			// actualizar nodo del estado del ambiente --> actualizo solo el ambiente pq es el mismo nodo en los dos grafos
-			// estoy actualizando el estado del agente al hacer esto
+			estadoAmbiente.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			actualAmbiente.getPokemon().setVivo(false); 
 			actualAmbiente.setPokemon(null);
 			actualAmbiente.setTienePokemon(false);

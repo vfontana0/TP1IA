@@ -33,6 +33,7 @@ public class JuntarPokebola extends SearchAction{
 		if(estadoJugador.getUbicacion().getTienePokebola()) {
 			estadoJugador.setEnergia(estadoJugador.getEnergia() + estadoJugador.getUbicacion().getPokebola().getPuntos());
 			estadoJugador.setEnergiaGanada(estadoJugador.getEnergiaGanada() + estadoJugador.getUbicacion().getPokebola().getPuntos());
+			estadoAmbiente.setEnergia(estadoJugador.getEnergia() + estadoJugador.getUbicacion().getPokebola().getPuntos());
 			Nodo actualAmbiente = estadoAmbiente.getUbicacion(); //cambio el nodo en el ambiente
 			actualAmbiente.setPokebola(null);
 			actualAmbiente.setTienePokebola(false);

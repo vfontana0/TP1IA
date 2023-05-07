@@ -21,9 +21,9 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
 	
-	public EstadoJugador(Graph grafo, Integer nodoInicio) {
-		this.energiaInicial = 10 + (new Random()).nextInt(10);
-		this.energia = energiaInicial;
+	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
+		this.energiaInicial = energia;
+		this.energia = energia;
 		this.nivel = 1;
 		this.energiaGanada = 0;
 		this.grafo = grafo;
@@ -39,8 +39,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero());
-	    nuevoEstado.setEnergia(this.getEnergia());
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero(), this.getEnergia());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
@@ -104,6 +103,8 @@ public class EstadoJugador extends SearchBasedAgentState {
 		public void initState() { //TODO la ubicacion deberia ser la misma para ambos, generar en main
 			this.huyoUltimoNodo = false;
 	 }
+	 
+	 
 	 
 
 	public Nodo getUbicacion() {

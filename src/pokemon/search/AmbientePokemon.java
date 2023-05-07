@@ -15,8 +15,8 @@ import frsf.cidisi.faia.state.AgentState;
 public class AmbientePokemon extends Environment{
 	Integer cantCiclos;
 
-		public AmbientePokemon(Graph grafoAmbiente, Integer nodoInicio) {
-			this.environmentState = new EstadoAmbiente(grafoAmbiente, nodoInicio);
+		public AmbientePokemon(Graph grafoAmbiente, Integer nodoInicio, Double energia) {
+			this.environmentState = new EstadoAmbiente(grafoAmbiente, nodoInicio, energia);
 		}
 
 		@Override
@@ -94,9 +94,11 @@ public class AmbientePokemon extends Environment{
 		public String toString() {
 			return this.getEnvironmentState().toString();
 		}
-		
-		
-		
+
+		@Override
+		public boolean agentFailed(Action actionReturned) {
+			return (((EstadoAmbiente) this.getEnvironmentState()).getEnergia()) <= 0;
+		}
 		
 		
 		

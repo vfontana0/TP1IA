@@ -21,9 +21,9 @@ import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
 
-	public Jugador(Graph grafo, Integer nodoInicio) {
+	public Jugador(Graph grafo, Integer nodoInicio, Double energia) {
 	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-	EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
+	EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio, energia);
 	this.setAgentState(jugadorState);
 	Vector<SearchAction> operators = new Vector<SearchAction>();
 	for(int i=1; i<=29; i++) {

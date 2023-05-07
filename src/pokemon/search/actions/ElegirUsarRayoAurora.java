@@ -33,6 +33,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		
 		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar() && agState.getEnergiaGanada() >= 0.25*agState.getEnergiaInicial()) {
 			 agState.setEnergia(agState.getEnergia()*1.20);
+			 environmentState.setEnergia(agState.getEnergia()*1.20);
 			 agState.getPoderes().get(0).setCantCiclos(3);
 			 agState.getPoderes().get(0).setPuedoUsar(false);
         	return environmentState;

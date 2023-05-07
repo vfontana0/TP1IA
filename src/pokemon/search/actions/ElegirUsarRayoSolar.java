@@ -34,6 +34,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar() && agState.getEnergiaGanada() >= 0.75*agState.getEnergiaInicial()) {
 			 agState.setEnergia(agState.getEnergia()*1.50);
+			 environmentState.setEnergia(agState.getEnergia()*1.50);
 			 agState.getPoderes().get(2).setCantCiclos(3);
 			 agState.getPoderes().get(2).setPuedoUsar(false);
         	return environmentState;

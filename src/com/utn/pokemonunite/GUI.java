@@ -40,6 +40,7 @@ public class GUI extends GameApplication {
     private int objectiveX;
     private int objectiveY;
     private Text textVida;
+    private Text textAccion;
     
     private ArrayList<Pair<Action, Double>> acciones;
     
@@ -69,6 +70,7 @@ public class GUI extends GameApplication {
             	@Override
             	public void run() {
             		acciones.stream().forEach(action -> {
+            			textAccion.setText("");
                 		textVida.setText("Energia: " + String.valueOf(action.getValue()));
                     	if (action.getKey() instanceof IrANodoN) {;
                     		System.out.println("accion detectada");
@@ -76,16 +78,40 @@ public class GUI extends GameApplication {
             		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
             		        System.out.println("Entrando a accion de nodo: " + numero);
         					try {
-        						translateSmooth(parNodoN.getKey(), parNodoN.getValue());
-        						sleep(5000);
-        					} catch (InterruptedException e) {
-        						// TODO Auto-generated catch block
-        						e.printStackTrace();
-        					}
+								translateSmooth(parNodoN.getKey(), parNodoN.getValue());
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+        					
                     	}
                     	else if (action.getKey() instanceof ElegirPelear) {
-                    		
+                			textAccion.setText("¡El agente eligió pelear!");
                     	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoAurora) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Aurora!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoMeteorico) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Meteórico!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoSolar) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Solar!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirHuir) {
+                    		textAccion.setText("¡El agente eligió huir!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarSatelite) {
+                    		textAccion.setText("¡El agente eligió usar el satélite!");
+                    	}
+                    	else if (action.getKey() instanceof JuntarPokebola) {
+                    		textAccion.setText("¡El agente eligió juntar una pokebola!");
+                    	}
+						try {
+							sleep(3500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
                     	
                     });
             	}
@@ -132,10 +158,14 @@ public class GUI extends GameApplication {
         getGameScene().getRoot().setBackground(new Background(backgroundImage));
     	//TODO: cambiar a barra de energia
         textVida = getUIFactoryService().newText("Energia: ", Color.BLACK, 22);
-    	textVida.setTranslateX(getAppWidth() - 150);
-        textVida.setTranslateY(50);
+    	textVida.setTranslateX(getAppWidth() - 200);
+        textVida.setTranslateY(30);
         
-        getGameScene().addUINode(textVida);
+        textAccion = getUIFactoryService().newText("", Color.BLACK, 22);
+        textAccion.setTranslateX(30);
+        textAccion.setTranslateY(30);
+        
+        getGameScene().addUINodes(textVida, textAccion);
 
     }
     

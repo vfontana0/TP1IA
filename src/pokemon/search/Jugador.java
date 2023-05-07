@@ -1,6 +1,4 @@
 package pokemon.search;
-
-
 import java.util.Vector;
 import datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
@@ -11,6 +9,8 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
+import pokemon.search.EstadoJugador;
+import pokemon.search.ObjetivoJugador;
 import pokemon.search.actions.ElegirHuir;
 import pokemon.search.actions.ElegirPelear;
 import pokemon.search.actions.ElegirUsarRayoAurora;

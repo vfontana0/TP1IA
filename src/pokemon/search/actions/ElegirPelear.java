@@ -19,6 +19,8 @@ public class ElegirPelear extends SearchAction{
 			Double energiaPokemon = actual.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
+			Double energiaGanada = estadoJugador.getEnergiaGanada();
+			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
 			
 			actual.setTienePokemon(false);
 			actual.getPokemon().setVivo(false);

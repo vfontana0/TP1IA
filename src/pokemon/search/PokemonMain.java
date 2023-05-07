@@ -1,14 +1,21 @@
 package pokemon.search;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
 import datastructures.Graph;
 import domain.Nodo;
+import frsf.cidisi.faia.agent.Action;
+
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import pokemon.search.AmbientePokemon;
+import pokemon.search.Jugador;
 
 public class PokemonMain {
+	ArrayList<Action> accionesEjecutadas;
+	
     public static void main(String[] args) throws PrologConnectorException {
     	//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
     	Graph grafoAmbiente = new Graph();
@@ -81,4 +88,30 @@ public class PokemonMain {
 			grafo.addEdge(nodos.get(28), nodos.get(29));		
 		
     }
+    
+	public void startPokemon() {
+		//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
+    	Graph grafoAmbiente = new Graph();
+    	Graph grafoAgente = new Graph();
+    	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
+    	Integer nodoInicio = 27;
+    	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
+    	initGrafo(grafoAmbiente);
+    	initGrafo(grafoAgente);
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente, nodoInicio); //jugador --> crea PASAR GRAFO NOMAS
+        SearchBasedAgentSimulator simulator =
+                new SearchBasedAgentSimulator(environment, agent);
+        simulator.start();
+	}
+
+	public ArrayList<Action> getAccionesEjecutadas() {
+		return accionesEjecutadas;
+	}
+
+	public void setAccionesEjecutadas(ArrayList<Action> accionesEjecutadas) {
+		this.accionesEjecutadas = accionesEjecutadas;
+	}
+	
+
 }

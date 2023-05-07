@@ -8,8 +8,6 @@ import datastructures.Graph;
 import domain.Nodo;
 import domain.PercepcionNodo;
 import domain.Poder;
-import domain.Pokebola;
-import domain.Pokemon;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -24,7 +22,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Boolean huyoUltimoNodo;
 	
 	public EstadoJugador(Graph grafo, Integer nodoInicio) {
-		//this.energiaInicial = ((int) Math.random()) % 10 + 10;
 		this.energiaInicial = 10 + (new Random()).nextInt(10);
 		this.energia = energiaInicial;
 		this.nivel = 1;
@@ -92,7 +89,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 					p.setCantCiclos(p.getCantCiclos()-1); //si es mayor a 0 reduzco en uno los ciclos
 				else {
 					p.setPuedoUsar(true);
-					System.out.println("Ahora puedo usar habilidad " + p.getNombre());
 				}
 			}
 		}
@@ -100,7 +96,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 		@Override
 		public String toString() {
-			return "Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia();
+			return " [ Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia() + " Energia ganada (relativa a inicial): " + this.getEnergiaGanada()/this.getEnergiaInicial() + "]";
 		}
 
 	 

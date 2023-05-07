@@ -12,7 +12,6 @@ public class ObjetivoJugador extends GoalTest {
 		return estado.getEnergia() > 0 && estado.getUbicacion().getNumero()==11 && !estado.getMapa().getVertex(11).getTienePokemon();
 		//se chequea antes de percibir entonces el nodo 11 no tiene pokemon
 	}
-	
 	@Override
 	public String toString() {
 		return "El jugador vencio al mestro";

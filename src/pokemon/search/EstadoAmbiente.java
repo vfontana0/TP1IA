@@ -17,13 +17,14 @@ public class EstadoAmbiente extends EnvironmentState{
 	 private Graph grafo;
 	 private Nodo ubicacion;
 	 private ArrayList<Poder> poderes;
-	 private Boolean falla;
+	 private Double energia;
 	 ArrayList<Integer> nroNodoPokebolas = new ArrayList<Integer>();
 	 ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 
 
-	public EstadoAmbiente(Graph grafo, Integer nodoInicio){
+	public EstadoAmbiente(Graph grafo, Integer nodoInicio, Double energia){
 		this.grafo = grafo;
+		this.energia = energia;
 		this.ubicacion = this.grafo.getVertex(nodoInicio);
 		this.initState();
 		
@@ -129,15 +130,15 @@ public class EstadoAmbiente extends EnvironmentState{
 		this.ubicacion = ubicacion;
 	}
 
-	public ArrayList<Poder> getPoderes() {
-		return poderes;
+
+	public Double getEnergia() {
+		return energia;
 	}
 
-	public void setPoderes(ArrayList<Poder> poderes) {
-		this.poderes = poderes;
-	}
 
+	public void setEnergia(Double energia) {
+		this.energia = energia;
+	}
 	
+
 }
-
-

@@ -35,12 +35,14 @@ import pokemon.search.actions.*;
 
 import com.almasb.fxgl.app.scene.LoadingScene;
 
-public class HelloApplication extends GameApplication {
+public class GUI extends GameApplication {
     private Entity player;
     private int objectiveX;
     private int objectiveY;
+    private Text textVida;
+    private Text textAccion;
     
-    private ArrayList<Action> acciones;
+    private ArrayList<Pair<Action, Double>> acciones;
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
         objectiveX = x;
@@ -68,37 +70,55 @@ public class HelloApplication extends GameApplication {
             	@Override
             	public void run() {
             		acciones.stream().forEach(action -> {
-                    	if (action instanceof IrANodoN) {
+            			textAccion.setText("");
+                		textVida.setText("Energia: " + String.valueOf(action.getValue()));
+                    	if (action.getKey() instanceof IrANodoN) {;
                     		System.out.println("accion detectada");
-            		        Integer numero = ((IrANodoN) action).getNumero();
+            		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
             		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
             		        System.out.println("Entrando a accion de nodo: " + numero);
         					try {
-        						translateSmooth(parNodoN.getKey(), parNodoN.getValue());
-        						sleep(5000);
-        					} catch (InterruptedException e) {
-        						// TODO Auto-generated catch block
-        						e.printStackTrace();
-        					}
+								translateSmooth(parNodoN.getKey(), parNodoN.getValue());
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+        					
                     	}
+                    	else if (action.getKey() instanceof ElegirPelear) {
+                			textAccion.setText("¡El agente eligió pelear!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoAurora) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Aurora!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoMeteorico) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Meteórico!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarRayoSolar) {
+                    		textAccion.setText("¡El agente eligió usar el Rayo Solar!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirHuir) {
+                    		textAccion.setText("¡El agente eligió huir!");
+                    	}
+                    	else if (action.getKey() instanceof ElegirUsarSatelite) {
+                    		textAccion.setText("¡El agente eligió usar el satélite!");
+                    	}
+                    	else if (action.getKey() instanceof JuntarPokebola) {
+                    		textAccion.setText("¡El agente eligió juntar una pokebola!");
+                    	}
+						try {
+							sleep(3500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                    	
                     });
             	}
             };
             
             t.start();
             
-        });
-        FXGL.onKey(KeyCode.D, () -> {
-            player.translateX(5); // move right 5 pixels
-        });
-        FXGL.onKey(KeyCode.A, () -> {
-            player.translateX(-5); // move left 5 pixels
-        });
-        FXGL.onKey(KeyCode.W, () -> {
-            player.translateY(-5); // move up 5 pixels
-        });
-        FXGL.onKey(KeyCode.S, () -> {
-            player.translateY(5); // move down 5 pixels
         });
     }
 
@@ -136,6 +156,16 @@ public class HelloApplication extends GameApplication {
             throw new RuntimeException(e);
         }
         getGameScene().getRoot().setBackground(new Background(backgroundImage));
+    	//TODO: cambiar a barra de energia
+        textVida = getUIFactoryService().newText("Energia: ", Color.BLACK, 22);
+    	textVida.setTranslateX(getAppWidth() - 200);
+        textVida.setTranslateY(30);
+        
+        textAccion = getUIFactoryService().newText("", Color.BLACK, 22);
+        textAccion.setTranslateX(30);
+        textAccion.setTranslateY(30);
+        
+        getGameScene().addUINodes(textVida, textAccion);
 
     }
     

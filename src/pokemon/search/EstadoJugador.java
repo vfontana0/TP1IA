@@ -8,8 +8,6 @@ import datastructures.Graph;
 import domain.Nodo;
 import domain.PercepcionNodo;
 import domain.Poder;
-import domain.Pokebola;
-import domain.Pokemon;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -23,11 +21,9 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
 	
-	public EstadoJugador(Graph grafo, Integer nodoInicio) {
-		this.energiaInicial = ((int) Math.random()) % 10 + 10;
-		//this.energiaInicial = ((int) Math.random()) % 10 + 10;
-		this.energiaInicial = 10 + (new Random()).nextInt(10);
-		this.energia = energiaInicial;
+	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
+		this.energiaInicial = energia;
+		this.energia = energia;
 		this.nivel = 1;
 		this.energiaGanada = 0;
 		this.grafo = grafo;
@@ -43,8 +39,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero());
-	    nuevoEstado.setEnergia(this.getEnergia());
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero(), this.getEnergia());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
@@ -93,7 +88,6 @@ public class EstadoJugador extends SearchBasedAgentState {
 					p.setCantCiclos(p.getCantCiclos()-1); //si es mayor a 0 reduzco en uno los ciclos
 				else {
 					p.setPuedoUsar(true);
-					System.out.println("Ahora puedo usar habilidad " + p.getNombre());
 				}
 			}
 		}
@@ -101,7 +95,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 		@Override
 		public String toString() {
-			return "Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia();
+			return " [ Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia() + " Energia ganada (relativa a inicial): " + this.getEnergiaGanada()/this.getEnergiaInicial() + "]";
 		}
 
 	 
@@ -109,6 +103,8 @@ public class EstadoJugador extends SearchBasedAgentState {
 		public void initState() { //TODO la ubicacion deberia ser la misma para ambos, generar en main
 			this.huyoUltimoNodo = false;
 	 }
+	 
+	 
 	 
 
 	public Nodo getUbicacion() {

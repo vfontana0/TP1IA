@@ -100,6 +100,4 @@ public class AmbientePokemon extends Environment{
 			return (((EstadoAmbiente) this.getEnvironmentState()).getEnergia()) <= 0;
 		}
 		
-		
-		
 }

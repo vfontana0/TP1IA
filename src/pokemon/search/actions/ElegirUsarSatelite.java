@@ -13,11 +13,7 @@ public class ElegirUsarSatelite extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-<<<<<<< HEAD
 		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
-=======
-		 if(agState.getPoderes().get(3).getCantCiclos() == (11 - agState.getNivel()) && agState.getPoderes().get(3).getPuedoUsar()) {
->>>>>>> master
 			 agState.getPoderes().get(3).setCantCiclos(10);
 			 agState.getPoderes().get(3).setPuedoUsar(false);
 			 return agState;
@@ -27,12 +23,7 @@ public class ElegirUsarSatelite extends SearchAction{
 
 	@Override
 	public Double getCost() {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		return 0.0; //no creo q tenga costo
-=======
 		return 0.0; //No tiene costo, para que si lo tiene disponible lo use.
->>>>>>> master
 	}
 
 	@Override
@@ -40,11 +31,7 @@ public class ElegirUsarSatelite extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-<<<<<<< HEAD
 		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
-=======
-		 if(agState.getPoderes().get(3).getCantCiclos() == (11 - agState.getNivel()) && agState.getPoderes().get(3).getPuedoUsar()) {
->>>>>>> master
 				for(Nodo n : environmentState.getGrafo().getAllVertices()) { //para cada numero de nodo
 					agState.getMapa().getVertex(n.getNumero()).actualizar(n);
 				}

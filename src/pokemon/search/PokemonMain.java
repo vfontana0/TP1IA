@@ -1,5 +1,6 @@
 package pokemon.search;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +9,10 @@ import domain.Nodo;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import frsf.cidisi.faia.exceptions.PrologConnectorException;
+import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import pokemon.search.AmbientePokemon;
+import pokemon.search.Jugador;
 import javafx.util.Pair;
 
 public class PokemonMain {
@@ -19,11 +24,12 @@ public class PokemonMain {
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
     	Integer nodoInicio = 27;
+    	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
     	initGrafo(grafoAgente);
-        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
-        Jugador agent = new Jugador(grafoAgente, nodoInicio); //jugador --> crea PASAR GRAFO NOMAS
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio, energia); //ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente, nodoInicio, energia); //jugador --> crea PASAR GRAFO NOMAS
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
         
@@ -111,4 +117,15 @@ public class PokemonMain {
 		this.accionesEjecutadas = accionesEjecutadas;
 	}
 	
+}
+
+	public ArrayList<Action> getAccionesEjecutadas() {
+		return accionesEjecutadas;
+	}
+
+	public void setAccionesEjecutadas(ArrayList<Action> accionesEjecutadas) {
+		this.accionesEjecutadas = accionesEjecutadas;
+	}
+	
+
 }

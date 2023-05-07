@@ -1,6 +1,4 @@
 package pokemon.search;
-
-
 import java.util.Vector;
 import java.util.ArrayList;
 import datastructures.Graph;
@@ -13,6 +11,8 @@ import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 import javafx.util.Pair;
+import pokemon.search.EstadoJugador;
+import pokemon.search.ObjetivoJugador;
 import pokemon.search.actions.ElegirHuir;
 import pokemon.search.actions.ElegirPelear;
 import pokemon.search.actions.ElegirUsarRayoAurora;
@@ -27,8 +27,6 @@ public class Jugador extends SearchBasedAgent {
 	public ArrayList<Pair<Action, Double>> getSearchActions() {
 		return searchActions;
 	}
-
-
 	public void setSearchActions(ArrayList<Pair<Action, Double>> searchActions) {
 		this.searchActions = searchActions;
 	}

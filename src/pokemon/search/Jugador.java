@@ -12,6 +12,7 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
+import javafx.util.Pair;
 import pokemon.search.actions.ElegirHuir;
 import pokemon.search.actions.ElegirPelear;
 import pokemon.search.actions.ElegirUsarRayoAurora;
@@ -21,14 +22,14 @@ import pokemon.search.actions.IrANodoN;
 import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
-	private ArrayList<Action> searchActions;
-
-	public ArrayList<Action> getSearchActions() {
+	private ArrayList<Pair<Action, Double>> searchActions;
+	EstadoJugador jugadorState;
+	public ArrayList<Pair<Action, Double>> getSearchActions() {
 		return searchActions;
 	}
 
 
-	public void setSearchActions(ArrayList<Action> searchActions) {
+	public void setSearchActions(ArrayList<Pair<Action, Double>> searchActions) {
 		this.searchActions = searchActions;
 	}
 
@@ -36,7 +37,7 @@ public class Jugador extends SearchBasedAgent {
 	public Jugador(Graph grafo, Integer nodoInicio) {
 		searchActions = new ArrayList<>();
 		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-		EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
+		jugadorState = new EstadoJugador(grafo, nodoInicio);
 		this.setAgentState(jugadorState);
 		Vector<SearchAction> operators = new Vector<SearchAction>();
 		
@@ -72,7 +73,7 @@ public class Jugador extends SearchBasedAgent {
 		 Action accionSeleccionada = null;
 	        try {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
-	            searchActions.add(accionSeleccionada);
+	            searchActions.add(new Pair(accionSeleccionada, jugadorState.getEnergia()));
 	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());

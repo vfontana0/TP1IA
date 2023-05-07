@@ -35,12 +35,13 @@ import pokemon.search.actions.*;
 
 import com.almasb.fxgl.app.scene.LoadingScene;
 
-public class HelloApplication extends GameApplication {
+public class GUI extends GameApplication {
     private Entity player;
     private int objectiveX;
     private int objectiveY;
+    private Text textVida;
     
-    private ArrayList<Action> acciones;
+    private ArrayList<Pair<Action, Double>> acciones;
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
         objectiveX = x;
@@ -68,9 +69,10 @@ public class HelloApplication extends GameApplication {
             	@Override
             	public void run() {
             		acciones.stream().forEach(action -> {
-                    	if (action instanceof IrANodoN) {
+                		textVida.setText("Energia: " + String.valueOf(action.getValue()));
+                    	if (action.getKey() instanceof IrANodoN) {;
                     		System.out.println("accion detectada");
-            		        Integer numero = ((IrANodoN) action).getNumero();
+            		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
             		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
             		        System.out.println("Entrando a accion de nodo: " + numero);
         					try {
@@ -81,24 +83,16 @@ public class HelloApplication extends GameApplication {
         						e.printStackTrace();
         					}
                     	}
+                    	else if (action.getKey() instanceof ElegirPelear) {
+                    		
+                    	}
+                    	
                     });
             	}
             };
             
             t.start();
             
-        });
-        FXGL.onKey(KeyCode.D, () -> {
-            player.translateX(5); // move right 5 pixels
-        });
-        FXGL.onKey(KeyCode.A, () -> {
-            player.translateX(-5); // move left 5 pixels
-        });
-        FXGL.onKey(KeyCode.W, () -> {
-            player.translateY(-5); // move up 5 pixels
-        });
-        FXGL.onKey(KeyCode.S, () -> {
-            player.translateY(5); // move down 5 pixels
         });
     }
 
@@ -136,6 +130,12 @@ public class HelloApplication extends GameApplication {
             throw new RuntimeException(e);
         }
         getGameScene().getRoot().setBackground(new Background(backgroundImage));
+    	//TODO: cambiar a barra de energia
+        textVida = getUIFactoryService().newText("Energia: ", Color.BLACK, 22);
+    	textVida.setTranslateX(getAppWidth() - 150);
+        textVida.setTranslateY(50);
+        
+        getGameScene().addUINode(textVida);
 
     }
     

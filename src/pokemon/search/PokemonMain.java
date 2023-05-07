@@ -8,9 +8,10 @@ import domain.Nodo;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import javafx.util.Pair;
 
 public class PokemonMain {
-	ArrayList<Action> accionesEjecutadas;
+	ArrayList<Pair<Action, Double>> accionesEjecutadas;
 	
     public static void main(String[] args) throws PrologConnectorException {
     	//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
@@ -102,11 +103,11 @@ public class PokemonMain {
         simulator.start();
 	}
 
-	public ArrayList<Action> getAccionesEjecutadas() {
+	public ArrayList<Pair<Action, Double>> getAccionesEjecutadas() {
 		return accionesEjecutadas;
 	}
 
-	public void setAccionesEjecutadas(ArrayList<Action> accionesEjecutadas) {
+	public void setAccionesEjecutadas(ArrayList<Pair<Action, Double>> accionesEjecutadas) {
 		this.accionesEjecutadas = accionesEjecutadas;
 	}
 	

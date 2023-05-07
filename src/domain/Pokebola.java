@@ -17,6 +17,12 @@ public class Pokebola {
 		this.puntos = puntos;
 	}
 	
+	public Pokebola clone() {
+		Pokebola retorno = new Pokebola();
+		retorno.setPuntos(this.getPuntos());
+		//si anda agregar posicion
+		return retorno;
+	}
 
 }
 

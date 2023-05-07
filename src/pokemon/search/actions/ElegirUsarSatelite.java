@@ -8,19 +8,18 @@ import frsf.cidisi.faia.state.EnvironmentState;
 import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
-public class ElegirUsarRayoAurora extends SearchAction{
+public class ElegirUsarSatelite extends SearchAction{
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
+		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
+			 agState.getPoderes().get(3).setCantCiclos(10);
+			 agState.getPoderes().get(3).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
-	}
+	} 
 
 	@Override
 	public Double getCost() {
@@ -33,20 +32,21 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
-        	return environmentState;
+		 if(agState.getPoderes().get(3).getCantCiclos() == 0 && agState.getPoderes().get(3).getPuedoUsar()) {
+				for(Nodo n : environmentState.getGrafo().getAllVertices()) { //para cada numero de nodo
+					agState.getMapa().getVertex(n.getNumero()).actualizar(n);
+				}
+			 agState.getPoderes().get(3).setCantCiclos(10);
+			 agState.getPoderes().get(3).setPuedoUsar(false);
+			 
+        	 return environmentState;
         }
 		
 		return null;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Elegir usar Rayo Aurora";
+		return "Elegir Usar Satelite";
 	}
-
 }

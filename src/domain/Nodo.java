@@ -9,7 +9,6 @@ public class Nodo {
 	Pokemon pokemon; //objeto pokemon (null si tienePokemon es falso)
 	Boolean tienePokebola; //true si hay una pokebola en el nodo
 	Pokebola pokebola; //objeto pokebola (null si tienePokebola es falso)
-	List<Nodo> nodosAdyacentes; //lista de nodos vecinos al actual.
 	
 	
 	
@@ -37,12 +36,6 @@ public class Nodo {
 	public void setPokebola(Pokebola pokebola) {
 		this.pokebola = pokebola;
 	}
-	public List<Nodo> getNodosAdyacentes() {
-		return nodosAdyacentes;
-	}
-	public void setNodosAdyacentes(List<Nodo> nodosAdyacentes) {
-		this.nodosAdyacentes = nodosAdyacentes;
-	}
 	public Integer getNumero() {
 		return numero;
 	}
@@ -50,8 +43,50 @@ public class Nodo {
 		this.numero = numero;
 	}
 	
+	public Nodo clone() {
+		Nodo retorno = new Nodo();
+		retorno.setNumero(this.getNumero());
+		retorno.setTienePokebola(this.getTienePokebola());
+		retorno.setTienePokemon(this.getTienePokemon());
+		if(this.getTienePokebola())
+			retorno.setPokebola(this.getPokebola().clone());
+		if(this.getTienePokemon())
+			retorno.setPokemon(this.getPokemon().clone());
+
+		return retorno;
+	}
 	
-	
-	
+
+    @Override
+	public boolean equals(Object obj) {
+    	Nodo aComparar = (Nodo) obj;
+		return this.numero == aComparar.getNumero(); //dos nodos son el mismo si tienen el mismo num
+	}
+    
+    @Override
+    public String toString() {
+    	return "Nodo " + this.getNumero();
+    }
+    
+    
+	public void actualizar(PercepcionNodo percepcionNodo) {
+		this.tienePokemon = percepcionNodo.getTienePokemon();
+		this.tienePokebola = percepcionNodo.getTienePokebola();
+		if(percepcionNodo.getTienePokemon())
+			this.pokemon = percepcionNodo.getPokemon();
+		if(percepcionNodo.getTienePokebola())
+			this.pokebola = percepcionNodo.getPokebola();
+		
+	}
+	public void actualizar(Nodo n) {
+		
+		this.tienePokemon = n.getTienePokemon();
+		this.tienePokebola = n.getTienePokebola();
+		if(n.getTienePokemon())
+			this.pokemon = n.getPokemon();
+		if(n.getTienePokebola())
+			this.pokebola = n.getPokebola();
+	}
+		
 	
 }

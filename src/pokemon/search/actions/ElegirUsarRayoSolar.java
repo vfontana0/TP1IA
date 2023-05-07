@@ -1,6 +1,5 @@
 package pokemon.search.actions;
 
-import domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
@@ -8,15 +7,15 @@ import frsf.cidisi.faia.state.EnvironmentState;
 import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
-public class ElegirUsarRayoAurora extends SearchAction{
+public class ElegirUsarRayoSolar extends SearchAction{
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
+		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
+			 agState.setEnergia(agState.getEnergia()*1.50);
+			 agState.getPoderes().get(2).setCantCiclos(3);
+			 agState.getPoderes().get(2).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
@@ -33,20 +32,19 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
+		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
+			 agState.setEnergia(agState.getEnergia()*1.50);
+			 agState.getPoderes().get(2).setCantCiclos(3);
+			 agState.getPoderes().get(2).setPuedoUsar(false);
         	return environmentState;
         }
 		
 		return null;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Elegir usar Rayo Aurora";
+		return "Elegir usar Rayo Solar";
 	}
 
 }

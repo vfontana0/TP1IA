@@ -1,1 +1,6 @@
 /bin/
+.idea/
+logs/
+src/com/
+src/resources/
+system/

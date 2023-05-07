@@ -2,37 +2,85 @@ package pokemon.search;
 
 
 import java.util.Vector;
-
+import java.util.ArrayList;
+import datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
+import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.DepthFirstSearch;
+import frsf.cidisi.faia.solver.search.Search;
+import pokemon.search.actions.ElegirHuir;
+import pokemon.search.actions.ElegirPelear;
+import pokemon.search.actions.ElegirUsarRayoAurora;
+import pokemon.search.actions.ElegirUsarRayoMeteorico;
+import pokemon.search.actions.ElegirUsarRayoSolar;
+import pokemon.search.actions.IrANodoN;
+import pokemon.search.actions.JuntarPokebola;
 
 public class Jugador extends SearchBasedAgent {
+	private ArrayList<Action> searchActions;
 
-	public Jugador() {
-	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-	EstadoJugador jugadorState = new EstadoJugador();
-	Vector<SearchAction> operators = new Vector<SearchAction>();
-	//TODO: agregar operadores
-	
-	Problem problem = new Problem(jugadorGoal, jugadorState, operators);
-	 this.setProblem(problem);
+	public ArrayList<Action> getSearchActions() {
+		return searchActions;
 	}
+
+
+	public void setSearchActions(ArrayList<Action> searchActions) {
+		this.searchActions = searchActions;
+	}
+
+
+	public Jugador(Graph grafo, Integer nodoInicio) {
+		searchActions = new ArrayList<>();
+		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
+		EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
+		this.setAgentState(jugadorState);
+		Vector<SearchAction> operators = new Vector<SearchAction>();
+		
+		for(int i=1; i<=29; i++) {
+			operators.add(new IrANodoN(i));
+		}
+		
+		operators.add(new JuntarPokebola());
+		operators.add(new ElegirPelear());
+		operators.add(new ElegirHuir());
+		operators.add(new ElegirUsarRayoSolar());
+		operators.add(new ElegirUsarRayoMeteorico());
+		operators.add(new ElegirUsarRayoAurora());
+		
+		System.out.println("Operadores: " + operators.toString());
+		Problem problem = new Problem(jugadorGoal, jugadorState, operators);
+		this.setProblem(problem);
+	}
+
 
 	@Override
 	public void see(Perception p) {
-		// TODO Auto-generated method stub
+		this.getAgentState().updateState(p);
+	}
+
+	
+	@Override
+	public Action selectAction() {
+		//DepthFirstSearch estrategiaBusqueda = new DepthFirstSearch();
+		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
+		Search busqueda = new Search(estrategiaBusqueda);
+		 this.setSolver(busqueda);
+		 Action accionSeleccionada = null;
+	        try {
+	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
+	            searchActions.add(accionSeleccionada);
+	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
+	        } catch (Exception ex) {
+	            System.out.println(ex.getMessage());
+	        }
+	        return accionSeleccionada;
 		
 	}
 
-	@Override
-	public Action selectAction() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	
 }
 

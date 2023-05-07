@@ -1,6 +1,5 @@
 package pokemon.search.actions;
 
-import domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
@@ -8,19 +7,19 @@ import frsf.cidisi.faia.state.EnvironmentState;
 import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
-public class ElegirUsarRayoAurora extends SearchAction{
+public class ElegirUsarRayoMeteorico extends SearchAction{
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
+		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
+			 agState.setEnergia(agState.getEnergia()*1.30);
+			 agState.getPoderes().get(1).setCantCiclos(3);
+			 agState.getPoderes().get(1).setPuedoUsar(false);
 			 return agState;
 		 } 
 		 return null;
-	}
+	} //EN EL METODO UPDATE STATE SE DECREMENTAN ESTOS VALORES --> Ciclo percepcion/accion
 
 	@Override
 	public Double getCost() {
@@ -33,20 +32,19 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
-		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
-			 agState.setEnergia(agState.getEnergia()*1.20);
-			 agState.getPoderes().get(0).setCantCiclos(3);
-			 agState.getPoderes().get(0).setPuedoUsar(false);
+		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
+			 agState.setEnergia(agState.getEnergia()*1.30);
+			 agState.getPoderes().get(1).setCantCiclos(3);
+			 agState.getPoderes().get(1).setPuedoUsar(false);
         	return environmentState;
         }
 		
 		return null;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Elegir usar Rayo Aurora";
+		return "Elegir Usar Rayo Meteorico";
 	}
 
 }

@@ -10,19 +10,24 @@ import pokemon.search.EstadoJugador;
 import pokemon.search.EstadoAmbiente;
 
 public class IrANodoN extends SearchAction {
-	Nodo nodo;
+	Integer nodoNro;
 	
-	public IrANodoN(Nodo nodo) {
-		this.nodo = nodo;
+	public IrANodoN(Integer i) {
+		this.nodoNro = i;
+	}
+	
+	public Integer getNumero() {
+		return nodoNro;
 	}
 	
 	@Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         EstadoJugador agState = (EstadoJugador) s;
-        
         Nodo nodoActual = agState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
+        Nodo destino = agState.getMapa().getVertex(nodoNro);
+	     if((!nodoActual.getTienePokemon() || agState.getHuyoUltimoNodo()) && agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
+        	agState.setUbicacion(destino);
+        	agState.setHuyoUltimoNodo(false);
     		return agState;
         }
         
@@ -31,15 +36,15 @@ public class IrANodoN extends SearchAction {
 
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
-		// TODO Auto-generated method stub
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
-		
-		Nodo nodoActual = environmentState.getUbicacion();
-        if (nodoActual.getNodosAdyacentes().contains(nodo)) {
-        	agState.setUbicacion(nodo);
-        	
-        	environmentState.setUbicacion(nodo);
+		 Nodo nodoActual = agState.getUbicacion();
+		 Nodo destinoAgente = agState.getMapa().getVertex(nodoNro); //debe ser el de destino 
+		 Nodo destinoAmbiente = environmentState.getGrafo().getVertex(nodoNro);
+	     if((!nodoActual.getTienePokemon() || agState.getHuyoUltimoNodo()) && agState.getMapa().getNeighbors(destinoAgente).contains(nodoActual)) {
+        	agState.setUbicacion(destinoAgente);
+        	agState.setHuyoUltimoNodo(false);
+        	environmentState.setUbicacion(destinoAmbiente);
         	return environmentState;
         }
 		
@@ -55,6 +60,6 @@ public class IrANodoN extends SearchAction {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "IrANodo " + nodo.getNumero();
+		return "IrANodo " + nodoNro;
 	}
 }

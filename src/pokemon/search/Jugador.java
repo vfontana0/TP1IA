@@ -32,28 +32,25 @@ public class Jugador extends SearchBasedAgent {
 		this.searchActions = searchActions;
 	}
 
-
 	public Jugador(Graph grafo, Integer nodoInicio) {
-		searchActions = new ArrayList<>();
-		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-		EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
-		this.setAgentState(jugadorState);
-		Vector<SearchAction> operators = new Vector<SearchAction>();
-		
-		for(int i=1; i<=29; i++) {
-			operators.add(new IrANodoN(i));
-		}
-		
-		operators.add(new JuntarPokebola());
-		operators.add(new ElegirPelear());
-		operators.add(new ElegirHuir());
-		operators.add(new ElegirUsarRayoSolar());
-		operators.add(new ElegirUsarRayoMeteorico());
-		operators.add(new ElegirUsarRayoAurora());
-		
-		System.out.println("Operadores: " + operators.toString());
-		Problem problem = new Problem(jugadorGoal, jugadorState, operators);
-		this.setProblem(problem);
+	ObjetivoJugador jugadorGoal = new ObjetivoJugador();
+	EstadoJugador jugadorState = new EstadoJugador(grafo, nodoInicio);
+	this.setAgentState(jugadorState);
+	Vector<SearchAction> operators = new Vector<SearchAction>();
+	for(int i=1; i<=29; i++) {
+		operators.add(new IrANodoN(i));
+	}
+	
+	operators.add(new JuntarPokebola());
+	operators.add(new ElegirPelear());
+	operators.add(new ElegirHuir());
+	operators.add(new ElegirUsarRayoSolar());
+	operators.add(new ElegirUsarRayoMeteorico());
+	operators.add(new ElegirUsarRayoAurora());
+	
+	System.out.println("Operadores: " + operators.toString());
+	Problem problem = new Problem(jugadorGoal, jugadorState, operators);
+	this.setProblem(problem);
 	}
 
 
@@ -74,6 +71,7 @@ public class Jugador extends SearchBasedAgent {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
 	            searchActions.add(accionSeleccionada);
 	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
+
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }

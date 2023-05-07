@@ -6,6 +6,7 @@ import java.util.Random;
 import datastructures.Graph;
 import domain.Nodo;
 import frsf.cidisi.faia.agent.Action;
+
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 
@@ -84,6 +85,7 @@ public class PokemonMain {
 			grafo.addEdge(nodos.get(28), nodos.get(29));		
 		
     }
+<<<<<<< HEAD
     
 	public void startPokemon() {
 		//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
@@ -111,4 +113,6 @@ public class PokemonMain {
 	}
 	
 	
+=======
+>>>>>>> master
 }

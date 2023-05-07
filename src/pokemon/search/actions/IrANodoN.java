@@ -14,10 +14,13 @@ public class IrANodoN extends SearchAction {
 	
 	public IrANodoN(Integer i) {
 		this.nodoNro = i;
+<<<<<<< HEAD
 	}
 	
 	public Integer getNumero() {
 		return nodoNro;
+=======
+>>>>>>> master
 	}
 	
 	@Override
@@ -53,8 +56,7 @@ public class IrANodoN extends SearchAction {
 
 	@Override
 	public Double getCost() {
-		// TODO Auto-generated method stub
-		return Double.valueOf(0); //No tiene costo moverse, pero si pelear o escaparse
+		return 0.0; //No tiene costo moverse, pero si pelear o huir.
 	}
 
 	@Override

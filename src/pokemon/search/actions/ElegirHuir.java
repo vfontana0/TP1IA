@@ -28,8 +28,13 @@ public class ElegirHuir extends SearchAction {
 
 	@Override
 	public Double getCost() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return null;
+=======
+		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
+					//uno u otro según la vida del pokemon adversario y no según este costo.
+>>>>>>> master
 	}
 
 	@Override

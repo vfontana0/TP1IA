@@ -12,7 +12,11 @@ public class ElegirUsarRayoSolar extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
+<<<<<<< HEAD
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
+=======
+		 if(agState.getPoderes().get(2).getCantCiclos() == 3 && agState.getPoderes().get(2).getPuedoUsar()) {
+>>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.50);
 			 agState.getPoderes().get(2).setCantCiclos(3);
 			 agState.getPoderes().get(2).setPuedoUsar(false);
@@ -23,8 +27,13 @@ public class ElegirUsarRayoSolar extends SearchAction{
 
 	@Override
 	public Double getCost() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return 0.0; //no creo q tenga costo
+=======
+		return 1.0; //Es el menor costo seteado, para que al tenerlo disponible 
+					//lo use antes que cualquier otro, ya que es el más poderoso.
+>>>>>>> master
 	}
 
 	@Override
@@ -32,7 +41,11 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
+<<<<<<< HEAD
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar()) {
+=======
+		 if(agState.getPoderes().get(2).getCantCiclos() == 3 && agState.getPoderes().get(2).getPuedoUsar()) {
+>>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.50);
 			 agState.getPoderes().get(2).setCantCiclos(3);
 			 agState.getPoderes().get(2).setPuedoUsar(false);

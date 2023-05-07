@@ -1,6 +1,9 @@
 package pokemon.search.actions;
 
+<<<<<<< HEAD
 import domain.Nodo;
+=======
+>>>>>>> master
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
@@ -13,7 +16,11 @@ public class ElegirUsarRayoAurora extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
+<<<<<<< HEAD
 		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
+=======
+		 if(agState.getPoderes().get(0).getCantCiclos() == 3 && agState.getPoderes().get(0).getPuedoUsar()) {
+>>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.20);
 			 agState.getPoderes().get(0).setCantCiclos(3);
 			 agState.getPoderes().get(0).setPuedoUsar(false);
@@ -24,8 +31,12 @@ public class ElegirUsarRayoAurora extends SearchAction{
 
 	@Override
 	public Double getCost() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return 0.0; //no creo q tenga costo
+=======
+		return 3.0; //De los tres poderes, este es el mas costoso.
+>>>>>>> master
 	}
 
 	@Override
@@ -33,7 +44,11 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		
+<<<<<<< HEAD
 		 if(agState.getPoderes().get(0).getCantCiclos() == 0 && agState.getPoderes().get(0).getPuedoUsar()) {
+=======
+		 if(agState.getPoderes().get(0).getCantCiclos() == 3 && agState.getPoderes().get(0).getPuedoUsar()) {
+>>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.20);
 			 agState.getPoderes().get(0).setCantCiclos(3);
 			 agState.getPoderes().get(0).setPuedoUsar(false);

@@ -2,6 +2,7 @@ package pokemon.search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import datastructures.Graph;
 import domain.Nodo;
@@ -24,6 +25,8 @@ public class EstadoJugador extends SearchBasedAgentState {
 	
 	public EstadoJugador(Graph grafo, Integer nodoInicio) {
 		this.energiaInicial = ((int) Math.random()) % 10 + 10;
+		//this.energiaInicial = ((int) Math.random()) % 10 + 10;
+		this.energiaInicial = 10 + (new Random()).nextInt(10);
 		this.energia = energiaInicial;
 		this.nivel = 1;
 		this.energiaGanada = 0;

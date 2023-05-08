@@ -30,8 +30,10 @@ public class GUI extends GameApplication {
     private int objectiveY;
     private Text textVida;
     private Text textAccion;
+    private Text textResultado;
     
     private ArrayList<Pair<Action, Double>> acciones;
+    private Boolean gano;
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
         objectiveX = x;
@@ -103,6 +105,12 @@ public class GUI extends GameApplication {
 						}
                     	
                     });
+            		if(gano) {
+            			textResultado.setText("GANO");
+            		} else {
+            			textResultado.setText("PERDIO");
+            		}
+            		
             	}
             };
             
@@ -154,26 +162,34 @@ public class GUI extends GameApplication {
         textAccion.setTranslateX(30);
         textAccion.setTranslateY(30);
         
-        getGameScene().addUINodes(textVida, textAccion);
+        textResultado = getUIFactoryService().newText("", Color.BLACK, 22);
+        textResultado.setTranslateX(30);
+        textResultado.setTranslateY(10);
+        
+        getGameScene().addUINodes(textVida, textAccion, textResultado);
 
     }
     
     @Override
     protected void initGame() {
-    	getGameScene().addUINode(new Text("Procesando algoritmo de busqueda..."));
-        player = FXGL.entityBuilder()
-                .at(998, 665)
-                .view(getClass().getResource("trainer.png"))
-                .buildAndAttach();
-        player.setProperty("velocity", new Point2D(0,0));
+    	getGameScene().addUINode(new Text("Buscando solucion..."));
         
         //Ejecuto el algoritmo
         
         PokemonMain pokemonMain = new PokemonMain();
         pokemonMain.startPokemon();
+       	Integer nroNodoInicio = pokemonMain.getNodoInicio();
+    	Posiciones posiciones = new Posiciones();
+    	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(nroNodoInicio);
+
+    	//Creo el player
+        player = FXGL.entityBuilder()
+                .at(posicionInicio.getKey(), posicionInicio.getValue())
+                .view(getClass().getResource("trainer.png"))
+                .buildAndAttach();
+        player.setProperty("velocity", new Point2D(0,0));
         acciones = pokemonMain.getAccionesEjecutadas();
-        
-        
+        gano = pokemonMain.getGano();   
     }
     @Override
     protected void onUpdate(double tpf) {

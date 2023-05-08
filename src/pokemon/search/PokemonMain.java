@@ -13,13 +13,14 @@ import javafx.util.Pair;
 
 public class PokemonMain {
 	ArrayList<Pair<Action, Double>> accionesEjecutadas;
-	
+	private static Integer nodoInicio;
+	private Boolean gano;
     public static void main(String[] args) throws PrologConnectorException {
     	//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
-    	Integer nodoInicio = 27;
+    	nodoInicio = 27;
     	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
@@ -93,7 +94,7 @@ public class PokemonMain {
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
-    	Integer nodoInicio = 27;
+    	nodoInicio = 5;
     	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
@@ -104,6 +105,8 @@ public class PokemonMain {
                 new SearchBasedAgentSimulator(environment, agent);
         accionesEjecutadas = agent.getSearchActions();
         simulator.start();
+        this.gano = agent.gano();
+
 	}
 
 	public ArrayList<Pair<Action, Double>> getAccionesEjecutadas() {
@@ -114,6 +117,12 @@ public class PokemonMain {
 		this.accionesEjecutadas = accionesEjecutadas;
 	}
 	
+	public Integer getNodoInicio() {
+		return nodoInicio;
+	}
 	
+	public Boolean getGano() {
+		return this.gano;
+	}
 
 }

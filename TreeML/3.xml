@@ -1,467 +1,83 @@
 <tree id="3" edgedefault="directed">
-<node Id="0" Action="null" Cost="0.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="1" Action="IrANodo 21" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="2" Action="IrANodo 24" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="3" Action="IrANodo 26" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="4" Action="Juntar Pokebola" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="5" Action="IrANodo 19" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="6" Action="IrANodo 20" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="7" Action="IrANodo 29" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="17" Action="IrANodo 18" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 18 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="60" Action="IrANodo 17" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 17 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="61" Action="IrANodo 28" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="228" Action="IrANodo 16" Cost="5.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="229" Action="Elegir pelear" Cost="5.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 2.301000415155844 Energia ganada (relativa a inicial): 0.19415589936851216]"/>
-<node Id="230" Action="Elegir Huir" Cost="5.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 5.051000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="18" Action="IrANodo 14" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 14 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="19" Action="IrANodo 15" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="20" Action="IrANodo 16" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="21" Action="IrANodo 22" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="62" Action="IrANodo 10" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="231" Action="IrANodo 9" Cost="5.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="232" Action="IrANodo 11" Cost="5.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="63" Action="IrANodo 11" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="64" Action="IrANodo 16" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="65" Action="IrANodo 13" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 13 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="66" Action="IrANodo 15" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="67" Action="IrANodo 17" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 17 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="68" Action="IrANodo 23" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 23 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="69" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="22" Action="IrANodo 28" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="70" Action="Elegir pelear" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 2.301000415155844 Energia ganada (relativa a inicial): 0.19415589936851216]"/>
-<node Id="71" Action="Elegir Huir" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 5.051000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="8" Action="IrANodo 22" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="9" Action="Juntar Pokebola" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="23" Action="IrANodo 20" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="24" Action="IrANodo 23" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 23 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="72" Action="IrANodo 14" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 14 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="73" Action="IrANodo 15" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="74" Action="IrANodo 16" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="75" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="25" Action="IrANodo 22" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="26" Action="IrANodo 25" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="27" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.057673844922036 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="28" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 15.833138269050622 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="29" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 14.615204556046727 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="76" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="77" Action="IrANodo 23" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 23 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="78" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 15.833138269050622 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="79" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 14.615204556046727 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="80" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="81" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 12.17933713003894 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="82" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 17.865912586202427 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="83" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.833138269050622 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="84" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.615204556046727 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="85" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 18.057673844922036 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="86" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 18.057673844922036 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="87" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.936010559805133 Energia ganada (relativa a inicial): 1.8090485771878648]"/>
-<node Id="88" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 27.086510767383054 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="89" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.474975998398648 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="90" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.66920861390644 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="91" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 15.833138269050622 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="92" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.833138269050622 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="93" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.71147498393372 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="94" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.999765922860746 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="95" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 14.615204556046727 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="96" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.615204556046727 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="97" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 20.493541270929825 Energia ganada (relativa a inicial): 1.2383917013533288]"/>
-<node Id="98" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.999765922860746 Energia ganada (relativa a inicial): 0.6677348255187924]"/>
-<node Id="10" Action="IrANodo 27" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="30" Action="IrANodo 28" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 6.301000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="99" Action="Elegir pelear" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 2.301000415155844 Energia ganada (relativa a inicial): 0.19415589936851216]"/>
-<node Id="100" Action="Elegir Huir" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 5.051000415155844 Energia ganada (relativa a inicial): 0.09707794968425608]"/>
-<node Id="11" Action="IrANodo 21" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="12" Action="IrANodo 24" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="13" Action="IrANodo 26" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="14" Action="Juntar Pokebola" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="15" Action="Elegir Usar Rayo Meteorico" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="16" Action="Elegir usar Rayo Aurora" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="31" Action="IrANodo 19" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="32" Action="IrANodo 20" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="33" Action="IrANodo 29" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="34" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="35" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="101" Action="IrANodo 18" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 18 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="102" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="103" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="104" Action="IrANodo 14" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 14 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="105" Action="IrANodo 15" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="106" Action="IrANodo 16" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="107" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="108" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="109" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="110" Action="IrANodo 28" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="111" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="112" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="113" Action="IrANodo 19" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="114" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="115" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="116" Action="IrANodo 29" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="117" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="118" Action="IrANodo 19" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="119" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="120" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="121" Action="IrANodo 29" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="122" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="36" Action="IrANodo 22" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="37" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 17.865912586202427 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="38" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="39" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="123" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="124" Action="IrANodo 23" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 23 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="125" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="126" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="127" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 17.865912586202427 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="128" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 17.865912586202427 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="129" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.744249301085524 Energia ganada (relativa a inicial): 1.7904327873624932]"/>
-<node Id="130" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 26.79886887930364 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="131" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.225686362063154 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="132" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.439095103442913 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="133" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="134" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="135" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.46218534759823 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="136" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="137" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="138" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="139" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 20.263427760466293 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="140" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="40" Action="IrANodo 27" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="41" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="42" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="141" Action="IrANodo 28" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 28 Energia: 11.987575871319331 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="142" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="143" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="144" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="145" Action="IrANodo 27" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="146" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="147" Action="IrANodo 25" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="148" Action="IrANodo 27" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="149" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="43" Action="IrANodo 21" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="44" Action="IrANodo 24" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="45" Action="IrANodo 26" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="46" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 23.360726783646307 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="47" Action="Elegir usar Rayo Solar" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="48" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="49" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="150" Action="IrANodo 19" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="151" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="152" Action="IrANodo 29" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="153" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="154" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="155" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="156" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="157" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.552488042365916 Energia ganada (relativa a inicial): 1.7718169975371214]"/>
-<node Id="158" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="159" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="160" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="161" Action="IrANodo 27" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 17.674151327482818 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="162" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="163" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="164" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="165" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 23.360726783646307 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="166" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 23.360726783646307 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="167" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 23.360726783646307 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="168" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 29.047302239809795 Energia ganada (relativa a inicial): 2.305242293720914]"/>
-<node Id="169" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 35.04109017546946 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="170" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 30.3689448187402 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="171" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 28.032872140375567 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="172" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="173" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="174" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 26.511226991224227 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="175" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 32.197802447387716 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="176" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 34.464595088591494 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="177" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 31.81347238946907 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="178" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="179" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="180" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 22.976396725727664 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="181" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 28.66297218189115 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="182" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 34.464595088591494 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="183" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 27.571676070873195 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="184" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="185" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="186" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 21.20898159297938 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="187" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 26.895557049142866 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="188" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 31.81347238946907 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="189" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 27.571676070873195 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="50" Action="IrANodo 21" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="51" Action="IrANodo 24" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="52" Action="IrANodo 26" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="53" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 21.27042408887862 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="54" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="190" Action="IrANodo 19" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="191" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="192" Action="IrANodo 29" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="193" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="194" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="195" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.46218534759823 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="196" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="197" Action="IrANodo 27" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 15.583848632715132 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="198" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="199" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 21.27042408887862 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="200" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 21.27042408887862 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="201" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 21.27042408887862 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="202" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 26.95699954504211 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="203" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 31.90563613331793 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="204" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 25.524508906654344 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="205" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="206" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="207" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="208" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 24.387193815421647 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="55" Action="IrANodo 21" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="56" Action="IrANodo 24" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="57" Action="IrANodo 26" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="58" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 20.071666501746684 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="59" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="209" Action="IrANodo 19" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 19 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="210" Action="IrANodo 20" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="211" Action="IrANodo 29" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 29 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="212" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="213" Action="IrANodo 22" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 22 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="214" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 20.263427760466293 Energia ganada (relativa a inicial): 1.219775911527957]"/>
-<node Id="215" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="216" Action="IrANodo 27" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 27 Energia: 14.385091045583197 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="217" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="218" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 20.071666501746684 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="219" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 20.071666501746684 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="220" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 20.071666501746684 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="221" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 25.758241957910172 Energia ganada (relativa a inicial): 1.7532012077117496]"/>
-<node Id="222" Action="Elegir usar Rayo Solar" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 30.107499752620026 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="223" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 26.09316645227069 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
-<node Id="224" Action="IrANodo 21" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 21 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="225" Action="IrANodo 24" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 24 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="226" Action="IrANodo 26" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 26 Energia: 18.700618359258158 Energia ganada (relativa a inicial): 0.6491190356934207]"/>
-<node Id="227" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 25 Energia: 24.387193815421647 Energia ganada (relativa a inicial): 1.2011601217025851]"/>
+<node Id="0" Action="null" Cost="0.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="1" Action="Elegir pelear" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="2" Action="Elegir Huir" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="3" Action="IrANodo 1" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 1 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="4" Action="IrANodo 3" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="5" Action="IrANodo 9" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="10" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 15.438216233142331 Energia ganada (relativa a inicial): 0.5201737307924232]"/>
+<node Id="11" Action="Elegir pelear" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 5.444658211853504 Energia ganada (relativa a inicial): 0.14875796531864952]"/>
+<node Id="12" Action="Elegir Huir" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="25" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 21.431774254431158 Energia ganada (relativa a inicial): 0.9659684789255218]"/>
+<node Id="26" Action="Elegir pelear" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 11.438216233142331 Energia ganada (relativa a inicial): 0.5945527134517481]"/>
+<node Id="27" Action="Elegir Huir" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 14.188216233142331 Energia ganada (relativa a inicial): 0.5201737307924232]"/>
+<node Id="28" Action="Elegir Usar Rayo Meteorico" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 20.06968110308503 Energia ganada (relativa a inicial): 0.5201737307924232]"/>
+<node Id="29" Action="Elegir usar Rayo Aurora" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 18.525859479770798 Energia ganada (relativa a inicial): 0.5201737307924232]"/>
+<node Id="30" Action="IrANodo 2" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 5.444658211853504 Energia ganada (relativa a inicial): 0.14875796531864952]"/>
+<node Id="31" Action="IrANodo 4" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 4 Energia: 5.444658211853504 Energia ganada (relativa a inicial): 0.14875796531864952]"/>
+<node Id="32" Action="IrANodo 8" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 8 Energia: 5.444658211853504 Energia ganada (relativa a inicial): 0.14875796531864952]"/>
+<node Id="33" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 11.438216233142331 Energia ganada (relativa a inicial): 0.5945527134517481]"/>
+<node Id="34" Action="IrANodo 2" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="35" Action="IrANodo 4" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 4 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="36" Action="IrANodo 8" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 8 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="37" Action="Juntar Pokebola" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 14.188216233142331 Energia ganada (relativa a inicial): 0.5201737307924232]"/>
+<node Id="38" Action="Elegir pelear" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 4.194658211853504 Energia ganada (relativa a inicial): 0.14875796531864952]"/>
+<node Id="13" Action="IrANodo 10" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="14" Action="IrANodo 11" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="15" Action="IrANodo 12" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 12 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="39" Action="IrANodo 11" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="40" Action="IrANodo 14" Cost="4.0" Estado_Agente=" [ Ubicacion: Nodo 14 Energia: 9.444658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="6" Action="IrANodo 1" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 1 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="7" Action="IrANodo 3" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="8" Action="IrANodo 9" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="9" Action="Elegir pelear" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="16" Action="Juntar Pokebola" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 18.18821623314233 Energia ganada (relativa a inicial): 0.44579474813309855]"/>
+<node Id="17" Action="Elegir pelear" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="18" Action="Elegir Huir" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 10.944658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="19" Action="IrANodo 10" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="20" Action="IrANodo 11" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="21" Action="IrANodo 12" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 12 Energia: 12.194658211853504 Energia ganada (relativa a inicial): 0.0]"/>
+<node Id="22" Action="IrANodo 1" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 1 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="23" Action="IrANodo 3" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 3 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
+<node Id="24" Action="IrANodo 9" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 8.194658211853504 Energia ganada (relativa a inicial): 0.07437898265932476]"/>
 <edge source="0" target="1"/>
 <edge source="0" target="2"/>
-<edge source="0" target="3"/>
-<edge source="0" target="4"/>
+<edge source="1" target="3"/>
+<edge source="1" target="4"/>
 <edge source="1" target="5"/>
-<edge source="1" target="6"/>
-<edge source="1" target="7"/>
+<edge source="2" target="6"/>
+<edge source="2" target="7"/>
 <edge source="2" target="8"/>
 <edge source="2" target="9"/>
-<edge source="3" target="10"/>
+<edge source="4" target="10"/>
 <edge source="4" target="11"/>
 <edge source="4" target="12"/>
-<edge source="4" target="13"/>
-<edge source="4" target="14"/>
-<edge source="4" target="15"/>
-<edge source="4" target="16"/>
-<edge source="5" target="17"/>
-<edge source="6" target="18"/>
-<edge source="6" target="19"/>
-<edge source="6" target="20"/>
-<edge source="6" target="21"/>
-<edge source="7" target="22"/>
-<edge source="17" target="60"/>
-<edge source="17" target="61"/>
-<edge source="60" target="228"/>
-<edge source="61" target="229"/>
-<edge source="61" target="230"/>
-<edge source="18" target="62"/>
-<edge source="19" target="63"/>
-<edge source="19" target="64"/>
-<edge source="20" target="65"/>
-<edge source="20" target="66"/>
-<edge source="20" target="67"/>
-<edge source="21" target="68"/>
-<edge source="21" target="69"/>
-<edge source="62" target="231"/>
-<edge source="62" target="232"/>
-<edge source="22" target="70"/>
-<edge source="22" target="71"/>
-<edge source="8" target="23"/>
-<edge source="8" target="24"/>
-<edge source="9" target="25"/>
-<edge source="9" target="26"/>
-<edge source="9" target="27"/>
-<edge source="9" target="28"/>
-<edge source="9" target="29"/>
-<edge source="23" target="72"/>
-<edge source="23" target="73"/>
-<edge source="23" target="74"/>
-<edge source="23" target="75"/>
-<edge source="25" target="76"/>
-<edge source="25" target="77"/>
-<edge source="25" target="78"/>
-<edge source="25" target="79"/>
-<edge source="26" target="80"/>
-<edge source="26" target="81"/>
-<edge source="26" target="82"/>
-<edge source="26" target="83"/>
-<edge source="26" target="84"/>
-<edge source="27" target="85"/>
-<edge source="27" target="86"/>
-<edge source="27" target="87"/>
-<edge source="27" target="88"/>
-<edge source="27" target="89"/>
-<edge source="27" target="90"/>
-<edge source="28" target="91"/>
-<edge source="28" target="92"/>
-<edge source="28" target="93"/>
-<edge source="28" target="94"/>
-<edge source="29" target="95"/>
-<edge source="29" target="96"/>
-<edge source="29" target="97"/>
-<edge source="29" target="98"/>
-<edge source="10" target="30"/>
-<edge source="30" target="99"/>
-<edge source="30" target="100"/>
+<edge source="5" target="13"/>
+<edge source="5" target="14"/>
+<edge source="5" target="15"/>
+<edge source="10" target="25"/>
+<edge source="10" target="26"/>
+<edge source="10" target="27"/>
+<edge source="10" target="28"/>
+<edge source="10" target="29"/>
+<edge source="11" target="30"/>
 <edge source="11" target="31"/>
 <edge source="11" target="32"/>
 <edge source="11" target="33"/>
-<edge source="11" target="34"/>
-<edge source="11" target="35"/>
+<edge source="12" target="34"/>
+<edge source="12" target="35"/>
 <edge source="12" target="36"/>
 <edge source="12" target="37"/>
 <edge source="12" target="38"/>
-<edge source="12" target="39"/>
+<edge source="13" target="39"/>
 <edge source="13" target="40"/>
-<edge source="13" target="41"/>
-<edge source="13" target="42"/>
-<edge source="14" target="43"/>
-<edge source="14" target="44"/>
-<edge source="14" target="45"/>
-<edge source="14" target="46"/>
-<edge source="14" target="47"/>
-<edge source="14" target="48"/>
-<edge source="14" target="49"/>
-<edge source="15" target="50"/>
-<edge source="15" target="51"/>
-<edge source="15" target="52"/>
-<edge source="15" target="53"/>
-<edge source="15" target="54"/>
-<edge source="16" target="55"/>
-<edge source="16" target="56"/>
-<edge source="16" target="57"/>
-<edge source="16" target="58"/>
-<edge source="16" target="59"/>
-<edge source="31" target="101"/>
-<edge source="31" target="102"/>
-<edge source="31" target="103"/>
-<edge source="32" target="104"/>
-<edge source="32" target="105"/>
-<edge source="32" target="106"/>
-<edge source="32" target="107"/>
-<edge source="32" target="108"/>
-<edge source="32" target="109"/>
-<edge source="33" target="110"/>
-<edge source="33" target="111"/>
-<edge source="33" target="112"/>
-<edge source="34" target="113"/>
-<edge source="34" target="114"/>
-<edge source="34" target="115"/>
-<edge source="34" target="116"/>
-<edge source="34" target="117"/>
-<edge source="35" target="118"/>
-<edge source="35" target="119"/>
-<edge source="35" target="120"/>
-<edge source="35" target="121"/>
-<edge source="35" target="122"/>
-<edge source="36" target="123"/>
-<edge source="36" target="124"/>
-<edge source="36" target="125"/>
-<edge source="36" target="126"/>
-<edge source="37" target="127"/>
-<edge source="37" target="128"/>
-<edge source="37" target="129"/>
-<edge source="37" target="130"/>
-<edge source="37" target="131"/>
-<edge source="37" target="132"/>
-<edge source="38" target="133"/>
-<edge source="38" target="134"/>
-<edge source="38" target="135"/>
-<edge source="38" target="136"/>
-<edge source="39" target="137"/>
-<edge source="39" target="138"/>
-<edge source="39" target="139"/>
-<edge source="39" target="140"/>
-<edge source="40" target="141"/>
-<edge source="40" target="142"/>
-<edge source="40" target="143"/>
-<edge source="41" target="144"/>
-<edge source="41" target="145"/>
-<edge source="41" target="146"/>
-<edge source="42" target="147"/>
-<edge source="42" target="148"/>
-<edge source="42" target="149"/>
-<edge source="43" target="150"/>
-<edge source="43" target="151"/>
-<edge source="43" target="152"/>
-<edge source="43" target="153"/>
-<edge source="43" target="154"/>
-<edge source="43" target="155"/>
-<edge source="44" target="156"/>
-<edge source="44" target="157"/>
-<edge source="44" target="158"/>
-<edge source="44" target="159"/>
-<edge source="44" target="160"/>
-<edge source="45" target="161"/>
-<edge source="45" target="162"/>
-<edge source="45" target="163"/>
-<edge source="45" target="164"/>
-<edge source="46" target="165"/>
-<edge source="46" target="166"/>
-<edge source="46" target="167"/>
-<edge source="46" target="168"/>
-<edge source="46" target="169"/>
-<edge source="46" target="170"/>
-<edge source="46" target="171"/>
-<edge source="47" target="172"/>
-<edge source="47" target="173"/>
-<edge source="47" target="174"/>
-<edge source="47" target="175"/>
-<edge source="47" target="176"/>
-<edge source="47" target="177"/>
-<edge source="48" target="178"/>
-<edge source="48" target="179"/>
-<edge source="48" target="180"/>
-<edge source="48" target="181"/>
-<edge source="48" target="182"/>
-<edge source="48" target="183"/>
-<edge source="49" target="184"/>
-<edge source="49" target="185"/>
-<edge source="49" target="186"/>
-<edge source="49" target="187"/>
-<edge source="49" target="188"/>
-<edge source="49" target="189"/>
-<edge source="50" target="190"/>
-<edge source="50" target="191"/>
-<edge source="50" target="192"/>
-<edge source="50" target="193"/>
-<edge source="51" target="194"/>
-<edge source="51" target="195"/>
-<edge source="51" target="196"/>
-<edge source="52" target="197"/>
-<edge source="52" target="198"/>
-<edge source="53" target="199"/>
-<edge source="53" target="200"/>
-<edge source="53" target="201"/>
-<edge source="53" target="202"/>
-<edge source="53" target="203"/>
-<edge source="53" target="204"/>
-<edge source="54" target="205"/>
-<edge source="54" target="206"/>
-<edge source="54" target="207"/>
-<edge source="54" target="208"/>
-<edge source="55" target="209"/>
-<edge source="55" target="210"/>
-<edge source="55" target="211"/>
-<edge source="55" target="212"/>
-<edge source="56" target="213"/>
-<edge source="56" target="214"/>
-<edge source="56" target="215"/>
-<edge source="57" target="216"/>
-<edge source="57" target="217"/>
-<edge source="58" target="218"/>
-<edge source="58" target="219"/>
-<edge source="58" target="220"/>
-<edge source="58" target="221"/>
-<edge source="58" target="222"/>
-<edge source="58" target="223"/>
-<edge source="59" target="224"/>
-<edge source="59" target="225"/>
-<edge source="59" target="226"/>
-<edge source="59" target="227"/>
+<edge source="7" target="16"/>
+<edge source="7" target="17"/>
+<edge source="7" target="18"/>
+<edge source="8" target="19"/>
+<edge source="8" target="20"/>
+<edge source="8" target="21"/>
+<edge source="9" target="22"/>
+<edge source="9" target="23"/>
+<edge source="9" target="24"/>
 </tree>

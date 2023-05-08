@@ -22,6 +22,11 @@ public class Jugador extends SearchBasedAgent {
 	public ArrayList<Pair<Action, Double>> getSearchActions() {
 		return searchActions;
 	}
+	
+	public Boolean gano() {
+		return jugadorState.gano;
+	}
+	
 	public void setSearchActions(ArrayList<Pair<Action, Double>> searchActions) {
 		this.searchActions = searchActions;
 	}

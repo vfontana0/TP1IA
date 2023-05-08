@@ -12,7 +12,7 @@ import javafx.util.Pair;
 
 public class PokemonMain {
 	ArrayList<Pair<Action, Double>> accionesEjecutadas;
-	
+	private Integer nodoInicio;
     public static void main(String[] args) throws PrologConnectorException {
     	//TODO Aca setear nodo inicial enttre los noos creados y luego pasarlo como parametro a los dos estados
     	Graph grafoAmbiente = new Graph();
@@ -91,7 +91,7 @@ public class PokemonMain {
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
-    	Integer nodoInicio = 27;
+    	nodoInicio = 27;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);
     	initGrafo(grafoAgente);
@@ -109,6 +109,10 @@ public class PokemonMain {
 
 	public void setAccionesEjecutadas(ArrayList<Pair<Action, Double>> accionesEjecutadas) {
 		this.accionesEjecutadas = accionesEjecutadas;
+	}
+	
+	public Integer getNodoInicio() {
+		return nodoInicio;
 	}
 	
 	

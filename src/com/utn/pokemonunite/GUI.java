@@ -178,16 +178,20 @@ public class GUI extends GameApplication {
     @Override
     protected void initGame() {
     	getGameScene().addUINode(new Text("Procesando algoritmo de busqueda..."));
+        
+        //Ejecuto el algoritmo
+        PokemonMain pokemonMain = new PokemonMain();
+        pokemonMain.startPokemon();
+    	Integer nroNodoInicio = pokemonMain.getNodoInicio();
+    	Posiciones posiciones = new Posiciones();
+    	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(nroNodoInicio);
+    	
+    	//Creo el player
         player = FXGL.entityBuilder()
-                .at(998, 665)
+                .at(posicionInicio.getKey(), posicionInicio.getValue())
                 .view(getClass().getResource("trainer.png"))
                 .buildAndAttach();
         player.setProperty("velocity", new Point2D(0,0));
-        
-        //Ejecuto el algoritmo
-        
-        PokemonMain pokemonMain = new PokemonMain();
-        pokemonMain.startPokemon();
         acciones = pokemonMain.getAccionesEjecutadas();
         
         

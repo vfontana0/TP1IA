@@ -21,6 +21,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
+	public Boolean gano = false; //algo de la gui
 	
 	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
 		this.grafo = grafo;

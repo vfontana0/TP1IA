@@ -1,26 +1,18 @@
-package pokemon.search.actions;
+package src.pokemon.search.actions;
 
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
-import pokemon.search.EstadoAmbiente;
-import pokemon.search.EstadoJugador;
+import src.pokemon.search.EstadoAmbiente;
+import src.pokemon.search.EstadoJugador;
 
 public class ElegirUsarRayoMeteorico extends SearchAction{
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-<<<<<<< HEAD
-<<<<<<< HEAD
-		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
-=======
-		 if(agState.getPoderes().get(1).getCantCiclos() == 3 && agState.getPoderes().get(1).getPuedoUsar()) {
->>>>>>> master
-=======
 		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getEnergiaGanada() >= 0.50*agState.getEnergiaInicial()) {
->>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.30);
 			 agState.getPoderes().get(1).setCantCiclos(3);
 			 agState.getPoderes().get(1).setPuedoUsar(false);
@@ -31,28 +23,14 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 
 	@Override
 	public Double getCost() {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		return 0.0; //no creo q tenga costo
-=======
 		return 2.0; //El segundo menos costoso
->>>>>>> master
 	}
 
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
-		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar()) {
-=======
-		 if(agState.getPoderes().get(1).getCantCiclos() == 3 && agState.getPoderes().get(1).getPuedoUsar()) {
->>>>>>> master
-=======
 		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getEnergiaGanada() >= 0.50*agState.getEnergiaInicial()) {
->>>>>>> master
 			 agState.setEnergia(agState.getEnergia()*1.30);
 			 environmentState.setEnergia(agState.getEnergia()*1.30);
 			 agState.getPoderes().get(1).setCantCiclos(3);

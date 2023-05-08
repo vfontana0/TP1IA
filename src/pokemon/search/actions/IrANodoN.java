@@ -1,26 +1,23 @@
-package pokemon.search.actions;
+package src.pokemon.search.actions;
 
 
-import domain.Nodo;
+import src.domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
-import pokemon.search.EstadoJugador;
-import pokemon.search.EstadoAmbiente;
+import src.pokemon.search.EstadoJugador;
+import src.pokemon.search.EstadoAmbiente;
 
 public class IrANodoN extends SearchAction {
 	Integer nodoNro;
 	
 	public IrANodoN(Integer i) {
 		this.nodoNro = i;
-<<<<<<< HEAD
 	}
 	
 	public Integer getNumero() {
 		return nodoNro;
-=======
->>>>>>> master
 	}
 	
 	@Override
@@ -44,7 +41,8 @@ public class IrANodoN extends SearchAction {
 		 Nodo nodoActual = agState.getUbicacion();
 		 Nodo destinoAgente = agState.getMapa().getVertex(nodoNro); //debe ser el de destino 
 		 Nodo destinoAmbiente = environmentState.getGrafo().getVertex(nodoNro);
-	     if((!nodoActual.getTienePokemon() || agState.getHuyoUltimoNodo()) && agState.getMapa().getNeighbors(destinoAgente).contains(nodoActual)) {
+	     if((!nodoActual.getTienePokemon() || agState.getHuyoUltimoNodo())
+	    		 && agState.getMapa().getNeighbors(destinoAgente).contains(nodoActual)) {
         	agState.setUbicacion(destinoAgente);
         	agState.setHuyoUltimoNodo(false);
         	environmentState.setUbicacion(destinoAmbiente);

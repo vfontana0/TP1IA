@@ -1,37 +1,26 @@
-package com.utn.pokemonunite;
+package src.com.utn.pokemonunite;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import javafx.animation.*;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.util.Pair;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
-import pokemon.search.*;
+import src.pokemon.search.*;
 import frsf.cidisi.faia.agent.Action;
-import pokemon.search.actions.*;
+import src.pokemon.search.actions.*;
 
 import com.almasb.fxgl.app.scene.LoadingScene;
 

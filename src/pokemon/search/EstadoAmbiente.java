@@ -1,14 +1,14 @@
-package pokemon.search;
+package src.pokemon.search;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import datastructures.Graph;
-import domain.Nivel;
-import domain.Nodo;
-import domain.Poder;
-import domain.Pokebola;
-import domain.Pokemon;
+import src.datastructures.Graph;
+import src.domain.Nivel;
+import src.domain.Nodo;
+import src.domain.Poder;
+import src.domain.Pokebola;
+import src.domain.Pokemon;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.state.EnvironmentState;
 

@@ -1,12 +1,11 @@
-package pokemon.search.actions;
+package src.pokemon.search.actions;
 
-import domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
-import pokemon.search.EstadoAmbiente;
-import pokemon.search.EstadoJugador;
+import src.pokemon.search.EstadoAmbiente;
+import src.pokemon.search.EstadoJugador;
 
 public class ElegirUsarRayoAurora extends SearchAction{
 

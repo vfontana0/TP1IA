@@ -1,13 +1,14 @@
-package pokemon.search;
+package src.pokemon.search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import datastructures.Graph;
-import domain.Nodo;
-import domain.PercepcionNodo;
-import domain.Poder;
+import src.datastructures.Graph;
+import src.domain.Nodo;
+import src.pokemon.search.*;
+import src.domain.PercepcionNodo;
+import src.domain.Poder;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -22,17 +23,10 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Boolean huyoUltimoNodo;
 	
 	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
-		this.energiaInicial = energia;
-		this.energia = energia;
-		this.nivel = 1;
-		this.energiaGanada = 0;
 		this.grafo = grafo;
 		this.ubicacion = this.grafo.getVertex(nodoInicio);
-		poderes = new ArrayList<>();
-		poderes.add(new Poder("Rayo Aurora", 3, false));
-		poderes.add(new Poder("Rayo Meteorico", 3, false));
-		poderes.add(new Poder("Rayo Solar", 3, false));
-		poderes.add(new Poder("Satelite", 10, false));
+		this.energia = energia;
+		this.energiaInicial = energia;
 		this.initState();
 	}
 	
@@ -100,7 +94,14 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 	 
 	 @Override
-		public void initState() { //TODO la ubicacion deberia ser la misma para ambos, generar en main
+		public void initState() {
+		    this.nivel = 1;
+			this.energiaGanada = 0;
+			poderes = new ArrayList<>();
+			poderes.add(new Poder("Rayo Aurora", 3, false));
+			poderes.add(new Poder("Rayo Meteorico", 3, false));
+			poderes.add(new Poder("Rayo Solar", 3, false));
+			poderes.add(new Poder("Satelite", 10, false));
 			this.huyoUltimoNodo = false;
 	 }
 	 

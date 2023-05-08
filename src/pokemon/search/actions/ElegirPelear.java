@@ -1,12 +1,12 @@
-package pokemon.search.actions;
+package src.pokemon.search.actions;
 
-import domain.Nodo;
+import src.domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
-import pokemon.search.EstadoAmbiente;
-import pokemon.search.EstadoJugador;
+import src.pokemon.search.EstadoAmbiente;
+import src.pokemon.search.EstadoJugador;
 
 public class ElegirPelear extends SearchAction{
 
@@ -44,17 +44,18 @@ public class ElegirPelear extends SearchAction{
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();
-			
-			//si es el maestro, actualizo que lo mate
-			//actualizar energia del agente
+
+			//actualizo energia y energia ganada
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
-			
 			estadoAmbiente.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
+			
+			//actualizo nodo del ambiente
 			actualAmbiente.getPokemon().setVivo(false); 
 			actualAmbiente.setPokemon(null);
 			actualAmbiente.setTienePokemon(false);
 			
+			//actualizo nodo del agente
 			actualAgente.getPokemon().setVivo(false); 
 			actualAgente.setPokemon(null);
 			actualAgente.setTienePokemon(false);
@@ -68,6 +69,13 @@ public class ElegirPelear extends SearchAction{
 	@Override
 	public String toString() {
 		return "Elegir pelear";
+	}
+
+
+	@Override
+	public Double getCost() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

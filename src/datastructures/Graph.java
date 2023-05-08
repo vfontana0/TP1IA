@@ -1,8 +1,7 @@
-package datastructures;
+package src.datastructures;
 
 import java.util.*;
-
-import domain.Nodo;
+import src.domain.Nodo;
 
 public class Graph {
     private Map<Nodo, List<Nodo>> adjVertices;

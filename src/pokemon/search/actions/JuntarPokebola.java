@@ -1,12 +1,12 @@
-package pokemon.search.actions;
+package src.pokemon.search.actions;
 
-import domain.Nodo;
+import src.domain.Nodo;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
-import pokemon.search.EstadoAmbiente;
-import pokemon.search.EstadoJugador;
+import src.pokemon.search.EstadoAmbiente;
+import src.pokemon.search.EstadoJugador;
 
 public class JuntarPokebola extends SearchAction{
 
@@ -23,11 +23,7 @@ public class JuntarPokebola extends SearchAction{
 
 	@Override
 	public Double getCost() {
-<<<<<<< HEAD
-		return 0.0;
-=======
 		return 0.0; //Siempre que llegue a una pokebola va a elegir absorber su energía.
->>>>>>> master
 	}
 
 	@Override

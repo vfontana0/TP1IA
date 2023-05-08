@@ -1,0 +1,73 @@
+<tree id="16" edgedefault="directed">
+<node Id="0" Action="null" Cost="0.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 9.818801012626169 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="1" Action="Elegir Huir" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="2" Action="Elegir Usar Rayo Meteorico" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 9.818801012626169 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="3" Action="Elegir usar Rayo Aurora" Cost="1.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 9.06350862703954 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="4" Action="IrANodo 9" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="5" Action="IrANodo 10" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="6" Action="IrANodo 15" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="7" Action="Elegir Usar Rayo Meteorico" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="8" Action="Elegir usar Rayo Aurora" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="15" Action="IrANodo 2" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 2 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="16" Action="IrANodo 10" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="17" Action="IrANodo 12" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 12 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="18" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="19" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="20" Action="Elegir pelear" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 1.3029238558662843 Energia ganada (relativa a inicial): 0.6724609077071886]"/>
+<node Id="21" Action="Elegir Huir" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 4.052923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="22" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="23" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="24" Action="IrANodo 16" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 16 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="25" Action="IrANodo 20" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 20 Energia: 5.302923855866284 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="26" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="27" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="28" Action="IrANodo 9" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="29" Action="IrANodo 10" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="30" Action="IrANodo 15" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.89380101262617 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="31" Action="Elegir usar Rayo Aurora" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 8.272561215151404 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="32" Action="IrANodo 9" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 9 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="33" Action="IrANodo 10" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 10 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="34" Action="IrANodo 15" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 15 Energia: 6.363508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="35" Action="Elegir Usar Rayo Meteorico" Cost="3.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 8.272561215151404 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="9" Action="Elegir pelear" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 2.618801012626169 Energia ganada (relativa a inicial): 0.7346299004092962]"/>
+<node Id="10" Action="Elegir Huir" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 7.568801012626169 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="11" Action="Elegir usar Rayo Aurora" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 11.782561215151402 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="12" Action="Elegir pelear" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 1.863508627039541 Energia ganada (relativa a inicial): 0.7346299004092962]"/>
+<node Id="13" Action="Elegir Huir" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 6.813508627039541 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<node Id="14" Action="Elegir Usar Rayo Meteorico" Cost="2.0" Estado_Agente=" [ Ubicacion: Nodo 11 Energia: 11.782561215151404 Energia ganada (relativa a inicial): 0.5947496668295539]"/>
+<edge source="0" target="1"/>
+<edge source="0" target="2"/>
+<edge source="0" target="3"/>
+<edge source="1" target="4"/>
+<edge source="1" target="5"/>
+<edge source="1" target="6"/>
+<edge source="1" target="7"/>
+<edge source="1" target="8"/>
+<edge source="2" target="9"/>
+<edge source="2" target="10"/>
+<edge source="2" target="11"/>
+<edge source="3" target="12"/>
+<edge source="3" target="13"/>
+<edge source="3" target="14"/>
+<edge source="4" target="15"/>
+<edge source="4" target="16"/>
+<edge source="4" target="17"/>
+<edge source="4" target="18"/>
+<edge source="4" target="19"/>
+<edge source="5" target="20"/>
+<edge source="5" target="21"/>
+<edge source="5" target="22"/>
+<edge source="5" target="23"/>
+<edge source="6" target="24"/>
+<edge source="6" target="25"/>
+<edge source="6" target="26"/>
+<edge source="6" target="27"/>
+<edge source="7" target="28"/>
+<edge source="7" target="29"/>
+<edge source="7" target="30"/>
+<edge source="7" target="31"/>
+<edge source="8" target="32"/>
+<edge source="8" target="33"/>
+<edge source="8" target="34"/>
+<edge source="8" target="35"/>
+</tree>

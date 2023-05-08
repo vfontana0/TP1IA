@@ -1,4 +1,4 @@
-package com.utn.pokemonunite;
+package src.com.utn.pokemonunite;
 
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.LoadingScene;

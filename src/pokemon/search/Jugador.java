@@ -1,7 +1,7 @@
-package pokemon.search;
+package src.pokemon.search;
 import java.util.Vector;
 import java.util.ArrayList;
-import datastructures.Graph;
+import src.datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
@@ -11,15 +11,10 @@ import frsf.cidisi.faia.solver.search.BreathFirstSearch;
 import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 import javafx.util.Pair;
-import pokemon.search.EstadoJugador;
-import pokemon.search.ObjetivoJugador;
-import pokemon.search.actions.ElegirHuir;
-import pokemon.search.actions.ElegirPelear;
-import pokemon.search.actions.ElegirUsarRayoAurora;
-import pokemon.search.actions.ElegirUsarRayoMeteorico;
-import pokemon.search.actions.ElegirUsarRayoSolar;
-import pokemon.search.actions.IrANodoN;
-import pokemon.search.actions.JuntarPokebola;
+import src.pokemon.search.EstadoJugador;
+import src.pokemon.search.ObjetivoJugador;
+import src.pokemon.search.actions.*;
+
 
 public class Jugador extends SearchBasedAgent {
 	private ArrayList<Pair<Action, Double>> searchActions;
@@ -32,10 +27,10 @@ public class Jugador extends SearchBasedAgent {
 	}
 
 
-	public Jugador(Graph grafo, Integer nodoInicio) {
+	public Jugador(Graph grafo, Integer nodoInicio, Double energia) {
 		searchActions = new ArrayList<>();
 		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-		jugadorState = new EstadoJugador(grafo, nodoInicio);
+		jugadorState = new EstadoJugador(grafo, nodoInicio, energia);
 		this.setAgentState(jugadorState);
 		Vector<SearchAction> operators = new Vector<SearchAction>();
 		
@@ -49,7 +44,7 @@ public class Jugador extends SearchBasedAgent {
 		operators.add(new ElegirUsarRayoSolar());
 		operators.add(new ElegirUsarRayoMeteorico());
 		operators.add(new ElegirUsarRayoAurora());
-		
+		operators.add(new ElegirUsarSatelite());
 		System.out.println("Operadores: " + operators.toString());
 		Problem problem = new Problem(jugadorGoal, jugadorState, operators);
 		this.setProblem(problem);
@@ -64,9 +59,34 @@ public class Jugador extends SearchBasedAgent {
 	
 	@Override
 	public Action selectAction() {
-		//DepthFirstSearch estrategiaBusqueda = new DepthFirstSearch();
 		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
+		
+
+        /**
+         * Another search strategy examples:
+         * 
+         * Depth First Search:
+         * DepthFirstSearch strategy = new DepthFirstSearch();
+         * 
+         * Breath First Search:
+         * BreathFirstSearch strategy = new BreathFirstSearch();
+         * 
+         * Uniform Cost:
+         * IStepCostFunction costFunction = new CostFunction();
+         * UniformCostSearch strategy = new UniformCostSearch(costFunction);
+         * 
+         * A Star Search:
+         * IStepCostFunction cost = new CostFunction();
+         * IEstimatedCostFunction heuristic = new Heuristic();
+         * AStarSearch strategy = new AStarSearch(cost, heuristic);
+         * 
+         * Greedy Search:
+         * IEstimatedCostFunction heuristic = new Heuristic();
+         * GreedySearch strategy = new GreedySearch(heuristic);
+         */
+		
 		Search busqueda = new Search(estrategiaBusqueda);
+		 busqueda.setVisibleTree(Search.EFAIA_TREE);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
 	        try {

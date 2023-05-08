@@ -31,6 +31,7 @@ public class GUI extends GameApplication {
     private Text textVida;
     private Text textAccion;
     private Text textResultado;
+    private Text textoEspacio;
     
     private ArrayList<Pair<Action, Double>> acciones;
     private Boolean gano;
@@ -51,7 +52,8 @@ public class GUI extends GameApplication {
     protected void initInput() {
         Posiciones posiciones = new Posiciones();
         boolean loPresiono = false;
-        FXGL.onKey(KeyCode.L, () -> {
+        FXGL.onKey(KeyCode.SPACE, () -> {
+        	textoEspacio.setVisible(false);
             try {
                 sleep(150);
             } catch (InterruptedException e) {
@@ -98,7 +100,7 @@ public class GUI extends GameApplication {
                     		textAccion.setText("¡El agente eligió juntar una pokebola!");
                     	}
 						try {
-							sleep(3500);
+							sleep(100);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -163,10 +165,14 @@ public class GUI extends GameApplication {
         textAccion.setTranslateY(30);
         
         textResultado = getUIFactoryService().newText("", Color.BLACK, 22);
-        textResultado.setTranslateX(30);
-        textResultado.setTranslateY(10);
+        textResultado.setTranslateX(500);
+        textResultado.setTranslateY(30);
         
-        getGameScene().addUINodes(textVida, textAccion, textResultado);
+        textoEspacio = getUIFactoryService().newText("Presione espacio para comenzar", Color.BLACK, 22);
+        textoEspacio.setTranslateX(350);
+        textoEspacio.setTranslateY(getAppHeight() - 50);
+        
+        getGameScene().addUINodes(textVida, textAccion, textResultado, textoEspacio);
 
     }
     

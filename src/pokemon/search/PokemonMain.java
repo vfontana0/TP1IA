@@ -1,11 +1,11 @@
-package src.pokemon.search;
+package pokemon.search;
 
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import src.datastructures.Graph;
-import src.domain.Nodo;
+import datastructures.Graph;
+import domain.Nodo;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
@@ -94,7 +94,7 @@ public class PokemonMain {
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
     	//Integer nodoInicio = (new Random()).nextInt(29) + 1;
-    	nodoInicio = 5;
+    	nodoInicio = 27;
     	Double energia = new Random().nextDouble(10)+10;
     	System.out.println("\u001B[32m" + "Arranca en Nodo " + nodoInicio + "\u001B[0m");
     	initGrafo(grafoAmbiente);

@@ -1,15 +1,13 @@
-package src.pokemon.search;
+package pokemon.search;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import src.datastructures.Graph;
-import src.domain.Nivel;
-import src.domain.Nodo;
-import src.domain.Poder;
-import src.domain.Pokebola;
-import src.domain.Pokemon;
-import frsf.cidisi.faia.agent.Action;
+import datastructures.Graph;
+import domain.Nodo;
+import domain.Poder;
+import domain.Pokebola;
+import domain.Pokemon;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class EstadoAmbiente extends EnvironmentState{
@@ -97,7 +95,7 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(9.0);
+		maestro.setEnergia(8.0);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);

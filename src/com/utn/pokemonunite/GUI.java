@@ -1,4 +1,4 @@
-package src.com.utn.pokemonunite;
+package com.utn.pokemonunite;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
-import src.pokemon.search.*;
+import pokemon.search.*;
 import frsf.cidisi.faia.agent.Action;
-import src.pokemon.search.actions.*;
+import pokemon.search.actions.*;
 
 import com.almasb.fxgl.app.scene.LoadingScene;
 
@@ -64,7 +64,8 @@ public class GUI extends GameApplication {
             	public void run() {
             		acciones.stream().forEach(action -> {
             			textAccion.setText("");
-                		textVida.setText("Energia: " + String.valueOf(action.getValue()));
+                		textVida.setText("Energia: " + String.format("%.2f", action.getValue()));
+
                     	if (action.getKey() instanceof IrANodoN) {;
                     		System.out.println("accion detectada");
             		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
@@ -100,7 +101,7 @@ public class GUI extends GameApplication {
                     		textAccion.setText("¡El agente eligió juntar una pokebola!");
                     	}
 						try {
-							sleep(100);
+							sleep(3500);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

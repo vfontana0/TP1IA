@@ -1,14 +1,14 @@
-package src.pokemon.search;
+package pokemon.search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import src.datastructures.Graph;
-import src.domain.Nodo;
-import src.pokemon.search.*;
-import src.domain.PercepcionNodo;
-import src.domain.Poder;
+import datastructures.Graph;
+import domain.Nodo;
+import pokemon.search.*;
+import domain.PercepcionNodo;
+import domain.Poder;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 

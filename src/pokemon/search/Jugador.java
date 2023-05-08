@@ -1,19 +1,17 @@
-package src.pokemon.search;
+package pokemon.search;
 import java.util.Vector;
 import java.util.ArrayList;
-import src.datastructures.Graph;
+import datastructures.Graph;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
-import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.Search;
 import javafx.util.Pair;
-import src.pokemon.search.EstadoJugador;
-import src.pokemon.search.ObjetivoJugador;
-import src.pokemon.search.actions.*;
+
+import pokemon.search.actions.*;
 
 
 public class Jugador extends SearchBasedAgent {

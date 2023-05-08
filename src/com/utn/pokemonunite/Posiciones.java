@@ -1,4 +1,4 @@
-package src.com.utn.pokemonunite;
+package com.utn.pokemonunite;
 
 import javafx.util.Pair;
 

@@ -1,4 +1,4 @@
-package src.pokemon.search;
+package pokemon.search;
 
 import frsf.cidisi.faia.agent.search.GoalTest;
 import frsf.cidisi.faia.state.AgentState;

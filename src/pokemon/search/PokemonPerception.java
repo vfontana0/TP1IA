@@ -1,12 +1,12 @@
-package src.pokemon.search;
+package pokemon.search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import src.domain.Nodo;
-import src.domain.PercepcionNodo;
+import domain.Nodo;
+import domain.PercepcionNodo;
 import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;

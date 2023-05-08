@@ -1,4 +1,4 @@
-package src.com.utn.pokemonunite;
+package com.utn.pokemonunite;
 
 import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.entity.component.Component;

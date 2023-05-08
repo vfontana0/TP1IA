@@ -13,7 +13,7 @@ public class PantallaCarga extends LoadingScene {
 	public PantallaCarga() {
 		var bg = new Rectangle(getAppWidth(), getAppHeight(),
 				Color.AZURE);
-		var text = getUIFactoryService().newText("Cargando algoritmo de búsqueda", Color.BLACK, 46.0);
+		var text = getUIFactoryService().newText("Eligiendo acciones a ejecutar...", Color.BLACK, 46.0);
 		centerText(text,getAppWidth()/2,getAppHeight()/3 +25);
 		
 		var hbox = new HBox(5);

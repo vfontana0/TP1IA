@@ -15,7 +15,7 @@ public class ElegirPelear extends SearchAction{
 		EstadoJugador estadoJugador = (EstadoJugador) s;
 		Nodo actual = estadoJugador.getUbicacion();
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actual.getTienePokemon()  && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
+		if(actual.getTienePokemon()  && !estadoJugador.getHuyoUltimoNodo() && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
 			Double energiaPokemon = actual.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
@@ -40,7 +40,7 @@ public class ElegirPelear extends SearchAction{
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();
 
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actualAgente.getTienePokemon() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
+		if(actualAgente.getTienePokemon() && !estadoJugador.getHuyoUltimoNodo() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();
@@ -72,10 +72,9 @@ public class ElegirPelear extends SearchAction{
 	}
 
 
-	@Override
 	public Double getCost() {
-		// TODO Auto-generated method stub
-		return null;
+		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
+				//uno u otro según la vida del pokemon adversario y no según este costo.
 	}
 	
 

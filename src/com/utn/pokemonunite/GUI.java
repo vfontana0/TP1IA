@@ -100,7 +100,7 @@ public class GUI extends GameApplication {
                     		textAccion.setText("¡El agente eligió juntar una pokebola!");
                     	}
 						try {
-							sleep(100);
+							sleep(3500);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

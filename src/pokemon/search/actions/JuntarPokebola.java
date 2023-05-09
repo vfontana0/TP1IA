@@ -13,6 +13,7 @@ public class JuntarPokebola extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estado = (EstadoJugador) s;
+		estado.incrementarCosto(this.getCost());
 		if(estado.getUbicacion().getTienePokebola()) {
 			estado.setEnergia(estado.getEnergia() + estado.getUbicacion().getPokebola().getPuntos());
 			estado.setEnergiaGanada(estado.getEnergiaGanada() + estado.getUbicacion().getPokebola().getPuntos());

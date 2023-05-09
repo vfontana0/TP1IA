@@ -8,7 +8,9 @@ import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
+import frsf.cidisi.faia.solver.search.UniformCostSearch;
 import javafx.util.Pair;
 
 import pokemon.search.actions.*;
@@ -62,7 +64,7 @@ public class Jugador extends SearchBasedAgent {
 	
 	@Override
 	public Action selectAction() {
-		BreathFirstSearch estrategiaBusqueda = new BreathFirstSearch();
+	
 		
 
         /**
@@ -73,11 +75,10 @@ public class Jugador extends SearchBasedAgent {
          * 
          * Breath First Search:
          * BreathFirstSearch strategy = new BreathFirstSearch();
-         * 
-         * Uniform Cost:
-         * IStepCostFunction costFunction = new CostFunction();
-         * UniformCostSearch strategy = new UniformCostSearch(costFunction);
-         * 
+         **/ 
+         IStepCostFunction costFunction = new FuncionCosto();
+         UniformCostSearch strategy = new UniformCostSearch(costFunction);
+         /* 
          * A Star Search:
          * IStepCostFunction cost = new CostFunction();
          * IEstimatedCostFunction heuristic = new Heuristic();
@@ -88,7 +89,7 @@ public class Jugador extends SearchBasedAgent {
          * GreedySearch strategy = new GreedySearch(heuristic);
          */
 		
-		Search busqueda = new Search(estrategiaBusqueda);
+		Search busqueda = new Search(strategy);
 		 busqueda.setVisibleTree(Search.EFAIA_TREE);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
@@ -96,6 +97,7 @@ public class Jugador extends SearchBasedAgent {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
 	            searchActions.add(new Pair(accionSeleccionada, jugadorState.getEnergia()));
 	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
+	            System.out.println("Costo: " + ((EstadoJugador) this.getAgentState()).getCosto());
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }

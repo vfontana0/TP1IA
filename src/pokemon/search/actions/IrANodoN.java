@@ -23,6 +23,7 @@ public class IrANodoN extends SearchAction {
 	@Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         EstadoJugador agState = (EstadoJugador) s;
+        agState.incrementarCosto(this.getCost());
         Nodo nodoActual = agState.getUbicacion();
         Nodo destino = agState.getMapa().getVertex(nodoNro);
 	     if((!nodoActual.getTienePokemon() || agState.getHuyoUltimoNodo()) && agState.getMapa().getNeighbors(destino).contains(nodoActual)) {
@@ -38,6 +39,7 @@ public class IrANodoN extends SearchAction {
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
+		agState.incrementarCosto(this.getCost());
 		 Nodo nodoActual = agState.getUbicacion();
 		 Nodo destinoAgente = agState.getMapa().getVertex(nodoNro); //debe ser el de destino 
 		 Nodo destinoAmbiente = environmentState.getGrafo().getVertex(nodoNro);
@@ -54,7 +56,7 @@ public class IrANodoN extends SearchAction {
 
 	@Override
 	public Double getCost() {
-		return 0.0; //No tiene costo moverse, pero si pelear o huir.
+		return 1.0; //No tiene costo moverse, pero si pelear o huir.
 	}
 
 	@Override

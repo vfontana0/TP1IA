@@ -17,6 +17,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Graph grafo;
 	private double energia;
 	private double energiaInicial;
+	private double costo;
 	private int nivel;
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
@@ -175,8 +176,18 @@ public class EstadoJugador extends SearchBasedAgentState {
 		this.huyoUltimoNodo = huyoUltimoNodo;
 	}
 
+	public double getCosto() {
+		return costo;
+	}
+
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+
 	
-	
+	public void incrementarCosto(double costo) {
+		this.costo+=costo;
+	}
 	
 	
 	

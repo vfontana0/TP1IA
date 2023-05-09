@@ -31,6 +31,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
+		agState.incrementarCosto(this.getCost());
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0
 				 && agState.getPoderes().get(2).getPuedoUsar() 
 				 && agState.getEnergiaGanada() >= 0.75*agState.getEnergiaInicial()) {

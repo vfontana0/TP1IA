@@ -13,6 +13,7 @@ public class ElegirPelear extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estadoJugador = (EstadoJugador) s;
+		estadoJugador.incrementarCosto(this.getCost());
 		Nodo actual = estadoJugador.getUbicacion();
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
 		if(actual.getTienePokemon()  && !estadoJugador.getHuyoUltimoNodo() && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
@@ -35,6 +36,7 @@ public class ElegirPelear extends SearchAction{
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoJugador estadoJugador = (EstadoJugador) ast;
+		estadoJugador.incrementarCosto(this.getCost());
 		EstadoAmbiente estadoAmbiente = (EstadoAmbiente) est;
 		Nodo actualAgente = estadoJugador.getUbicacion();
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();

@@ -107,7 +107,43 @@ public class Graph {
 	public void setAdjVertices(Map<Nodo, List<Nodo>> adjVertices) {
 		this.adjVertices = adjVertices;
 	}
+
+	public int getHeuristica(Nodo ubicacion) {
+		return this.dijkstra(ubicacion, this.getVertex(11)); //distancia entre el actual y nodo 11
+	}
 	
+	private int dijkstra(Nodo origen, Nodo destino) {
+	    Map<Nodo, Integer> distancia = new HashMap<>();
+	    Set<Nodo> visitados = new HashSet<>();
+	    PriorityQueue<Nodo> cola = new PriorityQueue<>(Comparator.comparingInt(distancia::get));
+	    
+	    // Inicializar la distancia de todos los nodos como infinito, excepto el nodo origen que tiene distancia 0
+	    for (Nodo nodo : adjVertices.keySet()) {
+	        distancia.put(nodo, Integer.MAX_VALUE);
+	    }
+	    distancia.put(origen, 0);
+	    cola.add(origen);
+	    
+	    while (!cola.isEmpty()) {
+	        Nodo actual = cola.poll();
+	        visitados.add(actual);
+	        List<Nodo> vecinos = adjVertices.get(actual);
+	        for (Nodo vecino : vecinos) {
+	            if (!visitados.contains(vecino)) {
+	                int peso = distancia.get(actual) + 1;
+	                if (peso < distancia.get(vecino)) {
+	                    distancia.put(vecino, peso);
+	                    cola.add(vecino);
+	                }
+	            }
+	        }
+	    }
+	    
+	    return distancia.get(destino);
+	}
+
+
+
 	
 }
     

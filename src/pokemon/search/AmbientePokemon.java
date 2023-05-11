@@ -88,7 +88,13 @@ public class AmbientePokemon extends Environment{
 				elegido.setTienePokemon(true);
 				elegido.setPokemon(n.getPokemon());
 				return 1;
-		}
+		
+		
+		
+		
+			}
+
+
 
 		@Override
 		public String toString() {

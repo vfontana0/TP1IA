@@ -8,6 +8,8 @@ import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.GreedySearch;
+import frsf.cidisi.faia.solver.search.IEstimatedCostFunction;
 import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
 import frsf.cidisi.faia.solver.search.UniformCostSearch;
@@ -75,19 +77,19 @@ public class Jugador extends SearchBasedAgent {
          * 
          * Breath First Search:
          * BreathFirstSearch strategy = new BreathFirstSearch();
-         **/ 
+         
          IStepCostFunction costFunction = new FuncionCosto();
          UniformCostSearch strategy = new UniformCostSearch(costFunction);
-         /* 
+
+         
          * A Star Search:
          * IStepCostFunction cost = new CostFunction();
          * IEstimatedCostFunction heuristic = new Heuristic();
          * AStarSearch strategy = new AStarSearch(cost, heuristic);
-         * 
-         * Greedy Search:
-         * IEstimatedCostFunction heuristic = new Heuristic();
-         * GreedySearch strategy = new GreedySearch(heuristic);
-         */
+         *          **/ 
+          IEstimatedCostFunction heuristic = new Heuristica();
+          GreedySearch strategy = new GreedySearch(heuristic);
+         
 		
 		Search busqueda = new Search(strategy);
 		 busqueda.setVisibleTree(Search.EFAIA_TREE);
@@ -96,8 +98,7 @@ public class Jugador extends SearchBasedAgent {
 	        try {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
 	            searchActions.add(new Pair(accionSeleccionada, jugadorState.getEnergia()));
-	            System.out.println("Accion seleccionada: " + accionSeleccionada.toString());
-	            System.out.println("Costo: " + ((EstadoJugador) this.getAgentState()).getCosto());
+	            System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
 	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }

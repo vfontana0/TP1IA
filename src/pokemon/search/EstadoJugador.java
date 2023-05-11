@@ -53,9 +53,12 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    
 	 }
 	 
+	 //el equals solo funciona entre nodos en el mismo tree
+	 // como hacer que no vuelva en distintos
+	 
 		@Override
 		public boolean equals(Object obj) {
-			EstadoJugador est = (EstadoJugador) obj;
+			EstadoJugador est = (EstadoJugador) obj; 
 			return this.ubicacion.equals(est.getUbicacion()) 
 					&& this.getEnergia() == est.getEnergia(); 
 

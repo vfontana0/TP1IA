@@ -7,11 +7,14 @@ import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
+import frsf.cidisi.faia.solver.search.AStarSearch;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.GreedySearch;
 import frsf.cidisi.faia.solver.search.IEstimatedCostFunction;
 import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
+import frsf.cidisi.faia.solver.search.Strategy;
 import frsf.cidisi.faia.solver.search.UniformCostSearch;
 import javafx.util.Pair;
 
@@ -20,6 +23,7 @@ import pokemon.search.actions.*;
 
 public class Jugador extends SearchBasedAgent {
 	private ArrayList<Pair<Action, Double>> searchActions;
+	private Integer nroEstrategia;
 	EstadoJugador jugadorState;
 	public ArrayList<Pair<Action, Double>> getSearchActions() {
 		return searchActions;
@@ -34,9 +38,10 @@ public class Jugador extends SearchBasedAgent {
 	}
 
 
-	public Jugador(Graph grafo, Integer nodoInicio, Double energia) {
+	public Jugador(Graph grafo, Integer nodoInicio, Double energia, Integer nroEstrategia) {
 		searchActions = new ArrayList<>();
 		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
+		this.nroEstrategia = nroEstrategia; //
 		jugadorState = new EstadoJugador(grafo, nodoInicio, energia);
 		this.setAgentState(jugadorState);
 		Vector<SearchAction> operators = new Vector<SearchAction>();
@@ -67,43 +72,61 @@ public class Jugador extends SearchBasedAgent {
 	@Override
 	public Action selectAction() {
 	
-		
-
-        /**
-         * Another search strategy examples:
-         * 
-         * Depth First Search:
-         * DepthFirstSearch strategy = new DepthFirstSearch();
-         * 
-         * Breath First Search:
-         * BreathFirstSearch strategy = new BreathFirstSearch();
-         
-         IStepCostFunction costFunction = new FuncionCosto();
-         UniformCostSearch strategy = new UniformCostSearch(costFunction);
-
-         
-         * A Star Search:
-         * IStepCostFunction cost = new CostFunction();
-         * IEstimatedCostFunction heuristic = new Heuristic();
-         * AStarSearch strategy = new AStarSearch(cost, heuristic);
-         *          **/ 
-          IEstimatedCostFunction heuristic = new Heuristica();
-          GreedySearch strategy = new GreedySearch(heuristic);
-         
-		
+		/*
+		 * 1 --> dfs
+		 * 2 --> bfs
+		 * 3 --> cu
+		 * 4 --> greedy
+		 * 5 --> a*
+		 */
+		Strategy strategy = this.elegirEstrategia(this.nroEstrategia);
 		Search busqueda = new Search(strategy);
 		 busqueda.setVisibleTree(Search.EFAIA_TREE);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
 	        try {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
-	            searchActions.add(new Pair(accionSeleccionada, jugadorState.getEnergia()));
-	            System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
-	        } catch (Exception ex) {
+	            searchActions.add(new Pair<Action, Double>(accionSeleccionada, jugadorState.getEnergia()));
+	           System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
+	            } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }
 	        return accionSeleccionada;
 		
+	}
+	
+	public Strategy elegirEstrategia(Integer estrategia) {
+		Strategy retorno = null;
+		switch(estrategia) { 
+		case 1: {//dfs
+		    retorno = new DepthFirstSearch();
+			break; 
+		}
+		case 2: {//bfs
+			retorno = new BreathFirstSearch();
+			break;
+		}
+		case 3: {//costo uniforme
+			 IStepCostFunction costFunction = new FuncionCosto();
+		     retorno = new UniformCostSearch(costFunction);
+			break;
+		}
+		case 4:{ //greedy
+			Heuristica heuristica = new Heuristica();
+			retorno = new GreedySearch(heuristica);
+			break;
+		}
+		case 5: {//a+
+			Heuristica heuristica = new Heuristica();
+			IStepCostFunction costFunction = new FuncionCosto();
+			retorno = new AStarSearch(costFunction, heuristica);
+		}
+			
+			break;
+		}
+		//problema del dfs: se queda iterando entre dos nodos.
+		
+		return retorno;
 	}
 
 	

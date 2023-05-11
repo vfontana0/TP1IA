@@ -84,7 +84,7 @@ public class Graph {
 	}
 
 	public int getHeuristica(Nodo ubicacion) {
-		return this.dijkstra(ubicacion, this.getVertex(11)); //distancia entre el actual y nodo 11
+		return this.dijkstra(ubicacion, this.getVertex(18)); //distancia entre el actual y nodo 11
 	}
 	
 	private int dijkstra(Nodo origen, Nodo destino) {

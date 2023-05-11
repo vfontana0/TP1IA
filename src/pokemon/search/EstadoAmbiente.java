@@ -54,7 +54,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		Integer cont2 = 0;
 		while(cont2 < 11) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != 18) {
 				System.out.println("Numero de nodos donde hay pokemon" + nroNodo);
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokemon pk = new Pokemon();
@@ -77,7 +77,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		Integer cont = 0;
 		while(cont < 5) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 18) {
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokebola pk = new Pokebola();
 				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
@@ -95,13 +95,13 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(8.0);
+		maestro.setEnergia(13.0);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);
 		maestro.setEsMaestro(true);
-		grafo.getVertex(11).setTienePokemon(true);
-		grafo.getVertex(11).setPokemon(maestro);
+		grafo.getVertex(18).setTienePokemon(true);
+		grafo.getVertex(18).setPokemon(maestro);
 		
 	}
 

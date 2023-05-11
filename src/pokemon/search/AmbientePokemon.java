@@ -45,7 +45,7 @@ public class AmbientePokemon extends Environment{
 			 * 
 			 */
 			for(Nodo n : ((EstadoAmbiente )this.environmentState).getGrafo().getAllVertices()) { //para cada nodo
-					if(n.getTienePokemon() && n.getNumero() != 11) { // si tiene pokemon y no es el pokemon maestro
+					if(n.getTienePokemon() && n.getNumero() != 18) { // si tiene pokemon y no es el pokemon maestro
 						if(n.getPokemon().getCiclosParaMoverse() > 0) //si todav no se tiene q mover, resto uno
 							n.getPokemon().setCiclosParaMoverse(n.getPokemon().getCiclosParaMoverse()-1);
 						else { //si se tiene que mover

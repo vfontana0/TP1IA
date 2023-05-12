@@ -16,7 +16,6 @@ public class PokemonMain {
 	private static Integer nodoInicio;
 	private static Boolean gano;
     public static void main(String[] args) throws PrologConnectorException {
-    
     	PokemonMain.startPokemon();
     }
     
@@ -28,10 +27,12 @@ public class PokemonMain {
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
     	
-    	//Seteo del nodo inicial, estrategia y energia
-    	nodoInicio = (new Random()).nextInt(29) + 1;
-        Integer nroEstrategia = 5; 
-    	Double energia = (new Random()).nextDouble(10)+10;
+    	//Seteo del nodo inicial, estrategia y energia del agente y maestro
+    	Datos.nodoInicio = (new Random()).nextInt(29) + 1;
+    	Datos.energiaJugador = (new Random()).nextDouble(10)+10;
+    	Datos.nodoMaestro = 18;
+    	Datos.energiaMaestro = 9.0;
+    	Datos.nroEstrategia = 3;
     	
     	
     	//agregar nodos y conexiones al mapa
@@ -39,8 +40,8 @@ public class PokemonMain {
     	grafoAgente.initGrafo();
     	
     	
-        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente, nodoInicio, energia);//ambiente pokemon PASAR GRAFO Y CARGAR COSAS
-        Jugador agent = new Jugador(grafoAgente, nodoInicio, energia, nroEstrategia); //jugador --> crea PASAR GRAFO NOMAS
+        AmbientePokemon environment = new AmbientePokemon(grafoAmbiente);//ambiente pokemon PASAR GRAFO Y CARGAR COSAS
+        Jugador agent = new Jugador(grafoAgente); //jugador --> crea PASAR GRAFO NOMAS
         SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
         

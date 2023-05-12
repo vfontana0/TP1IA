@@ -17,17 +17,17 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Graph grafo;
 	private double energia;
 	private double energiaInicial;
-	private double costo;
+	private double costo=0.0;
 	private int nivel;
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
 	public Boolean gano = false; //algo de la gui
 	
-	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
+	public EstadoJugador(Graph grafo) {
 		this.grafo = grafo;
-		this.ubicacion = this.grafo.getVertex(nodoInicio);
-		this.energia = energia;
+		this.ubicacion = this.grafo.getVertex(Datos.nodoInicio);
+		this.energia = Datos.energiaJugador;
 		this.energiaInicial = energia;
 		this.initState();
 	}
@@ -35,8 +35,9 @@ public class EstadoJugador extends SearchBasedAgentState {
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero(), this.getEnergia());
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
+	    nuevoEstado.setEnergia(this.getEnergia());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
 	    nuevoEstado.setNivel(this.getNivel());

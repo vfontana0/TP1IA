@@ -3,20 +3,18 @@ package pokemon.search;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import pokemon.search.*;
 import datastructures.Graph;
 import domain.Nodo;
 import domain.PercepcionNodo;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
-import frsf.cidisi.faia.state.AgentState;
 
 public class AmbientePokemon extends Environment{
 	Integer cantCiclos;
 
-		public AmbientePokemon(Graph grafoAmbiente, Integer nodoInicio, Double energia) {
-			this.environmentState = new EstadoAmbiente(grafoAmbiente, nodoInicio, energia);
+		public AmbientePokemon(Graph grafoAmbiente) {
+			this.environmentState = new EstadoAmbiente(grafoAmbiente);
 		}
 
 		@Override
@@ -88,9 +86,6 @@ public class AmbientePokemon extends Environment{
 				elegido.setTienePokemon(true);
 				elegido.setPokemon(n.getPokemon());
 				return 1;
-		
-		
-		
 		
 			}
 

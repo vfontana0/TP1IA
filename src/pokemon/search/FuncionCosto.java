@@ -12,7 +12,6 @@ public class FuncionCosto implements IStepCostFunction {
 
     @Override
     public double calculateCost(NTree node) {
-        // TODO Auto-generated method stub
-        return 0;
+    	return 0;
     }
 }

@@ -187,7 +187,7 @@ public class GUI extends GameApplication {
         pokemonMain.startPokemon();
        	Integer nroNodoInicio = pokemonMain.getNodoInicio();
     	Posiciones posiciones = new Posiciones();
-    	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(nroNodoInicio);
+    	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(Datos.nodoInicio);
 
     	//Creo el player
         player = FXGL.entityBuilder()

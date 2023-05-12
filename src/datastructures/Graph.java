@@ -2,6 +2,7 @@ package datastructures;
 
 import java.util.*;
 import domain.Nodo;
+import pokemon.search.Datos;
 
 public class Graph {
     private Map<Nodo, List<Nodo>> adjVertices;
@@ -84,7 +85,7 @@ public class Graph {
 	}
 
 	public int getHeuristica(Nodo ubicacion) {
-		return this.dijkstra(ubicacion, this.getVertex(18)); //distancia entre el actual y nodo 11
+		return this.dijkstra(ubicacion, this.getVertex(Datos.nodoMaestro)); //distancia entre el actual y nodo 11
 	}
 	
 	private int dijkstra(Nodo origen, Nodo destino) {

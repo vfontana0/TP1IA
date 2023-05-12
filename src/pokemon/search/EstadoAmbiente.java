@@ -137,6 +137,7 @@ public class EstadoAmbiente extends EnvironmentState{
 	public void setEnergia(Double energia) {
 		this.energia = energia;
 	}
-	
+
+
 
 }

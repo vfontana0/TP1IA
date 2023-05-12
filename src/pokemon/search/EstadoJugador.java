@@ -68,7 +68,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 		@Override
 		public void updateState(Perception p) {
-	    
+			
 			//actualizar estado en base a las percepciones
 			PokemonPerception per = (PokemonPerception) p;
 			HashMap<Integer, PercepcionNodo> percepciones = per.getPercepcionesAdyacentes(); // obtengo percepciones
@@ -77,6 +77,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 				this.grafo.getVertex(nroNodo).actualizar(percepciones.get(nroNodo)); //actualizo cada nodo vecino con info de la percepcion
 			}
 		    this.actualizarCiclos();
+		    this.incrementarNivel();
 			
 		}
 			 
@@ -92,7 +93,22 @@ public class EstadoJugador extends SearchBasedAgentState {
 			}
 		}
 		
-
+		private void incrementarNivel() {
+			if(this.energiaGanada > 0.25*this.energiaInicial && this.energiaGanada < 0.50*this.energiaInicial)
+				this.nivel = 2;
+			if(this.energiaGanada > 0.5*this.energiaInicial && this.energiaGanada < 0.75*this.energiaInicial)
+				this.nivel = 3;
+			if(this.energiaGanada > 0.75*this.energiaInicial && this.energiaGanada < 1*this.energiaInicial)
+				this.nivel = 4;
+			if(this.energiaGanada > 1*this.energiaInicial && this.energiaGanada < 1.25*this.energiaInicial)
+				this.nivel = 5; 
+			if(this.energiaGanada > 1.25*this.energiaInicial && this.energiaGanada < 1.50*this.energiaInicial)
+				this.nivel = 6;
+			if(this.energiaGanada > 1.5*this.energiaInicial)
+				this.nivel = 7;
+			System.out.println("Flaco subiste al nivel " + this.nivel);
+		}
+		
 		@Override
 		public String toString() {
 			return " [ Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia() + " Energia ganada (relativa a inicial): " + this.getEnergiaGanada()/this.getEnergiaInicial() + "]";

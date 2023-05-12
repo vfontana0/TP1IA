@@ -132,13 +132,9 @@ public class GUI extends GameApplication {
         settings.setHeight(768);
         settings.setTitle("Pokemon Unite");
         settings.setVersion("0.1");
+        settings.setMainMenuEnabled(true);
+        settings.setSceneFactory(new PokemonSceneFactory());
         
-        settings.setSceneFactory(new SceneFactory() {
-        	@Override
-        		public LoadingScene newLoadingScene() {
-        			return new PantallaCarga();
-        	}
-        });
     }
     
     @Override

@@ -40,7 +40,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		poderes.add(new Poder("Satelite", 10, false));
 		//posicion inicial del agente --> deberia ser aleatoria
 
-		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
+		this.setearMaestro(); //genera al maestro y lo setea en el nodo del maestro
 		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
 		this.generarPokemones(); //genera pokemones en nodos aleatorios
 		

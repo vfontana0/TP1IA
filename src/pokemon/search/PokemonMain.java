@@ -27,11 +27,11 @@ public class PokemonMain {
     	Graph grafoAgente = new Graph();
     	
     	//Seteo del nodo inicial, estrategia y energia del agente y maestro
-    	Datos.nodoInicio = (new Random()).nextInt(29) + 1;
-    	Datos.energiaJugador = (new Random()).nextDouble(10)+10;
+    	Datos.nodoInicio = 1;
+    	Datos.energiaJugador = 15.0;
     	Datos.nodoMaestro = 18;
     	Datos.energiaMaestro = 9.0;
-    	Datos.nroEstrategia = config.leeAlgoritmo();
+    	Datos.nroEstrategia = 4;
     	System.out.println("Estrategia: " + Datos.nroEstrategia);
     	
     	//agregar nodos y conexiones al mapa

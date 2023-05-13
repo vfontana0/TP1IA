@@ -19,7 +19,7 @@ public class AmbientePokemon extends Environment{
 
 		@Override
 		public Perception getPercept() {
-	        this.ciclosPokemones(); //muevo los pokemones antes de percibir
+	       // this.ciclosPokemones(); //muevo los pokemones antes de percibir
 	        
 			PokemonPerception perception = new PokemonPerception();
 	        Nodo actual = ((EstadoAmbiente) environmentState).getUbicacion();

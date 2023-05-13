@@ -45,19 +45,17 @@ public class Jugador extends SearchBasedAgent {
 		jugadorState = new EstadoJugador(grafo);
 		this.setAgentState(jugadorState);
 		Vector<SearchAction> operators = new Vector<SearchAction>();
-		
-		for(int i=1; i<=29; i++) {
-			operators.add(new IrANodoN(i));
-		}
-		
 		operators.add(new JuntarPokebola());
-		operators.add(new ElegirPelear());
 		operators.add(new ElegirHuir());
+		operators.add(new ElegirPelear());
 		operators.add(new ElegirUsarRayoSolar());
 		operators.add(new ElegirUsarRayoMeteorico());
 		operators.add(new ElegirUsarRayoAurora());
 		operators.add(new ElegirUsarSatelite());
-		System.out.println("Operadores: " + operators.toString());
+		for(int i=1; i<=29; i++) {
+			operators.add(new IrANodoN(i));
+		}
+		
 		Problem problem = new Problem(jugadorGoal, jugadorState, operators);
 		this.setProblem(problem);
 	}

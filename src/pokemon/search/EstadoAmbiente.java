@@ -52,9 +52,9 @@ public class EstadoAmbiente extends EnvironmentState{
 	private void generarPokemones() {
 		Random rand = new Random();
 		Integer cont2 = 0;
-		while(cont2 < 11) {
+		while(cont2 < 3) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro) {
+			if(!nroNodoPokemones.contains(nroNodo) && (nroNodo == 2 || nroNodo == 13 || nroNodo == 15)) {
 				System.out.println("Numero de nodos donde hay pokemon" + nroNodo);
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokemon pk = new Pokemon();
@@ -75,13 +75,13 @@ public class EstadoAmbiente extends EnvironmentState{
 	private void generarPokebolas() {
 		Random rand = new Random();
 		Integer cont = 0;
-		while(cont < 5) {
+		while(cont < 2) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro) {
+			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro  && (nroNodo==16 || nroNodo==20)) {
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokebola pk = new Pokebola();
 				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
-				pk.setPuntos(Math.random()%6+5); //cant de puntos entre 5 y 10
+				pk.setPuntos(5.0);//cant de puntos entre 5 y 10
 				random.setPokebola(pk);
 				random.setTienePokebola(true);
 				nroNodoPokebolas.add(nroNodo);
@@ -95,7 +95,7 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(Datos.energiaMaestro);
+		maestro.setEnergia(9.0);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);

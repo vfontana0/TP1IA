@@ -75,7 +75,7 @@ public class ElegirPelear extends SearchAction{
 
 
 	public Double getCost() {
-		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
+		return 1.0; //Pelear y Huir tienen el mismo costo para que se elija 
 				//uno u otro según la vida del pokemon adversario y no según este costo.
 	}
 	

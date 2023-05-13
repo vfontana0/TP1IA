@@ -12,6 +12,7 @@ public class Heuristica implements IEstimatedCostFunction {
 		public double getEstimatedCost(NTree node) {
 			EstadoJugador estado = (EstadoJugador) node.getAgentState();
 			Double heuristica = estado.getMapa().getHeuristica(estado);
+			System.out.println("Heuristica: " + heuristica);
 			return heuristica;
 		}
     

@@ -50,7 +50,7 @@ public class ElegirHuir extends SearchAction {
 
 	@Override
 	public Double getCost() {
-		return 2.0; //Pelear y Huir tienen el mismo costo para que se elija 
+		return 75.0; //Pelear y Huir tienen el mismo costo para que se elija 
 				//uno u otro según la vida del pokemon adversario y no según este costo.
 				//energiaInicial - 0.8energiaPokemon <-- Pelear
 				//energiaInicial - 0.25energiaPokemon <-- huir (tiene menos costo de energia)

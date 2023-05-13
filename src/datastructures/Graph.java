@@ -86,42 +86,52 @@ public class Graph {
 	}
 
 	public double getHeuristica(EstadoJugador estado) {
-		return this.dijkstra(estado.getUbicacion(), this.getVertex(Datos.nodoMaestro), estado.getMapa()); //distancia entre el actual y nodo 11
+		return this.bellmanFord(estado.getUbicacion(), this.getVertex(Datos.nodoMaestro), estado.getMapa()); //distancia entre el actual y nodo 11
 	}
 	
-	private double dijkstra(Nodo origen, Nodo destino, Graph mapa) {
+	private double bellmanFord(Nodo origen, Nodo destino, Graph mapa) {
 	    Map<Nodo, Double> distancia = new HashMap<>();
-	    Set<Nodo> visitados = new HashSet<>();
-	    PriorityQueue<Nodo> cola = new PriorityQueue<>(Comparator.comparingDouble(distancia::get));
-	    
 	    // Inicializar la distancia de todos los nodos como infinito, excepto el nodo origen que tiene distancia 0
 	    for (Nodo nodo : adjVertices.keySet()) {
 	        distancia.put(nodo, Double.MAX_VALUE);
 	    }
 	    distancia.put(origen, 0.0);
-	    cola.add(origen);
 	    
-	    while (!cola.isEmpty()) {
-	        Nodo actual = cola.poll();
-	        visitados.add(actual);
-	        List<Nodo> vecinos = adjVertices.get(actual);
-	        for (Nodo vecino : vecinos) {
-	            if (!visitados.contains(vecino)) {
-	            	double peso;
-	            	if(mapa.getVertex(vecino.getNumero()).getTienePokemon()) //si tiene pokemon
-	            		peso = distancia.get(actual) + mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peos es la energia del pokemon
-	            	else
-	            		peso = 1; //sino es uno
+	    // Realizar n-1 iteraciones para actualizar las distancias mínimas de cada nodo
+	    for (int i = 0; i < adjVertices.size() - 1; i++) {
+	        for (Nodo nodo : adjVertices.keySet()) {
+	            List<Nodo> vecinos = adjVertices.get(nodo);
+	            for (Nodo vecino : vecinos) {
+	            	 double peso = 1 + distancia.get(nodo);
+	 	            if(mapa.getVertex(vecino.getNumero()).getTienePokemon()) //si tiene pokemon
+	 	                peso += mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peso es la energia del pokemon
+	 	            if(mapa.getVertex(vecino.getNumero()).getTienePokebola()) //si tiene pokemon
+	 	                peso = distancia.get(nodo); //peso es la energia del pokemon
 	                if (peso < distancia.get(vecino)) {
 	                    distancia.put(vecino, peso);
-	                    cola.add(vecino);
 	                }
+	            }
+	        }
+	    }
+	    
+	    // Verificar si hay ciclo negativo
+	    for (Nodo nodo : adjVertices.keySet()) {
+	        List<Nodo> vecinos = adjVertices.get(nodo);
+	        for (Nodo vecino : vecinos) {
+	            double peso = 1 + distancia.get(nodo);
+	            if(mapa.getVertex(vecino.getNumero()).getTienePokemon()) //si tiene pokemon
+	                peso += mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peso es la energia del pokemon
+	            if(mapa.getVertex(vecino.getNumero()).getTienePokebola()) //si tiene pokemon
+	            	peso = distancia.get(nodo);  //peso es la energia del pokemon
+	            if (peso < distancia.get(vecino)) {
+	                throw new RuntimeException("El grafo contiene un ciclo negativo");
 	            }
 	        }
 	    }
 	    
 	    return distancia.get(destino);
 	}
+
 
 
 	private void agregarConexiones(ArrayList<Nodo> nodos, Graph grafo) {

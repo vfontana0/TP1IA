@@ -14,6 +14,5 @@ public class Heuristica implements IEstimatedCostFunction {
 			Integer heuristica = estado.getMapa().getHeuristica(estado.getUbicacion());
 			return heuristica;
 		}
-
-	    
+    
 	}

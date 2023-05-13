@@ -81,7 +81,7 @@ public class Jugador extends SearchBasedAgent {
 		 */
 		Strategy strategy = this.elegirEstrategia(this.nroEstrategia);
 		Search busqueda = new Search(strategy);
-		 busqueda.setVisibleTree(Search.EFAIA_TREE);
+		busqueda.setVisibleTree(Search.GRAPHVIZ_TREE);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
 	        try {

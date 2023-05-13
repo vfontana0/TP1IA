@@ -1,8 +1,8 @@
 package datastructures;
 
 import java.util.*;
-
 import domain.Nodo;
+import pokemon.search.Datos;
 
 public class Graph {
     private Map<Nodo, List<Nodo>> adjVertices;
@@ -43,6 +43,23 @@ public class Graph {
         return null;
     }
     
+	public void initGrafo() {
+		ArrayList<Nodo> nodos = new ArrayList<>();
+		nodos.add(0, null);
+		for(int i=1; i<=29; i++) {
+			Nodo actual = new Nodo();
+			actual.setNumero(i);
+			actual.setTienePokebola(false);
+			actual.setPokebola(null);
+			actual.setTienePokemon(false);
+			actual.setPokemon(null);
+			nodos.add(i, actual);
+			this.addVertex(actual);
+		}
+		this.agregarConexiones(nodos, this);
+	}
+    
+    
     public Graph clone() {
         ArrayList<Nodo> nodos = new ArrayList<>();
         Graph grafoNuevo = new Graph(); //creo nuevo grafo
@@ -57,6 +74,51 @@ public class Graph {
         return grafoNuevo;     
     }
     
+
+
+	public Map<Nodo, List<Nodo>> getAdjVertices() {
+		return adjVertices;
+	}
+
+	public void setAdjVertices(Map<Nodo, List<Nodo>> adjVertices) {
+		this.adjVertices = adjVertices;
+	}
+
+	public int getHeuristica(Nodo ubicacion) {
+		return this.dijkstra(ubicacion, this.getVertex(Datos.nodoMaestro)); //distancia entre el actual y nodo 11
+	}
+	
+	private int dijkstra(Nodo origen, Nodo destino) {
+	    Map<Nodo, Integer> distancia = new HashMap<>();
+	    Set<Nodo> visitados = new HashSet<>();
+	    PriorityQueue<Nodo> cola = new PriorityQueue<>(Comparator.comparingInt(distancia::get));
+	    
+	    // Inicializar la distancia de todos los nodos como infinito, excepto el nodo origen que tiene distancia 0
+	    for (Nodo nodo : adjVertices.keySet()) {
+	        distancia.put(nodo, Integer.MAX_VALUE);
+	    }
+	    distancia.put(origen, 0);
+	    cola.add(origen);
+	    
+	    while (!cola.isEmpty()) {
+	        Nodo actual = cola.poll();
+	        visitados.add(actual);
+	        List<Nodo> vecinos = adjVertices.get(actual);
+	        for (Nodo vecino : vecinos) {
+	            if (!visitados.contains(vecino)) {
+	                int peso = distancia.get(actual) + 1;
+	                if (peso < distancia.get(vecino)) {
+	                    distancia.put(vecino, peso);
+	                    cola.add(vecino);
+	                }
+	            }
+	        }
+	    }
+	    
+	    return distancia.get(destino);
+	}
+
+
 	private void agregarConexiones(ArrayList<Nodo> nodos, Graph grafo) {
 		grafo.addEdge(nodos.get(1), nodos.get(2));
 		grafo.addEdge(nodos.get(2), nodos.get(3));
@@ -96,18 +158,9 @@ public class Graph {
 		grafo.addEdge(nodos.get(25), nodos.get(26));
 		grafo.addEdge(nodos.get(26), nodos.get(27));
 		grafo.addEdge(nodos.get(27), nodos.get(28));
-		grafo.addEdge(nodos.get(28), nodos.get(29));
-
-		
+		grafo.addEdge(nodos.get(28), nodos.get(29));	
 	}
-
-	public Map<Nodo, List<Nodo>> getAdjVertices() {
-		return adjVertices;
-	}
-
-	public void setAdjVertices(Map<Nodo, List<Nodo>> adjVertices) {
-		this.adjVertices = adjVertices;
-	}
+	
 	
 	
 }

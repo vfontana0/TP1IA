@@ -1,1 +1,8 @@
 /bin/
+.idea/
+logs/
+system/
+/.classpath
+/TreeML/
+/searchGVTrees/
+/fotosArboles/

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import datastructures.Graph;
 import domain.Nodo;
+import pokemon.search.*;
 import domain.PercepcionNodo;
 import domain.Poder;
 import frsf.cidisi.faia.agent.Perception;
@@ -16,31 +17,27 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private Graph grafo;
 	private double energia;
 	private double energiaInicial;
+	private double costo=0.0;
 	private int nivel;
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
 	private Boolean huyoUltimoNodo;
+	public Boolean gano = false; //algo de la gui
 	
-	public EstadoJugador(Graph grafo, Integer nodoInicio, Double energia) {
-		this.energiaInicial = energia;
-		this.energia = energia;
-		this.nivel = 1;
-		this.energiaGanada = 0;
+	public EstadoJugador(Graph grafo) {
 		this.grafo = grafo;
-		this.ubicacion = this.grafo.getVertex(nodoInicio);
-		poderes = new ArrayList<>();
-		poderes.add(new Poder("Rayo Aurora", 3, false));
-		poderes.add(new Poder("Rayo Meteorico", 3, false));
-		poderes.add(new Poder("Rayo Solar", 3, false));
-		poderes.add(new Poder("Satelite", 10, false));
+		this.ubicacion = this.grafo.getVertex(Datos.nodoInicio);
+		this.energia = Datos.energiaJugador;
+		this.energiaInicial = energia;
 		this.initState();
 	}
 	
 	 @Override
 	 public SearchBasedAgentState clone() {
 		 //primitivos
-	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone(), this.getUbicacion().getNumero(), this.getEnergia());
+	    EstadoJugador nuevoEstado = new EstadoJugador(this.getMapa().clone());
 	    nuevoEstado.setEnergiaGanada(this.getEnergiaGanada());
+	    nuevoEstado.setEnergia(this.getEnergia());
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
 	    nuevoEstado.setNivel(this.getNivel());
@@ -57,9 +54,12 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    
 	 }
 	 
+	 //el equals solo funciona entre nodos en el mismo tree
+	 // como hacer que no vuelva en distintos
+	 
 		@Override
 		public boolean equals(Object obj) {
-			EstadoJugador est = (EstadoJugador) obj;
+			EstadoJugador est = (EstadoJugador) obj; 
 			return this.ubicacion.equals(est.getUbicacion()) 
 					&& this.getEnergia() == est.getEnergia(); 
 
@@ -68,7 +68,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 		@Override
 		public void updateState(Perception p) {
-	    
+			
 			//actualizar estado en base a las percepciones
 			PokemonPerception per = (PokemonPerception) p;
 			HashMap<Integer, PercepcionNodo> percepciones = per.getPercepcionesAdyacentes(); // obtengo percepciones
@@ -77,6 +77,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 				this.grafo.getVertex(nroNodo).actualizar(percepciones.get(nroNodo)); //actualizo cada nodo vecino con info de la percepcion
 			}
 		    this.actualizarCiclos();
+		    this.incrementarNivel();
 			
 		}
 			 
@@ -92,7 +93,22 @@ public class EstadoJugador extends SearchBasedAgentState {
 			}
 		}
 		
-
+		private void incrementarNivel() {
+			if(this.energiaGanada > 0.25*this.energiaInicial && this.energiaGanada < 0.50*this.energiaInicial)
+				this.nivel = 2;
+			if(this.energiaGanada > 0.5*this.energiaInicial && this.energiaGanada < 0.75*this.energiaInicial)
+				this.nivel = 3;
+			if(this.energiaGanada > 0.75*this.energiaInicial && this.energiaGanada < 1*this.energiaInicial)
+				this.nivel = 4;
+			if(this.energiaGanada > 1*this.energiaInicial && this.energiaGanada < 1.25*this.energiaInicial)
+				this.nivel = 5; 
+			if(this.energiaGanada > 1.25*this.energiaInicial && this.energiaGanada < 1.50*this.energiaInicial)
+				this.nivel = 6;
+			if(this.energiaGanada > 1.5*this.energiaInicial)
+				this.nivel = 7;
+			System.out.println("Flaco subiste al nivel " + this.nivel);
+		}
+		
 		@Override
 		public String toString() {
 			return " [ Ubicacion: " + this.getUbicacion() + " Energia: " + this.getEnergia() + " Energia ganada (relativa a inicial): " + this.getEnergiaGanada()/this.getEnergiaInicial() + "]";
@@ -100,7 +116,14 @@ public class EstadoJugador extends SearchBasedAgentState {
 
 	 
 	 @Override
-		public void initState() { //TODO la ubicacion deberia ser la misma para ambos, generar en main
+		public void initState() {
+		    this.nivel = 1;
+			this.energiaGanada = 0;
+			poderes = new ArrayList<>();
+			poderes.add(new Poder("Rayo Aurora", 3, false));
+			poderes.add(new Poder("Rayo Meteorico", 3, false));
+			poderes.add(new Poder("Rayo Solar", 3, false));
+			poderes.add(new Poder("Satelite", 10, false));
 			this.huyoUltimoNodo = false;
 	 }
 	 
@@ -173,8 +196,18 @@ public class EstadoJugador extends SearchBasedAgentState {
 		this.huyoUltimoNodo = huyoUltimoNodo;
 	}
 
+	public double getCosto() {
+		return costo;
+	}
+
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+
 	
-	
+	public void incrementarCosto(double costo) {
+		this.costo+=costo;
+	}
 	
 	
 	

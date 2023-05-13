@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import datastructures.Graph;
-import domain.Nivel;
 import domain.Nodo;
 import domain.Poder;
 import domain.Pokebola;
 import domain.Pokemon;
-import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 public class EstadoAmbiente extends EnvironmentState{
@@ -22,10 +20,10 @@ public class EstadoAmbiente extends EnvironmentState{
 	 ArrayList<Integer> nroNodoPokemones = new ArrayList<Integer>();
 
 
-	public EstadoAmbiente(Graph grafo, Integer nodoInicio, Double energia){
+	public EstadoAmbiente(Graph grafo){
 		this.grafo = grafo;
-		this.energia = energia;
-		this.ubicacion = this.grafo.getVertex(nodoInicio);
+		this.energia = Datos.energiaJugador;
+		this.ubicacion = this.grafo.getVertex(Datos.nodoInicio);
 		this.initState();
 		
 	}
@@ -42,7 +40,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		poderes.add(new Poder("Satelite", 10, false));
 		//posicion inicial del agente --> deberia ser aleatoria
 
-		this.setearMaestro(); //genera al maestro y lo setea en el nodo 11
+		this.setearMaestro(); //genera al maestro y lo setea en el nodo del maestro
 		this.generarPokebolas(); //genera pokebolas en nodos aleatorios
 		this.generarPokemones(); //genera pokemones en nodos aleatorios
 		
@@ -56,7 +54,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		Integer cont2 = 0;
 		while(cont2 < 11) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro) {
 				System.out.println("Numero de nodos donde hay pokemon" + nroNodo);
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokemon pk = new Pokemon();
@@ -79,7 +77,7 @@ public class EstadoAmbiente extends EnvironmentState{
 		Integer cont = 0;
 		while(cont < 5) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
-			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != 11) {
+			if(!nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro) {
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokebola pk = new Pokebola();
 				pk.setPosicion(random); //le setea a la pokebola el nodo donde va a estar
@@ -97,13 +95,13 @@ public class EstadoAmbiente extends EnvironmentState{
 
 	private void setearMaestro() {
 		Pokemon maestro = new Pokemon();
-		maestro.setEnergia(9.0);
+		maestro.setEnergia(Datos.energiaMaestro);
 		maestro.setVivo(true);
 		maestro.setCiclosParaMoverse(0);
 		maestro.setActual(null);
 		maestro.setEsMaestro(true);
-		grafo.getVertex(11).setTienePokemon(true);
-		grafo.getVertex(11).setPokemon(maestro);
+		grafo.getVertex(Datos.nodoMaestro).setTienePokemon(true);
+		grafo.getVertex(Datos.nodoMaestro).setPokemon(maestro);
 		
 	}
 
@@ -139,6 +137,7 @@ public class EstadoAmbiente extends EnvironmentState{
 	public void setEnergia(Double energia) {
 		this.energia = energia;
 	}
-	
+
+
 
 }

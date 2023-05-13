@@ -13,6 +13,7 @@ public class ElegirHuir extends SearchAction {
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estado= (EstadoJugador) s;
+		estado.incrementarCosto(this.getCost());
 		Nodo actual = estado.getUbicacion();
 		Double energiaJugador = estado.getEnergia();
 		if(actual.getTienePokemon() 
@@ -25,16 +26,12 @@ public class ElegirHuir extends SearchAction {
 		}
 		return null;
 	}
-
-	@Override
-	public Double getCost() {
-		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
-					//uno u otro según la vida del pokemon adversario y no según este costo.
-	}
+	
 
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoJugador estado= (EstadoJugador) ast;
+		estado.incrementarCosto(this.getCost());
 		EstadoAmbiente estadoAmbiente =  (EstadoAmbiente) est;
 		Nodo actual = estado.getUbicacion();
 		Double energiaJugador = estado.getEnergia();
@@ -51,6 +48,16 @@ public class ElegirHuir extends SearchAction {
 	}
 
 
+	@Override
+	public Double getCost() {
+		return 2.0; //Pelear y Huir tienen el mismo costo para que se elija 
+				//uno u otro según la vida del pokemon adversario y no según este costo.
+				//energiaInicial - 0.8energiaPokemon <-- Pelear
+				//energiaInicial - 0.25energiaPokemon <-- huir (tiene menos costo de energia)
+				//aunque el pokemon puede respawnear
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Elegir Huir";

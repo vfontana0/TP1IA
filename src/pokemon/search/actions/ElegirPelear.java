@@ -13,9 +13,10 @@ public class ElegirPelear extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estadoJugador = (EstadoJugador) s;
+		estadoJugador.incrementarCosto(this.getCost());
 		Nodo actual = estadoJugador.getUbicacion();
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actual.getTienePokemon()  && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
+		if(actual.getTienePokemon()  && !estadoJugador.getHuyoUltimoNodo() && estadoJugador.getEnergia() > actual.getPokemon().getEnergia()) {
 			Double energiaPokemon = actual.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
@@ -31,35 +32,32 @@ public class ElegirPelear extends SearchAction{
 		return null;
 	}
 
-	@Override
-	public Double getCost() {
-		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
-					//uno u otro según la vida del pokemon adversario y no según este costo.
-	}
 
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est) {
 		EstadoJugador estadoJugador = (EstadoJugador) ast;
+		estadoJugador.incrementarCosto(this.getCost());
 		EstadoAmbiente estadoAmbiente = (EstadoAmbiente) est;
 		Nodo actualAgente = estadoJugador.getUbicacion();
 		Nodo actualAmbiente = estadoAmbiente.getUbicacion();
 
 		//chequear si tiene pokemon, si esta vivo, y si el agente tiene mas energia q el pokemon
-		if(actualAgente.getTienePokemon() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
+		if(actualAgente.getTienePokemon() && !estadoJugador.getHuyoUltimoNodo() && estadoJugador.getEnergia() > actualAgente.getPokemon().getEnergia()) {
 			Double energiaPokemon = actualAgente.getPokemon().getEnergia();
 			Double energiaAgente = estadoJugador.getEnergia();
 			Double energiaGanada = estadoJugador.getEnergiaGanada();
-			
-			//si es el maestro, actualizo que lo mate
-			//actualizar energia del agente
+
+			//actualizo energia y energia ganada
 			estadoJugador.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
 			estadoJugador.setEnergiaGanada(energiaGanada + energiaPokemon*0.2);
-			
 			estadoAmbiente.setEnergia(energiaAgente - energiaPokemon + energiaPokemon*0.2);
+			
+			//actualizo nodo del ambiente
 			actualAmbiente.getPokemon().setVivo(false); 
 			actualAmbiente.setPokemon(null);
 			actualAmbiente.setTienePokemon(false);
 			
+			//actualizo nodo del agente
 			actualAgente.getPokemon().setVivo(false); 
 			actualAgente.setPokemon(null);
 			actualAgente.setTienePokemon(false);
@@ -73,6 +71,12 @@ public class ElegirPelear extends SearchAction{
 	@Override
 	public String toString() {
 		return "Elegir pelear";
+	}
+
+
+	public Double getCost() {
+		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
+				//uno u otro según la vida del pokemon adversario y no según este costo.
 	}
 	
 

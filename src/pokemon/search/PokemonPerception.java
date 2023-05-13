@@ -1,6 +1,5 @@
 package pokemon.search;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,15 +11,6 @@ import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
 public class PokemonPerception extends Perception{
-
-	/*
-	private Boolean hayPokemonNodoActual; //percepcion si hay o no pokemon en el nodo actual
-	private Boolean hayPokebolaNodoActual; //percepcion si hay o no pokebola en el nodo actual
-	private Double energiaPokemonNodoActual; //energia del pokemon en el nodo actual
-	private Double energiaPokebolaNodoActual; //energia pokebola nodo actual
-	private Boolean pokemonVencido; //true si se vencio al pokemon, false sino
-	private Boolean pokemonEsMaestro;
-	*/
 	
 	private HashMap<Integer, PercepcionNodo> percepcionesAdyacentes = new HashMap<>(); //tengo una lista de nodos adyacentes donde la clave es un entero
 	private Nodo actual;

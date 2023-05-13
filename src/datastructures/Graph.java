@@ -107,11 +107,13 @@ public class Graph {
 	        List<Nodo> vecinos = adjVertices.get(actual);
 	        for (Nodo vecino : vecinos) {
 	            if (!visitados.contains(vecino)) {
-	            	double peso;
+	            	double peso = distancia.get(actual);
 	            	if(mapa.getVertex(vecino.getNumero()).getTienePokemon()) //si tiene pokemon
-	            		peso = distancia.get(actual) + mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peos es la energia del pokemon
+	            		peso += mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peos es la energia del pokemon
+	            	else if(mapa.getVertex(vecino.getNumero()).getTienePokebola()) //si tiene pokemon
+	            		peso += 0;
 	            	else
-	            		peso = 1; //sino es uno
+	            		peso += 1;
 	                if (peso < distancia.get(vecino)) {
 	                    distancia.put(vecino, peso);
 	                    cola.add(vecino);

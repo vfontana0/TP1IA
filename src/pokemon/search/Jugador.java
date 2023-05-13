@@ -38,11 +38,11 @@ public class Jugador extends SearchBasedAgent {
 	}
 
 
-	public Jugador(Graph grafo, Integer nodoInicio, Double energia, Integer nroEstrategia) {
+	public Jugador(Graph grafo) {
 		searchActions = new ArrayList<>();
 		ObjetivoJugador jugadorGoal = new ObjetivoJugador();
-		this.nroEstrategia = nroEstrategia; //
-		jugadorState = new EstadoJugador(grafo, nodoInicio, energia);
+		this.nroEstrategia = Datos.nroEstrategia;
+		jugadorState = new EstadoJugador(grafo);
 		this.setAgentState(jugadorState);
 		Vector<SearchAction> operators = new Vector<SearchAction>();
 		
@@ -81,7 +81,7 @@ public class Jugador extends SearchBasedAgent {
 		 */
 		Strategy strategy = this.elegirEstrategia(this.nroEstrategia);
 		Search busqueda = new Search(strategy);
-		 busqueda.setVisibleTree(Search.EFAIA_TREE);
+		busqueda.setVisibleTree(Search.GRAPHVIZ_TREE);
 		 this.setSolver(busqueda);
 		 Action accionSeleccionada = null;
 	        try {

@@ -13,7 +13,7 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
 		 agState.incrementarCosto(this.getCost());
-		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getEnergiaGanada() >= 0.50*agState.getEnergiaInicial()) {
+		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getNivel() >= 4) {
 			 agState.setEnergia(agState.getEnergia()*1.30);
 			 agState.getPoderes().get(1).setCantCiclos(3);
 			 agState.getPoderes().get(1).setPuedoUsar(false);
@@ -32,7 +32,7 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 		EstadoAmbiente environmentState = (EstadoAmbiente) est;
 		EstadoJugador agState = (EstadoJugador) ast;
 		agState.incrementarCosto(this.getCost());
-		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getEnergiaGanada() >= 0.50*agState.getEnergiaInicial()) {
+		 if(agState.getPoderes().get(1).getCantCiclos() == 0 && agState.getPoderes().get(1).getPuedoUsar() && agState.getNivel() >= 4) {
 			 agState.setEnergia(agState.getEnergia()*1.30);
 			 environmentState.setEnergia(agState.getEnergia()*1.30);
 			 agState.getPoderes().get(1).setCantCiclos(3);

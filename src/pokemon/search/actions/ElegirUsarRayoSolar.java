@@ -12,7 +12,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
-		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar() && agState.getEnergiaGanada() >= 0.75*agState.getEnergiaInicial()) {
+		 if(agState.getPoderes().get(2).getCantCiclos() == 0 && agState.getPoderes().get(2).getPuedoUsar() && agState.getNivel() >= 5) {
 			 agState.setEnergia(agState.getEnergia()*1.50);
 			 agState.getPoderes().get(2).setCantCiclos(3);
 			 agState.getPoderes().get(2).setPuedoUsar(false);
@@ -34,7 +34,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		agState.incrementarCosto(this.getCost());
 		 if(agState.getPoderes().get(2).getCantCiclos() == 0
 				 && agState.getPoderes().get(2).getPuedoUsar() 
-				 && agState.getEnergiaGanada() >= 0.75*agState.getEnergiaInicial()) {
+				 && agState.getNivel() >= 5) {
 			 agState.setEnergia(agState.getEnergia()*1.50);
 			 environmentState.setEnergia(agState.getEnergia()*1.50);
 			 agState.getPoderes().get(2).setCantCiclos(3);

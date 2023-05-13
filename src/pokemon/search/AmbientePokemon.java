@@ -3,20 +3,18 @@ package pokemon.search;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import pokemon.search.*;
 import datastructures.Graph;
 import domain.Nodo;
 import domain.PercepcionNodo;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
-import frsf.cidisi.faia.state.AgentState;
 
 public class AmbientePokemon extends Environment{
 	Integer cantCiclos;
 
-		public AmbientePokemon(Graph grafoAmbiente, Integer nodoInicio, Double energia) {
-			this.environmentState = new EstadoAmbiente(grafoAmbiente, nodoInicio, energia);
+		public AmbientePokemon(Graph grafoAmbiente) {
+			this.environmentState = new EstadoAmbiente(grafoAmbiente);
 		}
 
 		@Override
@@ -45,13 +43,13 @@ public class AmbientePokemon extends Environment{
 			 * 
 			 */
 			for(Nodo n : ((EstadoAmbiente )this.environmentState).getGrafo().getAllVertices()) { //para cada nodo
-					if(n.getTienePokemon() && n.getNumero() != 18) { // si tiene pokemon y no es el pokemon maestro
+					if(n.getTienePokemon() && n.getTienePokebola() && n.getNumero() != Datos.nodoMaestro) { // si tiene pokemon y no es el pokemon maestro
 						if(n.getPokemon().getCiclosParaMoverse() > 0) //si todav no se tiene q mover, resto uno
 							n.getPokemon().setCiclosParaMoverse(n.getPokemon().getCiclosParaMoverse()-1);
 						else { //si se tiene que mover
 							Integer s =this.moverPokemones(n); //lo muevo a un nodo vecino
 							Random r = new Random(); 
-							if(s != -1) { //si pudo mover seteo en 3 la cant de ciclos y lo saco de donde estaba
+							if(s != -1) { //si pudo mover seteo entre 1 y 3 la cant de ciclos y lo saco de donde estaba
 								n.getPokemon().setCiclosParaMoverse(r.nextInt(3)+1);//seteo un random entre 1 y 3
 								n.setTienePokemon(false);
 								n.setPokemon(null);
@@ -88,9 +86,6 @@ public class AmbientePokemon extends Environment{
 				elegido.setTienePokemon(true);
 				elegido.setPokemon(n.getPokemon());
 				return 1;
-		
-		
-		
 		
 			}
 

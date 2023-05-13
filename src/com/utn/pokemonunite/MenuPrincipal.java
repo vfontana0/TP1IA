@@ -57,8 +57,6 @@ public class MenuPrincipal extends FXGLMenu {
 		 //getContentRoot().setTranslateX(FXGL.getAppWidth() / 2.0 - SIZE);
          //getContentRoot().setTranslateY(FXGL.getAppHeight() / 2.0 - SIZE);
 
-         var shape = Shape.subtract(new Circle(SIZE, SIZE, SIZE), new Rectangle(0, SIZE, SIZE*2, SIZE));
-
          var shapeAlgoritmo = new Rectangle(SIZE*2, SIZE / 2);
 
          var shapeIniciar = new Rectangle(SIZE*2, SIZE / 2);
@@ -97,7 +95,7 @@ public class MenuPrincipal extends FXGLMenu {
          shapeSalir.fillProperty().bind(
                  Bindings.when(shapeSalir.pressedProperty()).then(Color.SKYBLUE).otherwise(transparente)
          );
-         //shapeAlgoritmo.setOnMouseClicked(e -> FXGL.getGameController().exit());
+         shapeSalir.setOnMouseClicked(e -> FXGL.getGameController().exit());
          
          shapeSalir.setTranslateY(150);
          shapeSalir.setTranslateX(400);
@@ -120,19 +118,19 @@ public class MenuPrincipal extends FXGLMenu {
 */
 
          Text textResume = FXGL.getUIFactoryService().newText("SIMULAR", Color.WHITE, FontType.GAME, 24.0);
-         textResume.setTranslateX(465);
-         textResume.setTranslateY(60);
+         textResume.setTranslateX(470);
+         textResume.setTranslateY(55);
          textResume.setMouseTransparent(true);
-
-         Text textExit = FXGL.getUIFactoryService().newText("SALIR", Color.WHITE, FontType.GAME, 24.0);
-         textExit.setTranslateX(475);
-         textExit.setTranslateY(180);
-         textExit.setMouseTransparent(true);
 
          Text textOptions = FXGL.getUIFactoryService().newText("ALGORITMO: COST. UNIF.", Color.WHITE, FontType.GAME, 24.0);
          textOptions.setTranslateX(410);
          textOptions.setTranslateY(120);
          textOptions.setMouseTransparent(true);
+
+         Text textExit = FXGL.getUIFactoryService().newText("SALIR", Color.WHITE, FontType.GAME, 24.0);
+         textExit.setTranslateX(482);
+         textExit.setTranslateY(188);
+         textExit.setMouseTransparent(true);
 
          getContentRoot().getChildren().addAll(shapeIniciar, shapeAlgoritmo, shapeSalir, textResume, textExit, textOptions);
 

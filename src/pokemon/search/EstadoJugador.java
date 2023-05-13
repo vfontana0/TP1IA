@@ -18,6 +18,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	private double energia;
 	private double energiaInicial;
 	private double costo=0.0;
+	private int cantidadAdversarios;
 	private int nivel;
 	private double energiaGanada;
 	private ArrayList<Poder> poderes;
@@ -29,6 +30,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 		this.ubicacion = this.grafo.getVertex(Datos.nodoInicio);
 		this.energia = Datos.energiaJugador;
 		this.energiaInicial = energia;
+		this.cantidadAdversarios = 11;
 		this.initState();
 	}
 	
@@ -41,6 +43,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
 	    nuevoEstado.setNivel(this.getNivel());
+	    nuevoEstado.setCantidadAdversarios(this.getCantidadAdversarios());
 	    //poderes
 	    ArrayList<Poder> poderesNuevo = new ArrayList<>();
 	    for(Poder p: this.getPoderes()) {
@@ -207,6 +210,14 @@ public class EstadoJugador extends SearchBasedAgentState {
 	
 	public void incrementarCosto(double costo) {
 		this.costo+=costo;
+	}
+
+	public int getCantidadAdversarios() {
+		return cantidadAdversarios;
+	}
+
+	public void setCantidadAdversarios(int cantidadAdversarios) {
+		this.cantidadAdversarios = cantidadAdversarios;
 	}
 	
 	

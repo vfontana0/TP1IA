@@ -11,6 +11,7 @@ import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 import javafx.util.Pair;
 import com.utn.pokemonunite.ConfiguracionAlgoritmo;
+
 public class PokemonMain {
 	static ArrayList<Pair<Action, Double>> accionesEjecutadas;
 	private static Integer nodoInicio;

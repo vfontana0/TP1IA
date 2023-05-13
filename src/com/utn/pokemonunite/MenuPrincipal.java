@@ -28,11 +28,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
+import javafx.scene.image.ImageView;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 public class MenuPrincipal extends FXGLMenu {
-	private static final int SIZE = 150;
+	private static final int SIZE = 120;
 	
     private Animation<?> animation;
 	public MenuPrincipal(MenuType type) {
@@ -40,39 +40,70 @@ public class MenuPrincipal extends FXGLMenu {
 		// TODO Auto-generated constructor stub
 		
 		 BackgroundImage backgroundImage;
-            var bg = texture("fondocarga.png", getAppWidth() + 450, getAppHeight() + 200);
-            getContentRoot().getChildren().add(bg);
-        
+		 Image bgImage = null;
+		try {
+			bgImage = new Image(getClass().getResource("fondocarga.png").openStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+		Color transparente = Color.rgb(0, 0, 0, 0);
 		
-		 getContentRoot().setTranslateX(FXGL.getAppWidth() / 2.0 - SIZE);
-         getContentRoot().setTranslateY(FXGL.getAppHeight() / 2.0 - SIZE);
+	        // Agrega la imagen de fondo a la capa
+	        ImageView bgImageView = new ImageView(bgImage);
+            getContentRoot().getChildren().add(bgImageView);
+        
+		 //getContentRoot().setTranslateX(FXGL.getAppWidth() / 2.0 - SIZE);
+         //getContentRoot().setTranslateY(FXGL.getAppHeight() / 2.0 - SIZE);
 
          var shape = Shape.subtract(new Circle(SIZE, SIZE, SIZE), new Rectangle(0, SIZE, SIZE*2, SIZE));
 
-         var shape2 = Shape.subtract(shape, new Rectangle(0, 0, SIZE, SIZE));
+         var shapeAlgoritmo = new Rectangle(SIZE*2, SIZE / 2);
 
-         shape = Shape.subtract(shape, new Rectangle(SIZE, 0, SIZE, SIZE));
-
-         shape.setStrokeWidth(2.5);
-         shape.strokeProperty().bind(
-                 Bindings.when(shape.hoverProperty()).then(Color.YELLOW).otherwise(Color.BLACK)
+         var shapeIniciar = new Rectangle(SIZE*2, SIZE / 2);
+         
+         var shapeSalir = new Rectangle(SIZE*2, SIZE / 2);
+         
+         shapeIniciar.strokeProperty().bind(
+                 Bindings.when(shapeIniciar.hoverProperty()).then(Color.SKYBLUE).otherwise(transparente)
          );
 
-         shape.fillProperty().bind(
-                 Bindings.when(shape.pressedProperty()).then(Color.YELLOW).otherwise(Color.color(0.1, 0.05, 0.0, 0.75))
+         shapeIniciar.fillProperty().bind(
+                 Bindings.when(shapeIniciar.pressedProperty()).then(Color.SKYBLUE).otherwise(transparente)
          );
 
-         shape.setOnMouseClicked(e -> fireNewGame());
+         shapeIniciar.setTranslateY(20);
+         shapeIniciar.setTranslateX(400);
 
-         shape2.setStrokeWidth(2.5);
-         shape2.strokeProperty().bind(
-                 Bindings.when(shape2.hoverProperty()).then(Color.YELLOW).otherwise(Color.BLACK)
+         shapeIniciar.setOnMouseClicked(e -> fireNewGame());
+         
+         shapeAlgoritmo.strokeProperty().bind(
+                 Bindings.when(shapeAlgoritmo.hoverProperty()).then(Color.SKYBLUE).otherwise(transparente)
          );
 
-         shape2.fillProperty().bind(
-                 Bindings.when(shape2.pressedProperty()).then(Color.YELLOW).otherwise(Color.color(0.1, 0.05, 0.0, 0.75))
+         shapeAlgoritmo.fillProperty().bind(
+                 Bindings.when(shapeAlgoritmo.pressedProperty()).then(Color.SKYBLUE).otherwise(transparente)
          );
-         shape2.setOnMouseClicked(e -> FXGL.getGameController().exit());
+         //shapeAlgoritmo.setOnMouseClicked(e -> FXGL.getGameController().exit());
+         
+         shapeAlgoritmo.setTranslateY(85);
+         shapeAlgoritmo.setTranslateX(400);
+         
+         shapeSalir.strokeProperty().bind(
+                 Bindings.when(shapeSalir.hoverProperty()).then(Color.SKYBLUE).otherwise(transparente)
+         );
+
+         shapeSalir.fillProperty().bind(
+                 Bindings.when(shapeSalir.pressedProperty()).then(Color.SKYBLUE).otherwise(transparente)
+         );
+         //shapeAlgoritmo.setOnMouseClicked(e -> FXGL.getGameController().exit());
+         
+         shapeSalir.setTranslateY(150);
+         shapeSalir.setTranslateX(400);
+         
+         /*
+         
 
          var shape3 = new Rectangle(SIZE*2, SIZE / 2);
          shape3.setStrokeWidth(2.5);
@@ -85,23 +116,25 @@ public class MenuPrincipal extends FXGLMenu {
          );
 
          shape3.setTranslateY(SIZE);
+		
+*/
 
-         Text textResume = FXGL.getUIFactoryService().newText("RESUME", Color.WHITE, FontType.GAME, 24.0);
-         textResume.setTranslateX(50);
-         textResume.setTranslateY(100);
+         Text textResume = FXGL.getUIFactoryService().newText("SIMULAR", Color.WHITE, FontType.GAME, 24.0);
+         textResume.setTranslateX(465);
+         textResume.setTranslateY(60);
          textResume.setMouseTransparent(true);
 
-         Text textExit = FXGL.getUIFactoryService().newText("EXIT", Color.WHITE, FontType.GAME, 24.0);
-         textExit.setTranslateX(200);
-         textExit.setTranslateY(100);
+         Text textExit = FXGL.getUIFactoryService().newText("SALIR", Color.WHITE, FontType.GAME, 24.0);
+         textExit.setTranslateX(475);
+         textExit.setTranslateY(180);
          textExit.setMouseTransparent(true);
 
-         Text textOptions = FXGL.getUIFactoryService().newText("OPTIONS", Color.WHITE, FontType.GAME, 24.0);
-         textOptions.setTranslateX(110);
-         textOptions.setTranslateY(195);
+         Text textOptions = FXGL.getUIFactoryService().newText("ALGORITMO: COST. UNIF.", Color.WHITE, FontType.GAME, 24.0);
+         textOptions.setTranslateX(410);
+         textOptions.setTranslateY(120);
          textOptions.setMouseTransparent(true);
 
-         getContentRoot().getChildren().addAll(shape, shape2, shape3, textResume, textExit, textOptions);
+         getContentRoot().getChildren().addAll(shapeIniciar, shapeAlgoritmo, shapeSalir, textResume, textExit, textOptions);
 
          getContentRoot().setScaleX(0);
          getContentRoot().setScaleY(0);

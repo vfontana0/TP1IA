@@ -1,4 +1,5 @@
 package com.utn.pokemonunite;
+import static java.lang.Thread.sleep;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
@@ -28,15 +29,48 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import pokemon.search.Datos;
 import javafx.scene.image.ImageView;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 public class MenuPrincipal extends FXGLMenu {
 	private static final int SIZE = 120;
+	private int numeroAlgoritmo = 1;
+	
+	ConfiguracionAlgoritmo escritorLector;
 	
     private Animation<?> animation;
+    
+    private void cambiarAlgoritmo(Text textoAlgoritmo) {
+    	numeroAlgoritmo = (numeroAlgoritmo) % 5 + 1;
+    	
+    	
+    	switch (numeroAlgoritmo) {
+    	case 1:
+    		textoAlgoritmo.setText("ALGORITMO: DFS");
+    		escritorLector.guardaAlgoritmo(1);
+    		break;
+    	case 2:
+    		textoAlgoritmo.setText("ALGORITMO: BFS");
+    		escritorLector.guardaAlgoritmo(2);
+    		break;
+    	case 3:
+    		textoAlgoritmo.setText("ALGORITMO: COST. UNIF");
+    		escritorLector.guardaAlgoritmo(3);
+    		break;
+    	case 4:
+    		textoAlgoritmo.setText("ALGORITMO: Greedy");
+    		escritorLector.guardaAlgoritmo(4);
+    		break;
+    	case 5:
+    		textoAlgoritmo.setText("ALGORITMO: A*");
+    		escritorLector.guardaAlgoritmo(5);
+    	}
+    }
+    
 	public MenuPrincipal(MenuType type) {
 		super(type);
+		escritorLector = new ConfiguracionAlgoritmo();
 		// TODO Auto-generated constructor stub
 		
 		 BackgroundImage backgroundImage;
@@ -99,40 +133,25 @@ public class MenuPrincipal extends FXGLMenu {
          
          shapeSalir.setTranslateY(150);
          shapeSalir.setTranslateX(400);
+
+         Text textSimular = FXGL.getUIFactoryService().newText("SIMULAR", Color.WHITE, FontType.GAME, 24.0);
+         textSimular.setTranslateX(470);
+         textSimular.setTranslateY(55);
+         textSimular.setMouseTransparent(true);
+
+         Text textAlgoritmo = FXGL.getUIFactoryService().newText("ALGORITMO: DFS", Color.WHITE, FontType.GAME, 24.0);
+         textAlgoritmo.setTranslateX(410);
+         textAlgoritmo.setTranslateY(120);
+         textAlgoritmo.setMouseTransparent(true);
+         shapeAlgoritmo.setOnMouseClicked(e -> cambiarAlgoritmo(textAlgoritmo));
+         cambiarAlgoritmo(textAlgoritmo);
          
-         /*
-         
+         Text textSalir = FXGL.getUIFactoryService().newText("SALIR", Color.WHITE, FontType.GAME, 24.0);
+         textSalir.setTranslateX(482);
+         textSalir.setTranslateY(188);
+         textSalir.setMouseTransparent(true);
 
-         var shape3 = new Rectangle(SIZE*2, SIZE / 2);
-         shape3.setStrokeWidth(2.5);
-         shape3.strokeProperty().bind(
-                 Bindings.when(shape3.hoverProperty()).then(Color.YELLOW).otherwise(Color.BLACK)
-         );
-
-         shape3.fillProperty().bind(
-                 Bindings.when(shape3.pressedProperty()).then(Color.YELLOW).otherwise(Color.color(0.1, 0.05, 0.0, 0.75))
-         );
-
-         shape3.setTranslateY(SIZE);
-		
-*/
-
-         Text textResume = FXGL.getUIFactoryService().newText("SIMULAR", Color.WHITE, FontType.GAME, 24.0);
-         textResume.setTranslateX(470);
-         textResume.setTranslateY(55);
-         textResume.setMouseTransparent(true);
-
-         Text textOptions = FXGL.getUIFactoryService().newText("ALGORITMO: COST. UNIF.", Color.WHITE, FontType.GAME, 24.0);
-         textOptions.setTranslateX(410);
-         textOptions.setTranslateY(120);
-         textOptions.setMouseTransparent(true);
-
-         Text textExit = FXGL.getUIFactoryService().newText("SALIR", Color.WHITE, FontType.GAME, 24.0);
-         textExit.setTranslateX(482);
-         textExit.setTranslateY(188);
-         textExit.setMouseTransparent(true);
-
-         getContentRoot().getChildren().addAll(shapeIniciar, shapeAlgoritmo, shapeSalir, textResume, textExit, textOptions);
+         getContentRoot().getChildren().addAll(shapeIniciar, shapeAlgoritmo, shapeSalir, textSimular, textSalir, textAlgoritmo);
 
          getContentRoot().setScaleX(0);
          getContentRoot().setScaleY(0);

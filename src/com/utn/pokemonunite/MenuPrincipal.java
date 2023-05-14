@@ -11,9 +11,18 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.audio.Audio;
+import com.almasb.fxgl.audio.AudioPlayer;
+import com.almasb.fxgl.audio.Music;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.core.util.EmptyRunnable;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.ui.FontType;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Point2D;
@@ -71,6 +80,9 @@ public class MenuPrincipal extends FXGLMenu {
 	public MenuPrincipal(MenuType type) {
 		super(type);
 		escritorLector = new ConfiguracionAlgoritmo();
+		AudioPlayer ap = new AudioPlayer();
+		FXGL.play(getClass().getResource("rolling5.mp3"));
+		
 		// TODO Auto-generated constructor stub
 		
 		 BackgroundImage backgroundImage;

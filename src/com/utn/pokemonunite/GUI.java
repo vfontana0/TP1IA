@@ -1,5 +1,6 @@
 package com.utn.pokemonunite;
 
+import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.SceneFactory;
@@ -14,8 +15,6 @@ import javafx.scene.text.Text;
 import javafx.util.Pair;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
 import pokemon.search.*;
@@ -139,6 +138,7 @@ public class GUI extends GameApplication {
     
     @Override
     protected void initUI() {
+        FXGL.play(getClass().getResource("mountaintrails.mp3"));
         BackgroundImage backgroundImage;
         try {
             Image image = new Image(getClass().getResource("worldmap.png").openStream());
@@ -151,6 +151,7 @@ public class GUI extends GameApplication {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        
         getGameScene().getRoot().setBackground(new Background(backgroundImage));
     	//TODO: cambiar a barra de energia
         textVida = getUIFactoryService().newText("Energia: ", Color.BLACK, 22);
@@ -175,8 +176,8 @@ public class GUI extends GameApplication {
     
     @Override
     protected void initGame() {
+    	FXGL.getAudioPlayer().stopAllMusic();
     	getGameScene().addUINode(new Text("Buscando solucion..."));
-        
         //Ejecuto el algoritmo
         
         PokemonMain pokemonMain = new PokemonMain();
@@ -186,6 +187,7 @@ public class GUI extends GameApplication {
     	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(Datos.nodoInicio);
 
     	//Creo el player
+
         player = FXGL.entityBuilder()
                 .at(posicionInicio.getKey(), posicionInicio.getValue())
                 .view(getClass().getResource("trainer.png"))

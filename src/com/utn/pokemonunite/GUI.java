@@ -8,10 +8,11 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.utn.pokemonunite.PantallaCarga;
 import com.utn.pokemonunite.Posiciones;
-
+import com.almasb.fxgl.scene.Scene;
 import domain.Nodo;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -40,9 +41,10 @@ public class GUI extends GameApplication {
     private Text textoEspacio;
     private ArrayList<Entity> enemigos;
 	private int nroGrafo = 0;
-    
+	private int nroNodo;
     private ArrayList<Pair<Action, Double>> acciones;
     private ArrayList<Point2D> posicionesA;
+    private ArrayList<Pair<Entity, Integer>> utnBalls;
     private Boolean gano;
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
@@ -95,6 +97,8 @@ public class GUI extends GameApplication {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+        					nroNodo = numero;
+        					
         					
                     	}
                     	else if (action.getKey() instanceof ElegirPelear) {
@@ -117,6 +121,11 @@ public class GUI extends GameApplication {
                     	}
                     	else if (action.getKey() instanceof JuntarPokebola) {
                     		textAccion.setText("¡El agente eligió juntar una UTN Ball!");
+                    		for (Pair<Entity, Integer> thisBall: utnBalls) {
+                    			if (thisBall.getValue().equals(nroNodo)) {
+                    				thisBall.getKey().setPosition(-100, -100);
+                    			}
+                    		}
                     	}
 
                     	try {
@@ -200,6 +209,9 @@ public class GUI extends GameApplication {
     	getGameScene().addUINode(new Text("Buscando solucion..."));
         //Ejecuto el algoritmo
         
+    	
+        
+        
         PokemonMain pokemonMain = new PokemonMain();
         pokemonMain.startPokemon();
        	Integer nroNodoInicio = pokemonMain.getNodoInicio();
@@ -222,6 +234,7 @@ public class GUI extends GameApplication {
                 .view(getClass().getResource("trainer.png"))
                 .buildAndAttach();
         player.setProperty("velocity", new Point2D(0,0));
+        nroNodo = Datos.nodoInicio;
         acciones = pokemonMain.getAccionesEjecutadas();
         System.out.println("Cantidad de acciones: " + acciones.size());
         System.out.println("Cantidad de grafos: " + Datos.grafo.size());
@@ -245,13 +258,13 @@ public class GUI extends GameApplication {
         }
         
         // Agrego utn balls
-		
+		utnBalls = new ArrayList<>();
 		Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
 			if (thisNodo.getTienePokebola()) {
-				FXGL.entityBuilder()
+				utnBalls.add(new Pair<>(FXGL.entityBuilder()
 					.at(posiciones.getNodoN(thisNodo.getNumero()).getKey() - 10, posiciones.getNodoN(thisNodo.getNumero()).getValue())
 					.view(getClass().getResource("utnball.png"))
-					.buildAndAttach();
+					.buildAndAttach(), thisNodo.getNumero()));
 			}
 		});
     }

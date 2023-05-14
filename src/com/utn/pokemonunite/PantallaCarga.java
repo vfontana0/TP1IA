@@ -3,14 +3,21 @@ package com.utn.pokemonunite;
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.LoadingScene;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import static com.almasb.fxgl.dsl.FXGL.*;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
+import static java.lang.Thread.sleep;
+
+import java.io.IOException;
 
 public class PantallaCarga extends LoadingScene {
 	public PantallaCarga() {
+		
 		var bg = new Rectangle(getAppWidth(), getAppHeight(),
 				Color.AZURE);
 		var text = getUIFactoryService().newText("Eligiendo acciones a ejecutar...", Color.BLACK, 46.0);

@@ -1,49 +1,24 @@
 package com.utn.pokemonunite;
-import static java.lang.Thread.sleep;
-
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
-
-import java.io.IOException;
-
 import com.almasb.fxgl.animation.Animation;
 import com.almasb.fxgl.animation.Interpolators;
-import com.almasb.fxgl.app.GameApplication;
-import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
-import com.almasb.fxgl.app.GameApplication;
-import com.almasb.fxgl.audio.Audio;
-import com.almasb.fxgl.audio.AudioPlayer;
-import com.almasb.fxgl.audio.Music;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getAssetLoader;
 
-import com.almasb.fxgl.app.scene.SceneFactory;
+import java.io.IOException;
+
 import com.almasb.fxgl.core.util.EmptyRunnable;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.ui.FontType;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import pokemon.search.Datos;
-import javafx.scene.image.ImageView;
-
-import static com.almasb.fxgl.dsl.FXGL.*;
 public class MenuPrincipal extends FXGLMenu {
 	private static final int SIZE = 120;
 	private int numeroAlgoritmo = 1;
@@ -87,7 +62,9 @@ public class MenuPrincipal extends FXGLMenu {
 		
 		// TODO Auto-generated constructor stub
 		
-		 BackgroundImage backgroundImage;
+	    
+		Color transparente = Color.rgb(0, 0, 0, 0);
+		
 		 Image bgImage = null;
 		try {
 			bgImage = new Image(getClass().getResource("fondocarga.png").openStream());
@@ -95,12 +72,12 @@ public class MenuPrincipal extends FXGLMenu {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-		Color transparente = Color.rgb(0, 0, 0, 0);
 		
-	        // Agrega la imagen de fondo a la capa
-	        ImageView bgImageView = new ImageView(bgImage);
-            getContentRoot().getChildren().add(bgImageView);
+
+        // Agrega la imagen de fondo a la capa
+        ImageView bgImageView = new ImageView(bgImage);
+        getContentRoot().getChildren().add(bgImageView);
+	
         
 		 //getContentRoot().setTranslateX(FXGL.getAppWidth() / 2.0 - SIZE);
          //getContentRoot().setTranslateY(FXGL.getAppHeight() / 2.0 - SIZE);

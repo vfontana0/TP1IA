@@ -9,6 +9,8 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirHuir extends SearchAction {
+	
+	Double costo = 0.0;
 
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
@@ -50,13 +52,16 @@ public class ElegirHuir extends SearchAction {
 
 	@Override
 	public Double getCost() {
-		return 2.0; //Pelear y Huir tienen el mismo costo para que se elija 
+		return this.costo; //Pelear y Huir tienen el mismo costo para que se elija 
 				//uno u otro según la vida del pokemon adversario y no según este costo.
 				//energiaInicial - 0.8energiaPokemon <-- Pelear
 				//energiaInicial - 0.25energiaPokemon <-- huir (tiene menos costo de energia)
 				//aunque el pokemon puede respawnear
 	}
 
+	public void setCost(Double costo) {
+		this.costo = costo;
+	}
 	
 	@Override
 	public String toString() {

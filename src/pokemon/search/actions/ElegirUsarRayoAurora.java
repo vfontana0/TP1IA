@@ -8,7 +8,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirUsarRayoAurora extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
@@ -24,7 +24,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 3.0; //De los tres poderes, este es el mas costoso.
+		return this.costo; //De los tres poderes, este es el mas costoso.
 	}
 
 	@Override
@@ -49,4 +49,7 @@ public class ElegirUsarRayoAurora extends SearchAction{
 		return "Elegir usar Rayo Aurora";
 	}
 
+	public void setCost(Double costo) {
+		this.costo = costo;
+	}
 }

@@ -9,7 +9,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirUsarSatelite extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
@@ -23,7 +23,7 @@ public class ElegirUsarSatelite extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 0.0; //No tiene costo, para que si lo tiene disponible lo use.
+		return this.costo;  //No tiene costo, para que si lo tiene disponible lo use.
 	}
 
 	@Override
@@ -47,5 +47,9 @@ public class ElegirUsarSatelite extends SearchAction{
 	@Override
 	public String toString() {
 		return "Elegir Usar Satelite";
+	}
+	
+	public void setCost(Double costo) {
+		this.costo = costo;
 	}
 }

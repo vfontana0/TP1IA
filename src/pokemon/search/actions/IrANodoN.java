@@ -11,7 +11,7 @@ import pokemon.search.EstadoAmbiente;
 
 public class IrANodoN extends SearchAction {
 	Integer nodoNro;
-	
+	Double costo = 0.0;
 	public IrANodoN(Integer i) {
 		this.nodoNro = i;
 	}
@@ -56,12 +56,16 @@ public class IrANodoN extends SearchAction {
 
 	@Override
 	public Double getCost() {
-		return 1.0; //No tiene costo moverse, pero si pelear o huir.
+		return this.costo;  //No tiene costo moverse, pero si pelear o huir.
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "IrANodo " + nodoNro;
+	}
+	
+	public void setCost(Double costo) {
+		this.costo = costo;
 	}
 }

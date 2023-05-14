@@ -80,7 +80,6 @@ public class MenuPrincipal extends FXGLMenu {
 	public MenuPrincipal(MenuType type) {
 		super(type);
 		escritorLector = new ConfiguracionAlgoritmo();
-		AudioPlayer ap = new AudioPlayer();
 		FXGL.play(getClass().getResource("rolling5.mp3"));
 		
 		// TODO Auto-generated constructor stub
@@ -120,7 +119,10 @@ public class MenuPrincipal extends FXGLMenu {
          shapeIniciar.setTranslateY(20);
          shapeIniciar.setTranslateX(400);
 
-         shapeIniciar.setOnMouseClicked(e -> fireNewGame());
+         shapeIniciar.setOnMouseClicked(e -> {
+        	 fireNewGame();
+        	 FXGL.getAudioPlayer().stopAllMusic();
+         });
          
          shapeAlgoritmo.strokeProperty().bind(
                  Bindings.when(shapeAlgoritmo.hoverProperty()).then(Color.SKYBLUE).otherwise(transparente)

@@ -9,6 +9,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.utn.pokemonunite.PantallaCarga;
 import com.utn.pokemonunite.Posiciones;
 
+import domain.Nodo;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -18,6 +19,8 @@ import javafx.scene.text.Text;
 import javafx.util.Pair;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
+
 import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
 import pokemon.search.*;
@@ -34,6 +37,8 @@ public class GUI extends GameApplication {
     private Text textAccion;
     private Text textResultado;
     private Text textoEspacio;
+    private ArrayList<Entity> enemigos;
+	private int nroGrafo = 0;
     
     private ArrayList<Pair<Action, Double>> acciones;
     private Boolean gano;
@@ -53,7 +58,6 @@ public class GUI extends GameApplication {
     @Override
     protected void initInput() {
         Posiciones posiciones = new Posiciones();
-        boolean loPresiono = false;
         FXGL.onKey(KeyCode.SPACE, () -> {
         	textoEspacio.setVisible(false);
             try {
@@ -65,6 +69,15 @@ public class GUI extends GameApplication {
             	@Override
             	public void run() {
             		acciones.stream().forEach(action -> {
+                		final int[] nroPokemon = {0};
+                		 
+            			Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
+            				if (thisNodo.getTienePokemon()) {
+            					enemigos.get(nroPokemon[0]).setPosition(posiciones.getNodoN(thisNodo.getNumero()).getKey(), posiciones.getNodoN(thisNodo.getNumero()).getValue());
+            					nroPokemon[0]++;
+            				}
+            			});
+            			nroGrafo++;
             			textAccion.setText("");
                 		textVida.setText("Energia: " + String.format("%.2f", action.getValue()));
 
@@ -174,12 +187,12 @@ public class GUI extends GameApplication {
         textoEspacio.setTranslateY(getAppHeight() - 50);
         
         getGameScene().addUINodes(textVida, textAccion, textResultado, textoEspacio);
+        
 
     }
     
     @Override
     protected void initGame() {
-    	FXGL.getAudioPlayer().stopAllMusic();
     	getGameScene().addUINode(new Text("Buscando solucion..."));
         //Ejecuto el algoritmo
         
@@ -190,14 +203,36 @@ public class GUI extends GameApplication {
     	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(Datos.nodoInicio);
 
     	//Creo el player
+    	
+    	enemigos = new ArrayList<>();
 
+    	for (int i = 0; i < 11; i++) {
+    		enemigos.add(FXGL.entityBuilder()
+    						.at(-100, -100)
+    						.view(getClass().getResource("pokemon.png"))
+    						.buildAndAttach());
+    	}
+    	
         player = FXGL.entityBuilder()
                 .at(posicionInicio.getKey(), posicionInicio.getValue())
                 .view(getClass().getResource("trainer.png"))
                 .buildAndAttach();
         player.setProperty("velocity", new Point2D(0,0));
         acciones = pokemonMain.getAccionesEjecutadas();
-        gano = pokemonMain.getGano();   
+        System.out.println("Cantidad de grafos: " + Datos.grafo.size());
+        System.out.println("Cantidad acciones" + acciones.size());
+        gano = pokemonMain.getGano();
+        
+        // Agrego utn balls
+		 
+		Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
+			if (thisNodo.getTienePokebola()) {
+				FXGL.entityBuilder()
+					.at(posiciones.getNodoN(thisNodo.getNumero()).getKey(), posiciones.getNodoN(thisNodo.getNumero()).getValue())
+					.view(getClass().getResource("utnball.png"))
+					.buildAndAttach();
+			}
+		});
     }
     @Override
     protected void onUpdate(double tpf) {

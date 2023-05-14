@@ -25,6 +25,7 @@ import static java.lang.Math.abs;
 import static java.lang.Thread.sleep;
 import pokemon.search.*;
 import frsf.cidisi.faia.agent.Action;
+import frsf.cidisi.faia.state.datastructure.Graph;
 import pokemon.search.actions.*;
 
 import com.almasb.fxgl.app.scene.LoadingScene;
@@ -41,6 +42,7 @@ public class GUI extends GameApplication {
 	private int nroGrafo = 0;
     
     private ArrayList<Pair<Action, Double>> acciones;
+    private ArrayList<Point2D> posicionesA;
     private Boolean gano;
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
@@ -70,10 +72,11 @@ public class GUI extends GameApplication {
             	public void run() {
             		acciones.stream().forEach(action -> {
                 		final int[] nroPokemon = {0};
-                		 
-            			Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
+                		
+        				Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
             				if (thisNodo.getTienePokemon()) {
-            					enemigos.get(nroPokemon[0]).setPosition(posiciones.getNodoN(thisNodo.getNumero()).getKey(), posiciones.getNodoN(thisNodo.getNumero()).getValue());
+            					posicionesA.set(nroPokemon[0],  new Point2D(posiciones.getNodoN(thisNodo.getNumero()).getKey() + 30, posiciones.getNodoN(thisNodo.getNumero()).getValue()));
+            					enemigos.get(nroPokemon[0]).setPosition(posicionesA.get(nroPokemon[0]));
             					nroPokemon[0]++;
             				}
             			});
@@ -113,9 +116,10 @@ public class GUI extends GameApplication {
                     		textAccion.setText("¡El agente eligió usar el satélite!");
                     	}
                     	else if (action.getKey() instanceof JuntarPokebola) {
-                    		textAccion.setText("¡El agente eligió juntar una pokebola!");
+                    		textAccion.setText("¡El agente eligió juntar una UTN Ball!");
                     	}
-						try {
+
+                    	try {
 							sleep(3500);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
@@ -154,7 +158,7 @@ public class GUI extends GameApplication {
     
     @Override
     protected void initUI() {
-        FXGL.play(getClass().getResource("mountaintrails.mp3"));
+        FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("mountaintrails.mp3")));
         BackgroundImage backgroundImage;
         try {
             Image image = new Image(getClass().getResource("worldmap.png").openStream());
@@ -206,7 +210,7 @@ public class GUI extends GameApplication {
     	
     	enemigos = new ArrayList<>();
 
-    	for (int i = 0; i < 11; i++) {
+    	for (int i = 0; i < 12; i++) {
     		enemigos.add(FXGL.entityBuilder()
     						.at(-100, -100)
     						.view(getClass().getResource("pokemon.png"))
@@ -219,16 +223,33 @@ public class GUI extends GameApplication {
                 .buildAndAttach();
         player.setProperty("velocity", new Point2D(0,0));
         acciones = pokemonMain.getAccionesEjecutadas();
+        System.out.println("Cantidad de acciones: " + acciones.size());
         System.out.println("Cantidad de grafos: " + Datos.grafo.size());
+        
+        int m = 0;
+        for (datastructures.Graph thisGrafo : Datos.grafo) {
+            System.out.println("Grafo: " + m);
+        	thisGrafo.getAllVertices().stream().forEach(vertice -> {
+        		if (vertice.getTienePokemon()) System.out.println("pokemon en vertice " + vertice.getNumero() + " " + vertice.getPokemon());
+        	});   
+        	m++;
+        }
+        
         System.out.println("Cantidad acciones" + acciones.size());
         gano = pokemonMain.getGano();
         
+        posicionesA = new ArrayList<>();
+        
+        for (int i = 0; i < 12; i++) {
+        	posicionesA.add(new Point2D(-100, -100));
+        }
+        
         // Agrego utn balls
-		 
+		
 		Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
 			if (thisNodo.getTienePokebola()) {
 				FXGL.entityBuilder()
-					.at(posiciones.getNodoN(thisNodo.getNumero()).getKey(), posiciones.getNodoN(thisNodo.getNumero()).getValue())
+					.at(posiciones.getNodoN(thisNodo.getNumero()).getKey() - 10, posiciones.getNodoN(thisNodo.getNumero()).getValue())
 					.view(getClass().getResource("utnball.png"))
 					.buildAndAttach();
 			}
@@ -244,6 +265,8 @@ public class GUI extends GameApplication {
         if (abs(player.getY() - objectiveY) < 3) {
             if (velocity.getY() != 0) player.setProperty("velocity", (new Point2D(velocity.getX(),0)));
         }
+        
+        
     }
     
 }

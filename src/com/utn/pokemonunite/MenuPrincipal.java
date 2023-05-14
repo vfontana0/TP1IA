@@ -19,6 +19,8 @@ import com.almasb.fxgl.audio.Music;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getAssetLoader;
+
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.core.util.EmptyRunnable;
 import com.almasb.fxgl.dsl.FXGL;
@@ -80,7 +82,8 @@ public class MenuPrincipal extends FXGLMenu {
 	public MenuPrincipal(MenuType type) {
 		super(type);
 		escritorLector = new ConfiguracionAlgoritmo();
-		FXGL.play(getClass().getResource("rolling5.mp3"));
+		FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("rolling5.mp3")));
+        
 		
 		// TODO Auto-generated constructor stub
 		

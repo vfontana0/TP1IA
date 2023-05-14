@@ -29,8 +29,9 @@ public class AmbientePokemon extends Environment{
 	        	perception.getPercepcionesAdyacentes().put(vecino.getNumero(), new PercepcionNodo(vecino));
 	        }
 	        perception.getPercepcionesAdyacentes().put(actual.getNumero(), new PercepcionNodo(actual));
-	        if (Datos.grafo == null) Datos.grafo = new ArrayList<>();
-	        Datos.grafo.add(((EstadoAmbiente) environmentState).getGrafo());
+
+			if (Datos.grafo == null) Datos.grafo = new ArrayList<>();
+	        Datos.grafo.add(((EstadoAmbiente) environmentState).getGrafo().clone());
 	        return perception;
 		}
 		

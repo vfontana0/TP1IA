@@ -3,6 +3,7 @@ package datastructures;
 import java.util.*;
 import domain.Nodo;
 import pokemon.search.Datos;
+import pokemon.search.EstadoJugador;
 
 public class Graph {
     private Map<Nodo, List<Nodo>> adjVertices;
@@ -84,20 +85,20 @@ public class Graph {
 		this.adjVertices = adjVertices;
 	}
 
-	public int getHeuristica(Nodo ubicacion) {
-		return this.dijkstra(ubicacion, this.getVertex(Datos.nodoMaestro)); //distancia entre el actual y nodo 11
+	public double getHeuristica(EstadoJugador estado) {
+		return this.dijkstra(estado.getUbicacion(), this.getVertex(Datos.nodoMaestro), estado.getMapa()); //distancia entre el actual y nodo 11
 	}
 	
-	private int dijkstra(Nodo origen, Nodo destino) {
-	    Map<Nodo, Integer> distancia = new HashMap<>();
+	private double dijkstra(Nodo origen, Nodo destino, Graph mapa) {
+	    Map<Nodo, Double> distancia = new HashMap<>();
 	    Set<Nodo> visitados = new HashSet<>();
-	    PriorityQueue<Nodo> cola = new PriorityQueue<>(Comparator.comparingInt(distancia::get));
+	    PriorityQueue<Nodo> cola = new PriorityQueue<>(Comparator.comparingDouble(distancia::get));
 	    
 	    // Inicializar la distancia de todos los nodos como infinito, excepto el nodo origen que tiene distancia 0
 	    for (Nodo nodo : adjVertices.keySet()) {
-	        distancia.put(nodo, Integer.MAX_VALUE);
+	        distancia.put(nodo, Double.MAX_VALUE);
 	    }
-	    distancia.put(origen, 0);
+	    distancia.put(origen, 0.0);
 	    cola.add(origen);
 	    
 	    while (!cola.isEmpty()) {
@@ -106,7 +107,13 @@ public class Graph {
 	        List<Nodo> vecinos = adjVertices.get(actual);
 	        for (Nodo vecino : vecinos) {
 	            if (!visitados.contains(vecino)) {
-	                int peso = distancia.get(actual) + 1;
+	            	double peso = distancia.get(actual);
+	            	if(mapa.getVertex(vecino.getNumero()).getTienePokemon()) //si tiene pokemon
+	            		peso += mapa.getVertex(vecino.getNumero()).getPokemon().getEnergia(); //peos es la energia del pokemon
+	            	else if(mapa.getVertex(vecino.getNumero()).getTienePokebola()) //si tiene pokemon
+	            		peso += 0;
+	            	else
+	            		peso += 1;
 	                if (peso < distancia.get(vecino)) {
 	                    distancia.put(vecino, peso);
 	                    cola.add(vecino);

@@ -31,7 +31,7 @@ public class PokemonMain {
     	Datos.energiaJugador = (new Random()).nextDouble(10)+10;
     	Datos.nodoMaestro = 18;
     	Datos.energiaMaestro = 9.0;
-    	Datos.nroEstrategia = config.leeAlgoritmo();
+    	Datos.nroEstrategia = 2;
     	System.out.println("Estrategia: " + Datos.nroEstrategia);
     	
     	//agregar nodos y conexiones al mapa

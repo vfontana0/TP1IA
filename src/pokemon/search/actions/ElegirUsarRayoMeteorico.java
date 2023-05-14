@@ -8,7 +8,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirUsarRayoMeteorico extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
@@ -24,7 +24,7 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 2.0; //El segundo menos costoso
+		return this.costo;  //El segundo menos costoso
 	}
 
 	@Override
@@ -46,6 +46,10 @@ public class ElegirUsarRayoMeteorico extends SearchAction{
 	@Override
 	public String toString() {
 		return "Elegir Usar Rayo Meteorico";
+	}
+	
+	public void setCost(Double costo) {
+		this.costo = costo;
 	}
 
 }

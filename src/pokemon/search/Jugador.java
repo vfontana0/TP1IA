@@ -25,6 +25,7 @@ public class Jugador extends SearchBasedAgent {
 	private ArrayList<Pair<Action, Double>> searchActions;
 	private Integer nroEstrategia;
 	EstadoJugador jugadorState;
+	private Vector<SearchAction> operators = new Vector<SearchAction>();
 	public ArrayList<Pair<Action, Double>> getSearchActions() {
 		return searchActions;
 	}
@@ -44,7 +45,6 @@ public class Jugador extends SearchBasedAgent {
 		this.nroEstrategia = Datos.nroEstrategia;
 		jugadorState = new EstadoJugador(grafo);
 		this.setAgentState(jugadorState);
-		Vector<SearchAction> operators = new Vector<SearchAction>();
 		operators.add(new JuntarPokebola());
 		operators.add(new ElegirHuir());
 		operators.add(new ElegirUsarRayoSolar());
@@ -87,7 +87,8 @@ public class Jugador extends SearchBasedAgent {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
 	            searchActions.add(new Pair<Action, Double>(accionSeleccionada, jugadorState.getEnergia()));
 	           System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
-	            } catch (Exception ex) {
+	           System.out.println("Costo: " + jugadorState.getCosto());
+	        } catch (Exception ex) {
 	            System.out.println(ex.getMessage());
 	        }
 	        return accionSeleccionada;
@@ -106,6 +107,18 @@ public class Jugador extends SearchBasedAgent {
 			break;
 		}
 		case 3: {//costo uniforme
+			System.out.println("e ejecuta en teoria");
+			((JuntarPokebola) operators.get(0)).setCost(0.0);
+			((ElegirHuir) operators.get(1)).setCost(2.0);
+			((ElegirUsarRayoSolar) operators.get(2)).setCost(0.0);
+			((ElegirUsarRayoMeteorico) operators.get(3)).setCost(1.0);
+			((ElegirUsarRayoAurora) operators.get(4)).setCost(2.0);
+			((ElegirUsarSatelite) operators.get(5)).setCost(0.0);
+			((ElegirPelear) operators.get(6)).setCost(4.0);
+			for(int i=7; i<operators.size(); i++) {
+				((IrANodoN) operators.get(i)).setCost(1.0);
+			}
+			
 			 IStepCostFunction costFunction = new FuncionCosto();
 		     retorno = new UniformCostSearch(costFunction);
 			break;

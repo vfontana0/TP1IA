@@ -8,7 +8,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirUsarRayoSolar extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		 EstadoJugador agState = (EstadoJugador) s;
@@ -23,7 +23,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 1.0; //Es el menor costo seteado, para que al tenerlo disponible 
+		return this.costo;  //Es el menor costo seteado, para que al tenerlo disponible 
 					//lo use antes que cualquier otro, ya que es el más poderoso.
 	}
 
@@ -50,4 +50,7 @@ public class ElegirUsarRayoSolar extends SearchAction{
 		return "Elegir usar Rayo Solar";
 	}
 
+	public void setCost(Double costo) {
+		this.costo = costo;
+	}
 }

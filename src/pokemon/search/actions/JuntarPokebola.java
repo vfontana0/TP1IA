@@ -9,7 +9,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class JuntarPokebola extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estado = (EstadoJugador) s;
@@ -24,7 +24,7 @@ public class JuntarPokebola extends SearchAction{
 
 	@Override
 	public Double getCost() {
-		return 0.0; //Siempre que llegue a una pokebola va a elegir absorber su energía.
+		return this.costo;  //Siempre que llegue a una pokebola va a elegir absorber su energía.
 	}
 
 	@Override
@@ -53,6 +53,8 @@ public class JuntarPokebola extends SearchAction{
 		return "Juntar Pokebola";
 	}
 	
-
+	public void setCost(Double costo) {
+		this.costo = costo;
+	}
 	
 }

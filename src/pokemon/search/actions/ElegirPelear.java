@@ -9,7 +9,7 @@ import pokemon.search.EstadoAmbiente;
 import pokemon.search.EstadoJugador;
 
 public class ElegirPelear extends SearchAction{
-
+	Double costo = 0.0;
 	@Override
 	public SearchBasedAgentState execute(SearchBasedAgentState s) {
 		EstadoJugador estadoJugador = (EstadoJugador) s;
@@ -75,9 +75,11 @@ public class ElegirPelear extends SearchAction{
 
 
 	public Double getCost() {
-		return 4.0; //Pelear y Huir tienen el mismo costo para que se elija 
+		return this.costo;  //Pelear y Huir tienen el mismo costo para que se elija 
 				//uno u otro según la vida del pokemon adversario y no según este costo.
 	}
 	
-
+	public void setCost(Double costo) {
+		this.costo = costo;
+	}
 }

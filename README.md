@@ -8,8 +8,7 @@
 
 ## Solución
 
-- En la rama master del proyecto se encuentra la solución del TP, implementado con el framework FAIA y se pueden visualizar las percepciones, las acciones ejecutadas,
-el estado del agente y del ambiente mediante la consola.
+- En la rama master del proyecto se encuentra la solución del TP, implementado con el framework FAIA.
 
 - El TP se puede ejecutar de dos maneras:
   - Desde el archivo GUI.java donde se puede observar la simulación a través de una interfaz gráfica, donde se actualiza el movimiento del agente y de los adversarios, se puede visualizar en que nodos se encuentran las pokebolas, las acciones ejecutadas por el agente y el nivel del mismo. Además, permite elegir la estrategia desde el menú inicial. 

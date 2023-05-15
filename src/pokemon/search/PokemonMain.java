@@ -28,9 +28,11 @@ public class PokemonMain {
     	Datos.nodoInicio = (new Random()).nextInt(29) + 1;
     	Datos.energiaJugador = (new Random()).nextDouble(10)+10;
     	Datos.nodoMaestro = 18;
-    	Datos.energiaMaestro = 9.0;
-    	if (Datos.nroEstrategia == null) Datos.nroEstrategia = 3;
+    	Datos.energiaMaestro = 10.0;
+    	Datos.cantAdversarios = 11;
+    	if (Datos.nroEstrategia == null) Datos.nroEstrategia = 4;
     	System.out.println("Estrategia: " + Datos.nroEstrategia);
+    	System.out.println("Nodo inicial: " + Datos.nodoInicio);
     	
     	//agregar nodos y conexiones al mapa
     	grafoAmbiente.initGrafo();

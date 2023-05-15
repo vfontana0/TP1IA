@@ -52,14 +52,14 @@ public class EstadoAmbiente extends EnvironmentState{
 	private void generarPokemones() {
 		Random rand = new Random();
 		Integer cont2 = 0;
-		while(cont2 < 11) {
+		while(cont2 < Datos.cantAdversarios) {
 			 Integer nroNodo = rand.nextInt(29) + 1;
 			if(!nroNodoPokemones.contains(nroNodo) && !nroNodoPokebolas.contains(nroNodo) && nroNodo != Datos.nodoMaestro) {
 				System.out.println("Numero de nodos donde hay pokemon" + nroNodo);
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokemon pk = new Pokemon();
 				pk.setActual(random);
-				pk.setEnergia(5.0);
+				pk.setEnergia(new Random().nextDouble(5)+5);
 				pk.setCiclosParaMoverse(rand.nextInt(3)+1);
 				pk.setVivo(true);
 				pk.setEsMaestro(false);

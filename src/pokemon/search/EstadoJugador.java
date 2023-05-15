@@ -110,7 +110,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 				this.nivel = 6;
 			if(this.energiaGanada > 1.5*this.energiaInicial)
 				this.nivel = 7;
-			System.out.println("Flaco subiste al nivel " + this.nivel);
+			System.out.println("Nivel actual: " + nivel);
 		}
 		
 		@Override

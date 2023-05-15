@@ -88,7 +88,6 @@ public class Jugador extends SearchBasedAgent {
 	            searchActions.add(new Pair<Action, Double>(accionSeleccionada, jugadorState.getEnergia()));
 	            if (Datos.niveles == null) Datos.niveles = new ArrayList<>();
 	            Datos.niveles.add(((EstadoJugador) this.getAgentState()).getNivel());
-	            System.out.println("nuevo niveles " + Datos.niveles);
 	           System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
 	           System.out.println("Costo: " + jugadorState.getCosto());
 	        } catch (Exception ex) {
@@ -110,18 +109,6 @@ public class Jugador extends SearchBasedAgent {
 			break;
 		}
 		case 3: {//costo uniforme
-			System.out.println("e ejecuta en teoria");
-			((JuntarPokebola) operators.get(0)).setCost(0.0);
-			((ElegirHuir) operators.get(1)).setCost(2.0);
-			((ElegirUsarRayoSolar) operators.get(2)).setCost(0.0);
-			((ElegirUsarRayoMeteorico) operators.get(3)).setCost(1.0);
-			((ElegirUsarRayoAurora) operators.get(4)).setCost(2.0);
-			((ElegirUsarSatelite) operators.get(5)).setCost(0.0);
-			((ElegirPelear) operators.get(6)).setCost(4.0);
-			for(int i=7; i<operators.size(); i++) {
-				((IrANodoN) operators.get(i)).setCost(1.0);
-			}
-			
 			 IStepCostFunction costFunction = new FuncionCosto();
 		     retorno = new UniformCostSearch(costFunction);
 			break;
@@ -133,6 +120,17 @@ public class Jugador extends SearchBasedAgent {
 		}
 		case 5: {//a+
 			Heuristica heuristica = new Heuristica();
+			((JuntarPokebola) operators.get(0)).setCost(0.0);
+			((ElegirHuir) operators.get(1)).setCost(2.0);
+			((ElegirUsarRayoSolar) operators.get(2)).setCost(0.0);
+			((ElegirUsarRayoMeteorico) operators.get(3)).setCost(1.0);
+			((ElegirUsarRayoAurora) operators.get(4)).setCost(2.0);
+			((ElegirUsarSatelite) operators.get(5)).setCost(0.0);
+			((ElegirPelear) operators.get(6)).setCost(4.0);
+			for(int i=7; i<operators.size(); i++) {
+				((IrANodoN) operators.get(i)).setCost(1.0);
+			}
+			
 			IStepCostFunction costFunction = new FuncionCosto();
 			retorno = new AStarSearch(costFunction, heuristica);
 		}

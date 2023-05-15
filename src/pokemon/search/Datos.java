@@ -8,6 +8,7 @@ public class Datos {
 	public static Integer nodoMaestro;
 	public static Double energiaMaestro;
 	public static Double energiaJugador;
+	public static Integer cantAdversarios;
 	public static Integer nodoInicio;
 	public static Integer nroEstrategia;
 	public static ArrayList<Graph> grafo;

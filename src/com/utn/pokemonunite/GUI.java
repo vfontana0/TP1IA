@@ -95,10 +95,8 @@ public class GUI extends GameApplication {
 	                		textVida.setText("Energia: " + String.format("%.2f", action.getValue()));
 	
 	                    	if (action.getKey() instanceof IrANodoN) {;
-	                    		System.out.println("accion detectada");
 	            		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
 	            		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
-	            		        System.out.println("Entrando a accion de nodo: " + numero);
 	        					try {
 									translateSmooth(parNodoN.getKey(), parNodoN.getValue());
 								} catch (InterruptedException e) {
@@ -300,19 +298,6 @@ public class GUI extends GameApplication {
         player.setProperty("velocity", new Point2D(0,0));
         nroNodo = Datos.nodoInicio	;
         acciones = pokemonMain.getAccionesEjecutadas();
-        System.out.println("Cantidad de acciones: " + acciones.size());
-        System.out.println("Cantidad de grafos: " + Datos.grafo.size());
-        
-        int m = 0;
-        for (datastructures.Graph thisGrafo : Datos.grafo) {
-            System.out.println("Grafo: " + m);
-        	thisGrafo.getAllVertices().stream().forEach(vertice -> {
-        		if (vertice.getTienePokemon()) System.out.println("pokemon en vertice " + vertice.getNumero() + " " + vertice.getPokemon());
-        	});   
-        	m++;
-        }
-        
-        System.out.println("Cantidad acciones" + acciones.size());
         gano = pokemonMain.getGano();
         
         posicionesA = new ArrayList<>();

@@ -59,7 +59,7 @@ public class EstadoAmbiente extends EnvironmentState{
 				Nodo random = grafo.getVertex(nroNodo);
 				Pokemon pk = new Pokemon();
 				pk.setActual(random);
-				pk.setEnergia(new Random().nextDouble(5)+5);
+				pk.setEnergia(new Random().nextDouble(2)+5);
 				pk.setCiclosParaMoverse(rand.nextInt(3)+1);
 				pk.setVivo(true);
 				pk.setEsMaestro(false);

@@ -10,7 +10,6 @@ import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.exceptions.PrologConnectorException;
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 import javafx.util.Pair;
-import com.utn.pokemonunite.ConfiguracionAlgoritmo;
 
 public class PokemonMain {
 	static ArrayList<Pair<Action, Double>> accionesEjecutadas;
@@ -21,7 +20,6 @@ public class PokemonMain {
     }
     
 	public static void startPokemon() {
-	    ConfiguracionAlgoritmo config = new ConfiguracionAlgoritmo();
     	//Creacion de mapas del ambiente y agente
     	Graph grafoAmbiente = new Graph();
     	Graph grafoAgente = new Graph();
@@ -31,7 +29,7 @@ public class PokemonMain {
     	Datos.energiaJugador = (new Random()).nextDouble(10)+10;
     	Datos.nodoMaestro = 18;
     	Datos.energiaMaestro = 9.0;
-    	Datos.nroEstrategia = 2;
+    	if (Datos.nroEstrategia == null) Datos.nroEstrategia = 3;
     	System.out.println("Estrategia: " + Datos.nroEstrategia);
     	
     	//agregar nodos y conexiones al mapa

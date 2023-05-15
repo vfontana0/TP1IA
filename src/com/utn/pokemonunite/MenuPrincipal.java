@@ -21,11 +21,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import pokemon.search.Datos;
 public class MenuPrincipal extends FXGLMenu {
 	private static final int SIZE = 120;
 	private int numeroAlgoritmo = 1;
 	
-	ConfiguracionAlgoritmo escritorLector;
 	
     private Animation<?> animation;
     private Music musica;
@@ -37,29 +37,28 @@ public class MenuPrincipal extends FXGLMenu {
     	switch (numeroAlgoritmo) {
     	case 1:
     		textoAlgoritmo.setText("ALGORITMO: DFS");
-    		escritorLector.guardaAlgoritmo(1);
+    		Datos.nroEstrategia = 1;
     		break;
     	case 2:
     		textoAlgoritmo.setText("ALGORITMO: BFS");
-    		escritorLector.guardaAlgoritmo(2);
+    		Datos.nroEstrategia = 2;
     		break;
     	case 3:
     		textoAlgoritmo.setText("ALGORITMO: COST. UNIF");
-    		escritorLector.guardaAlgoritmo(3);
+    		Datos.nroEstrategia = 3;
     		break;
     	case 4:
     		textoAlgoritmo.setText("ALGORITMO: Greedy");
-    		escritorLector.guardaAlgoritmo(4);
+    		Datos.nroEstrategia = 4;
     		break;
     	case 5:
     		textoAlgoritmo.setText("ALGORITMO: A*");
-    		escritorLector.guardaAlgoritmo(5);
+    		Datos.nroEstrategia = 5;
     	}
     }
     
 	public MenuPrincipal(MenuType type) {
 		super(type);
-		escritorLector = new ConfiguracionAlgoritmo();
 		musica = getAssetLoader().loadMusic(getClass().getResource("rolling5.mp3"));
 		FXGL.getAudioPlayer().loopMusic((musica));
         

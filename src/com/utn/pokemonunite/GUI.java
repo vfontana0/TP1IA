@@ -78,9 +78,9 @@ public class GUI extends GameApplication {
             		acciones.stream().forEach(action -> {
                 		final int[] nroPokemon = {0};
                 		
-                		textNivel.setText("Nivel: " + Datos.niveles.get(nroAccion[0]));
+                		if (nroAccion[0] != Datos.niveles.size()) textNivel.setText("Nivel: " + Datos.niveles.get(nroAccion[0]));
                 		nroAccion[0]++;
-        				Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
+        				if (nroGrafo != Datos.grafo.size()) Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
             				if (thisNodo.getTienePokemon()) {
             					posicionesA.set(nroPokemon[0],  new Point2D(posiciones.getNodoN(thisNodo.getNumero()).getKey() + 30, posiciones.getNodoN(thisNodo.getNumero()).getValue()));
             					enemigos.get(nroPokemon[0]).setPosition(posicionesA.get(nroPokemon[0]));

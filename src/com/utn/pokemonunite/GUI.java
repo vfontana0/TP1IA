@@ -48,6 +48,7 @@ public class GUI extends GameApplication {
     private ArrayList<Point2D> posicionesA;
     private ArrayList<Pair<Entity, Integer>> utnBalls;
     private Boolean gano;
+    boolean loPresiono[] = {false};
     
     private void translateSmooth(Integer x, Integer y) throws InterruptedException {
         objectiveX = x;
@@ -65,146 +66,148 @@ public class GUI extends GameApplication {
     protected void initInput() {
         Posiciones posiciones = new Posiciones();
         FXGL.onKey(KeyCode.SPACE, () -> {
-        	textoEspacio.setVisible(false);
-            try {
-                sleep(150);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            Thread t = new Thread() {
-            	@Override
-            	public void run() {
-            		int nroAccion[] = {0};
-            		acciones.stream().forEach(action -> {
-                		final int[] nroPokemon = {0};
-                		
-                		if (nroAccion[0] != Datos.niveles.size()) textNivel.setText("Nivel: " + Datos.niveles.get(nroAccion[0]));
-                		nroAccion[0]++;
-        				if (nroGrafo != Datos.grafo.size()) Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
-            				if (thisNodo.getTienePokemon()) {
-            					posicionesA.set(nroPokemon[0],  new Point2D(posiciones.getNodoN(thisNodo.getNumero()).getKey() + 30, posiciones.getNodoN(thisNodo.getNumero()).getValue()));
-            					enemigos.get(nroPokemon[0]).setPosition(posicionesA.get(nroPokemon[0]));
-            					nroPokemon[0]++;
-            				}
-            			});
-            			nroGrafo++;
-            			textAccion.setText("");
-                		textVida.setText("Energia: " + String.format("%.2f", action.getValue()));
-
-                    	if (action.getKey() instanceof IrANodoN) {;
-                    		System.out.println("accion detectada");
-            		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
-            		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
-            		        System.out.println("Entrando a accion de nodo: " + numero);
-        					try {
-								translateSmooth(parNodoN.getKey(), parNodoN.getValue());
+        	if (!loPresiono[0]) {
+        		loPresiono[0] = true;
+	        	textoEspacio.setVisible(false);
+	            try {
+	                sleep(150);
+	            } catch (InterruptedException e) {
+	                throw new RuntimeException(e);
+	            }
+	            Thread t = new Thread() {
+	            	@Override
+	            	public void run() {
+	            		int nroAccion[] = {0};
+	            		acciones.stream().forEach(action -> {
+	                		final int[] nroPokemon = {0};
+	                		
+	                		if (nroAccion[0] != Datos.niveles.size()) textNivel.setText("Nivel: " + Datos.niveles.get(nroAccion[0]));
+	                		nroAccion[0]++;
+	        				if (nroGrafo != Datos.grafo.size()) Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
+	            				if (thisNodo.getTienePokemon()) {
+	            					posicionesA.set(nroPokemon[0],  new Point2D(posiciones.getNodoN(thisNodo.getNumero()).getKey() + 30, posiciones.getNodoN(thisNodo.getNumero()).getValue()));
+	            					enemigos.get(nroPokemon[0]).setPosition(posicionesA.get(nroPokemon[0]));
+	            					nroPokemon[0]++;
+	            				}
+	            			});
+	            			nroGrafo++;
+	            			textAccion.setText("");
+	                		textVida.setText("Energia: " + String.format("%.2f", action.getValue()));
+	
+	                    	if (action.getKey() instanceof IrANodoN) {;
+	                    		System.out.println("accion detectada");
+	            		        Integer numero = ((IrANodoN) action.getKey()).getNumero();
+	            		        Pair<Integer, Integer> parNodoN = posiciones.getNodoN(numero);
+	            		        System.out.println("Entrando a accion de nodo: " + numero);
+	        					try {
+									translateSmooth(parNodoN.getKey(), parNodoN.getValue());
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+	        					nroNodo = numero;
+	        					
+	        					
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirPelear) {
+	                			textAccion.setText("¡El agente eligió pelear!");
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirUsarRayoAurora) {
+	                    		textAccion.setText("¡El agente eligió usar el Rayo Aurora!");
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirUsarRayoMeteorico) {
+	                    		textAccion.setText("¡El agente eligió usar el Rayo Meteórico!");
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirUsarRayoSolar) {
+	                    		textAccion.setText("¡El agente eligió usar el Rayo Solar!");
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirHuir) {
+	                    		textAccion.setText("¡El agente eligió huir!");
+	                    	}
+	                    	else if (action.getKey() instanceof ElegirUsarSatelite) {
+	                    		textAccion.setText("¡El agente eligió usar el satélite!");
+	                    	}
+	                    	else if (action.getKey() instanceof JuntarPokebola) {
+	                    		textAccion.setText("¡El agente eligió juntar una UTN Ball!");
+	                    		for (Pair<Entity, Integer> thisBall: utnBalls) {
+	                    			if (thisBall.getValue().equals(nroNodo)) {
+	                    				thisBall.getKey().setPosition(-100, -100);
+	                    			}
+	                    		}
+	                    	}
+	
+	                    	try {
+								sleep(3500);
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-        					nroNodo = numero;
-        					
-        					
-                    	}
-                    	else if (action.getKey() instanceof ElegirPelear) {
-                			textAccion.setText("¡El agente eligió pelear!");
-                    	}
-                    	else if (action.getKey() instanceof ElegirUsarRayoAurora) {
-                    		textAccion.setText("¡El agente eligió usar el Rayo Aurora!");
-                    	}
-                    	else if (action.getKey() instanceof ElegirUsarRayoMeteorico) {
-                    		textAccion.setText("¡El agente eligió usar el Rayo Meteórico!");
-                    	}
-                    	else if (action.getKey() instanceof ElegirUsarRayoSolar) {
-                    		textAccion.setText("¡El agente eligió usar el Rayo Solar!");
-                    	}
-                    	else if (action.getKey() instanceof ElegirHuir) {
-                    		textAccion.setText("¡El agente eligió huir!");
-                    	}
-                    	else if (action.getKey() instanceof ElegirUsarSatelite) {
-                    		textAccion.setText("¡El agente eligió usar el satélite!");
-                    	}
-                    	else if (action.getKey() instanceof JuntarPokebola) {
-                    		textAccion.setText("¡El agente eligió juntar una UTN Ball!");
-                    		for (Pair<Entity, Integer> thisBall: utnBalls) {
-                    			if (thisBall.getValue().equals(nroNodo)) {
-                    				thisBall.getKey().setPosition(-100, -100);
-                    			}
-                    		}
-                    	}
-
-                    	try {
-							sleep(3500);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-                    	
-                    });
-            		if(gano) {
-            			FXGL.getAudioPlayer().stopMusic(musica);
-            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("allamo.wav")));
-            	        
-            			textNivel.setVisible(false);
-            			textVida.setVisible(false);
-            			textAccion.setVisible(false);
-            			BackgroundImage backgroundImage;
-            			player.setVisible(false);
-            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
-            				thisUtnBall.getKey().setVisible(false);
-            			}
-            			for (Entity thisEnemigo : enemigos) {
-            				thisEnemigo.setVisible(false);
-            			}
-            	        try {
-            	            Image image = new Image(getClass().getResource("gano.png").openStream());
-            	            backgroundImage = new BackgroundImage(
-            	                    image,
-            	                    BackgroundRepeat.NO_REPEAT,
-            	                    BackgroundRepeat.NO_REPEAT,
-            	                    BackgroundPosition.DEFAULT,
-            	                    new BackgroundSize(1024, 768, false, false, true, false));
-            	        } catch (IOException e) {
-            	            throw new RuntimeException(e);
-            	        }
-            	        
-            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
-            		} else {
-            			FXGL.getAudioPlayer().stopMusic(musica);
-            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("continue.wav")));
-
-            			textNivel.setVisible(false);
-            			textVida.setVisible(false);
-            			textAccion.setVisible(false);
-            			BackgroundImage backgroundImage;
-            			player.setVisible(false);
-            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
-            				thisUtnBall.getKey().setVisible(false);
-            			}
-            			for (Entity thisEnemigo : enemigos) {
-            				thisEnemigo.setVisible(false);
-            			}
-            	        try {
-            	            Image image = new Image(getClass().getResource("perdio.png").openStream());
-            	            backgroundImage = new BackgroundImage(
-            	                    image,
-            	                    BackgroundRepeat.NO_REPEAT,
-            	                    BackgroundRepeat.NO_REPEAT,
-            	                    BackgroundPosition.DEFAULT,
-            	                    new BackgroundSize(1024, 768, false, false, true, false));
-            	        } catch (IOException e) {
-            	            throw new RuntimeException(e);
-            	        }
-            	        
-            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
-            		}
-            		
-            	}
-            };
-            
-            t.start();
-            
-        });
+	                    	
+	                    });
+	            		if(gano) {
+	            			FXGL.getAudioPlayer().stopMusic(musica);
+	            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("allamo.wav")));
+	            	        
+	            			textNivel.setVisible(false);
+	            			textVida.setVisible(false);
+	            			textAccion.setVisible(false);
+	            			BackgroundImage backgroundImage;
+	            			player.setVisible(false);
+	            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
+	            				thisUtnBall.getKey().setVisible(false);
+	            			}
+	            			for (Entity thisEnemigo : enemigos) {
+	            				thisEnemigo.setVisible(false);
+	            			}
+	            	        try {
+	            	            Image image = new Image(getClass().getResource("gano.png").openStream());
+	            	            backgroundImage = new BackgroundImage(
+	            	                    image,
+	            	                    BackgroundRepeat.NO_REPEAT,
+	            	                    BackgroundRepeat.NO_REPEAT,
+	            	                    BackgroundPosition.DEFAULT,
+	            	                    new BackgroundSize(1024, 768, false, false, true, false));
+	            	        } catch (IOException e) {
+	            	            throw new RuntimeException(e);
+	            	        }
+	            	        
+	            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
+	            		} else {
+	            			FXGL.getAudioPlayer().stopMusic(musica);
+	            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("continue.wav")));
+	
+	            			textNivel.setVisible(false);
+	            			textVida.setVisible(false);
+	            			textAccion.setVisible(false);
+	            			BackgroundImage backgroundImage;
+	            			player.setVisible(false);
+	            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
+	            				thisUtnBall.getKey().setVisible(false);
+	            			}
+	            			for (Entity thisEnemigo : enemigos) {
+	            				thisEnemigo.setVisible(false);
+	            			}
+	            	        try {
+	            	            Image image = new Image(getClass().getResource("perdio.png").openStream());
+	            	            backgroundImage = new BackgroundImage(
+	            	                    image,
+	            	                    BackgroundRepeat.NO_REPEAT,
+	            	                    BackgroundRepeat.NO_REPEAT,
+	            	                    BackgroundPosition.DEFAULT,
+	            	                    new BackgroundSize(1024, 768, false, false, true, false));
+	            	        } catch (IOException e) {
+	            	            throw new RuntimeException(e);
+	            	        }
+	            	        
+	            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
+	            		}
+	            		
+	            	}
+	            };
+	            
+	            t.start();
+        	}
+	        });
     }
 
     public static void main(String[] args) {
@@ -269,6 +272,7 @@ public class GUI extends GameApplication {
         
 
     	nroGrafo = 0;
+    	loPresiono[0] = false;
         Datos.niveles = new ArrayList<>();
         Datos.grafo = new ArrayList<>();
         Datos.energiaJugador = 0.0;

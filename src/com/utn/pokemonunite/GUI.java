@@ -65,7 +65,6 @@ public class GUI extends GameApplication {
     protected void initInput() {
         Posiciones posiciones = new Posiciones();
         FXGL.onKey(KeyCode.SPACE, () -> {
-        	nroGrafo = 0;
         	textoEspacio.setVisible(false);
             try {
                 sleep(150);
@@ -268,7 +267,8 @@ public class GUI extends GameApplication {
     	getGameScene().addUINode(new Text("Buscando solucion..."));
         //Ejecuto el algoritmo
         
-    	
+
+    	nroGrafo = 0;
         Datos.niveles = new ArrayList<>();
         Datos.grafo = new ArrayList<>();
         Datos.energiaJugador = 0.0;

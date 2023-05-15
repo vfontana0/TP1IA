@@ -4,6 +4,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.utn.pokemonunite.PantallaCarga;
@@ -37,7 +38,8 @@ public class GUI extends GameApplication {
     private int objectiveY;
     private Text textVida;
     private Text textAccion;
-    private Text textResultado;
+    private Text textNivel;
+    private Music musica;
     private Text textoEspacio;
     private ArrayList<Entity> enemigos;
 	private int nroGrafo = 0;
@@ -72,9 +74,12 @@ public class GUI extends GameApplication {
             Thread t = new Thread() {
             	@Override
             	public void run() {
+            		int nroAccion[] = {0};
             		acciones.stream().forEach(action -> {
                 		final int[] nroPokemon = {0};
                 		
+                		textNivel.setText("Nivel: " + Datos.niveles.get(nroAccion[0]));
+                		nroAccion[0]++;
         				Datos.grafo.get(nroGrafo).getAllVertices().stream().forEach(thisNodo -> {
             				if (thisNodo.getTienePokemon()) {
             					posicionesA.set(nroPokemon[0],  new Point2D(posiciones.getNodoN(thisNodo.getNumero()).getKey() + 30, posiciones.getNodoN(thisNodo.getNumero()).getValue()));
@@ -137,9 +142,61 @@ public class GUI extends GameApplication {
                     	
                     });
             		if(gano) {
-            			textResultado.setText("GANO");
+            			FXGL.getAudioPlayer().stopMusic(musica);
+            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("allamo.wav")));
+            	        
+            			textNivel.setVisible(false);
+            			textVida.setVisible(false);
+            			textAccion.setVisible(false);
+            			BackgroundImage backgroundImage;
+            			player.setVisible(false);
+            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
+            				thisUtnBall.getKey().setVisible(false);
+            			}
+            			for (Entity thisEnemigo : enemigos) {
+            				thisEnemigo.setVisible(false);
+            			}
+            	        try {
+            	            Image image = new Image(getClass().getResource("gano.png").openStream());
+            	            backgroundImage = new BackgroundImage(
+            	                    image,
+            	                    BackgroundRepeat.NO_REPEAT,
+            	                    BackgroundRepeat.NO_REPEAT,
+            	                    BackgroundPosition.DEFAULT,
+            	                    new BackgroundSize(1024, 768, false, false, true, false));
+            	        } catch (IOException e) {
+            	            throw new RuntimeException(e);
+            	        }
+            	        
+            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
             		} else {
-            			textResultado.setText("PERDIO");
+            			FXGL.getAudioPlayer().stopMusic(musica);
+            			FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("continue.wav")));
+
+            			textNivel.setVisible(false);
+            			textVida.setVisible(false);
+            			textAccion.setVisible(false);
+            			BackgroundImage backgroundImage;
+            			player.setVisible(false);
+            			for (Pair<Entity, Integer> thisUtnBall : utnBalls) {
+            				thisUtnBall.getKey().setVisible(false);
+            			}
+            			for (Entity thisEnemigo : enemigos) {
+            				thisEnemigo.setVisible(false);
+            			}
+            	        try {
+            	            Image image = new Image(getClass().getResource("perdio.png").openStream());
+            	            backgroundImage = new BackgroundImage(
+            	                    image,
+            	                    BackgroundRepeat.NO_REPEAT,
+            	                    BackgroundRepeat.NO_REPEAT,
+            	                    BackgroundPosition.DEFAULT,
+            	                    new BackgroundSize(1024, 768, false, false, true, false));
+            	        } catch (IOException e) {
+            	            throw new RuntimeException(e);
+            	        }
+            	        
+            			getGameScene().getRoot().setBackground(new Background(backgroundImage));
             		}
             		
             	}
@@ -167,7 +224,8 @@ public class GUI extends GameApplication {
     
     @Override
     protected void initUI() {
-        FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("mountaintrails.mp3")));
+    	musica = getAssetLoader().loadMusic(getClass().getResource("mountaintrails.mp3"));
+        FXGL.getAudioPlayer().loopMusic(musica);
         BackgroundImage backgroundImage;
         try {
             Image image = new Image(getClass().getResource("worldmap.png").openStream());
@@ -191,15 +249,15 @@ public class GUI extends GameApplication {
         textAccion.setTranslateX(30);
         textAccion.setTranslateY(30);
         
-        textResultado = getUIFactoryService().newText("", Color.BLACK, 22);
-        textResultado.setTranslateX(500);
-        textResultado.setTranslateY(30);
+        textNivel = getUIFactoryService().newText("Nivel: 0", Color.BLACK, 22);
+        textNivel.setTranslateX(500);
+        textNivel.setTranslateY(30);
         
         textoEspacio = getUIFactoryService().newText("Presione espacio para comenzar", Color.BLACK, 22);
         textoEspacio.setTranslateX(350);
         textoEspacio.setTranslateY(getAppHeight() - 50);
         
-        getGameScene().addUINodes(textVida, textAccion, textResultado, textoEspacio);
+        getGameScene().addUINodes(textVida, textAccion, textNivel, textoEspacio);
         
 
     }
@@ -210,12 +268,13 @@ public class GUI extends GameApplication {
         //Ejecuto el algoritmo
         
     	
-        
-        
+        Datos.niveles = new ArrayList<>();
+        Datos.grafo = new ArrayList<>();
+        Datos.energiaJugador = 0.0;
+        Datos.energiaMaestro = 0.0;
         PokemonMain pokemonMain = new PokemonMain();
         pokemonMain.startPokemon();
-       	Integer nroNodoInicio = pokemonMain.getNodoInicio();
-    	Posiciones posiciones = new Posiciones();
+       	Posiciones posiciones = new Posiciones();
     	Pair<Integer, Integer> posicionInicio = posiciones.getNodoN(Datos.nodoInicio);
 
     	//Creo el player
@@ -234,7 +293,7 @@ public class GUI extends GameApplication {
                 .view(getClass().getResource("trainer.png"))
                 .buildAndAttach();
         player.setProperty("velocity", new Point2D(0,0));
-        nroNodo = Datos.nodoInicio;
+        nroNodo = Datos.nodoInicio	;
         acciones = pokemonMain.getAccionesEjecutadas();
         System.out.println("Cantidad de acciones: " + acciones.size());
         System.out.println("Cantidad de grafos: " + Datos.grafo.size());

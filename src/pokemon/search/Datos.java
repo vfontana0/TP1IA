@@ -11,4 +11,5 @@ public class Datos {
 	public static Integer nodoInicio;
 	public static Integer nroEstrategia;
 	public static ArrayList<Graph> grafo;
+	public static ArrayList<Integer> niveles;
 }

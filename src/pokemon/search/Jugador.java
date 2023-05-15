@@ -86,6 +86,9 @@ public class Jugador extends SearchBasedAgent {
 	        try {
 	            accionSeleccionada = this.getSolver().solve(new Object[]{this.getProblem()});
 	            searchActions.add(new Pair<Action, Double>(accionSeleccionada, jugadorState.getEnergia()));
+	            if (Datos.niveles == null) Datos.niveles = new ArrayList<>();
+	            Datos.niveles.add(((EstadoJugador) this.getAgentState()).getNivel());
+	            System.out.println("nuevo niveles " + Datos.niveles);
 	           System.out.println("Accion seleccionadaa: " + accionSeleccionada.toString());
 	           System.out.println("Costo: " + jugadorState.getCosto());
 	        } catch (Exception ex) {

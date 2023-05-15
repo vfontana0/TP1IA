@@ -3,6 +3,8 @@ import com.almasb.fxgl.animation.Animation;
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.audio.Music;
+
 import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getAssetLoader;
 
@@ -26,6 +28,7 @@ public class MenuPrincipal extends FXGLMenu {
 	ConfiguracionAlgoritmo escritorLector;
 	
     private Animation<?> animation;
+    private Music musica;
     
     private void cambiarAlgoritmo(Text textoAlgoritmo) {
     	numeroAlgoritmo = (numeroAlgoritmo) % 5 + 1;
@@ -57,7 +60,8 @@ public class MenuPrincipal extends FXGLMenu {
 	public MenuPrincipal(MenuType type) {
 		super(type);
 		escritorLector = new ConfiguracionAlgoritmo();
-		FXGL.getAudioPlayer().loopMusic(getAssetLoader().loadMusic(getClass().getResource("rolling5.mp3")));
+		musica = getAssetLoader().loadMusic(getClass().getResource("rolling5.mp3"));
+		FXGL.getAudioPlayer().loopMusic((musica));
         
 		
 		// TODO Auto-generated constructor stub
@@ -101,7 +105,7 @@ public class MenuPrincipal extends FXGLMenu {
 
          shapeIniciar.setOnMouseClicked(e -> {
         	 fireNewGame();
-        	 FXGL.getAudioPlayer().stopAllMusic();
+        	 FXGL.getAudioPlayer().stopMusic(musica);
          });
          
          shapeAlgoritmo.strokeProperty().bind(

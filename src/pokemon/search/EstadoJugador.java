@@ -43,6 +43,7 @@ public class EstadoJugador extends SearchBasedAgentState {
 	    nuevoEstado.setEnergiaInicial(this.getEnergiaInicial()); 
 	    nuevoEstado.setHuyoUltimoNodo(this.getHuyoUltimoNodo());
 	    nuevoEstado.setNivel(this.getNivel());
+	    
 	    nuevoEstado.setCantidadAdversarios(this.getCantidadAdversarios());
 	    //poderes
 	    ArrayList<Poder> poderesNuevo = new ArrayList<>();

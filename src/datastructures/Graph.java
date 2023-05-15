@@ -86,7 +86,7 @@ public class Graph {
 	}
 
 	public double getHeuristica(EstadoJugador estado) {
-		return this.dijkstra(estado.getUbicacion(), this.getVertex(Datos.nodoMaestro), estado.getMapa()); //distancia entre el actual y nodo 11
+		return this.dijkstra(estado.getUbicacion(), this.getVertex(Datos.nodoMaestro), estado.getMapa()); //distancia entre el actual y nodo del maestro
 	}
 	
 	private double dijkstra(Nodo origen, Nodo destino, Graph mapa) {

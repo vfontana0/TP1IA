@@ -65,6 +65,7 @@ public class GUI extends GameApplication {
     protected void initInput() {
         Posiciones posiciones = new Posiciones();
         FXGL.onKey(KeyCode.SPACE, () -> {
+        	nroGrafo = 0;
         	textoEspacio.setVisible(false);
             try {
                 sleep(150);
